@@ -98,19 +98,18 @@
             
             <!-- Logo -->
             <a href="index.html" class="logo-link flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
-                <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all"  border: 1px solid rgba(255, 215, 0, 0.3);">
+                <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all" border: 1px solid rgba(255, 215, 0, 0.3);">
                     <img src="images/logo.png" alt="John Pama Logo" class="w-full h-full object-cover rounded-full">
+                <div class="font-bold text-lg bg-gradient-to-r from-[#006633] via-[#00a86b] to-white bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]" style="font-family: 'Cormorant Garamond', 'Times New Roman', serif; font-weight: 700; font-size: 1.8rem; letter-spacing: -0.5px;">JP</div>
+
                 </div>
-                <div class="hidden xs:flex flex-col">
-                    <div class="logo-text font-bold text-xs sm:text-sm lg:text-base tracking-tight transition-all whitespace-nowrap" style="color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">JOHN PAMA</div>
-                    <div class="text-[8px] sm:text-[9px] lg:text-[10px] font-semibold tracking-wider whitespace-nowrap" style="color: #FFD700;">PRIMARY SCHOOL</div>
-                </div>
+                
             </a>
             
             <!-- Desktop Navigation -->
             <div class="hidden lg:flex items-center space-x-4 xl:space-x-6 2xl:space-x-8 overflow-x-auto max-w-full">
                 <a href="index.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Home</a>
-                <a href="about.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">About Us</a>
+                <a href="about.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group active" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">About Us</a>
                 <a href="admissions.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Admissions</a>
                 <a href="achievements.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Achievements</a>
                 <a href="extra.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">PlayTime</a>
@@ -118,7 +117,7 @@
                 <a href="alumni.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Alumni</a>
                 <a href="contact.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Contact</a>
                 <a href="future.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Future</a>
-                <a href="donate.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Support</a>
+                <a href="support.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Support</a>
             </div>
             
             <!-- Desktop Donate Button + Mobile Hamburger -->
@@ -140,6 +139,7 @@
         </div>
     </div>
 </header>
+
 <!-- Spacer to prevent content from hiding under fixed navbar -->
 <div class="h-16 lg:h-20"></div>
 
@@ -162,85 +162,41 @@
 
 
 
-<div class="h-16 lg:h-20"></div>
+
 
 <!-- ========== HERO SECTION (ACADEMICS) ========== -->
-<section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-    <!-- Background Image (or you can use video) -->
-    <div class="absolute inset-0">
- <div class="absolute inset-0">
-        <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-            <source src="images/jp10.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-black/50"></div>
-    </div>
+<div class="hero-video-section relative overflow-hidden">
+    <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+        <source src="images/jp10.mp4" type="video/mp4">
+    </video>
     
+    <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-[#006633]/70 to-black/90"></div>
+    <div class="absolute inset-0 bg-black/40"></div>
     
-        <!-- Cutting Edge Linear Gradient Overlay - Academic Theme (Blue-Green) -->
-        <div class="absolute inset-0 bg-gradient-to-br from-black/85 via-[#006633]/70 to-[#003366]/80"></div>
-        
-        <!-- Diagonal Premium Accent -->
-        <div class="absolute inset-0 bg-gradient-to-tr from-[#00ff66]/10 via-transparent to-[#0066cc]/10"></div>
-        
-        <!-- Top Edge Glow -->
-        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00ff66] to-transparent"></div>
-        
-        <!-- Bottom Glow Line -->
-        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent"></div>
-        
-        <!-- Animated Light Sweep -->
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 translate-x-[-100%] animate-scan"></div>
-    </div>
-    
-    <!-- Content Container -->
-    <div class="relative z-10 text-center text-white px-6 max-w-5xl mx-auto">
-        
-        <!-- Prestige Academic Badge -->
-        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/20 mb-6 animate-fade-in">
-            <i class="fas fa-book-open text-[#00ff66] text-xs"></i>
-            <span class="text-xs font-semibold tracking-[0.15em] uppercase text-white/90">Academic Excellence • CAPS Curriculum</span>
-            <i class="fas fa-graduation-cap text-[#00ff66] text-xs"></i>
+    <div class="relative z-10 flex flex-col items-center justify-center text-center text-white px-6 min-h-[70vh]">
+        <div class="inline-flex items-center gap-2 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 mb-6">
+            <i class="fas fa-graduation-cap text-[#00ff66] text-sm"></i>
+            <span class="text-xs font-semibold tracking-wider uppercase text-white">Est. 1968 | Nyanga, Cape Town</span>
         </div>
         
-        <!-- Main Heading with Gradient Text -->
-        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 animate-fade-in-up" style="font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;">
-            <span class="bg-gradient-to-r from-white via-[#00ff66] to-[#00ccff] bg-clip-text text-transparent bg-300% animate-gradient">Academics</span>
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4" style="font-family: 'Cormorant Garamond', 'Times New Roman', serif;">
+            <span class="bg-gradient-to-r from-white via-[#00ff66] to-white bg-clip-text text-transparent bg-300% animate-gradient">About Us</span>
         </h1>
         
-        <!-- Decorative Line with Animation -->
-        <div class="flex justify-center gap-2 my-6 animate-fade-in-up delay-100">
+        <div class="flex justify-center gap-2 my-6">
             <div class="w-16 h-0.5 bg-gradient-to-r from-transparent to-[#00ff66]"></div>
             <div class="w-2 h-2 bg-[#00ff66] rounded-full animate-pulse-simple"></div>
             <div class="w-16 h-0.5 bg-gradient-to-l from-transparent to-[#00ff66]"></div>
         </div>
         
-        <!-- Punchline Paragraph -->
-        <p class="text-xl md:text-2xl lg:text-3xl mt-4 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-200" style="font-family: 'Lora', 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
-            "Shaping minds, building futures — one child at a time."
-        </p>
-        
-        <!-- Supporting Subtext - Academic Focus Areas -->
-        <div class="mt-8 max-w-3xl mx-auto animate-fade-in-up delay-300">
-            
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="text-xs md:text-sm px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full">📖 Foundation Phase</span>
-                <span class="text-xs md:text-sm px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full">🔢 Mathematics</span>
-                <span class="text-xs md:text-sm px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full">🌍 Sciences</span>
-                <span class="text-xs md:text-sm px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full">💻 Digital Literacy</span>
-                <span class="text-xs md:text-sm px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full">📚 Languages</span>
-            </div>
-        </div>
-        
-    
-    </div>
-    <!-- Scroll Hint -->
-        <div class="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2 animate-fade-in delay-500 mt-16">
-            <span class="text-[10px] tracking-[0.2em] text-white/60 uppercase">Discover Programs</span>
-            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+        <div class="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2">
+            <span class="text-xs tracking-wider text-white/80 uppercase">Discover Our True Story</span>
+            <div class="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center">
                 <div class="w-1.5 h-2.5 bg-[#00ff66] rounded-full mt-2 animate-scroll"></div>
             </div>
         </div>
-</section>
+    </div>
+</div>
 
 <style>
     /* Gradient Text Animation */

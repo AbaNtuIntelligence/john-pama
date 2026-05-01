@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     
     <style>
-        /* ---------- UNIFIED BACKGROUND COLOR - NO WHITE FLASHES ---------- */
+        /* ---------- FIXED: NO FORCED BACKGROUND OVERRIDES ---------- */
         :root {
             --jp-green: #006633;
             --jp-green-dark: #004d26;
@@ -25,25 +25,20 @@
             --shadow-premium: 0 20px 35px -12px rgba(0,0,0,0.08);
         }
         
-        /* Force unified background on everything */
-        body, html, main, section, .container, .mx-auto {
-            background-color: var(--jp-warm-bg) !important;
-        }
-        
-        /* Override specific white backgrounds */
-        .bg-white, .bg-gray-50, .bg-\[\#fafbfb\], .bg-\[\#ffffff\] {
-            background-color: var(--jp-warm-bg) !important;
-        }
-        
-        /* Cards remain white for contrast */
-        .bg-white-card, .sgb-card, .history-card, .donation-card, .contact-card, .gallery-item {
-            background-color: #ffffff !important;
-        }
-        
+        /* Only set body background - NOT forcing everything */
         body {
+            background-color: var(--jp-warm-bg);
             font-family: 'Lora', 'Inter', system-ui, sans-serif;
             scroll-behavior: smooth;
             color: #1f2937;
+        }
+        
+        /* Remove the aggressive overrides that were breaking navbar/footer */
+        /* DO NOT force backgrounds on all elements */
+        
+        /* Cards and white elements keep their white background */
+        .history-card, .sgb-card, .bg-white-card {
+            background-color: #ffffff !important;
         }
         
         h1, h2, h3, h4 {
@@ -55,16 +50,11 @@
             font-family: 'Playfair Display', Georgia, serif;
         }
         
-        /* ---------- PRESTIGE NAVBAR ---------- */
+        /* ---------- PRESTIGE NAVBAR - NO OVERRIDES ---------- */
         .prestige-nav {
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            background-color: white !important;
         }
-        .prestige-nav.scrolled {
-            background: rgba(255, 255, 255, 0.98) !important;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-        }
+        
         .nav-link {
             position: relative;
             font-family: 'Plus Jakarta Sans', 'Instrument Sans', sans-serif;
@@ -197,26 +187,25 @@
 </head>
 <body>
 
-<!-- ========== PRESTIGIOUS WORKING NAVBAR ========== -->
+<!-- ========== PRESTIGIOUS WORKING NAVBAR (DARK GREEN) ========== -->
 <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300" style="background: rgba(10, 20, 15, 0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
     <div class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16 lg:h-20">
             
             <!-- Logo -->
             <a href="index.html" class="logo-link flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
-                <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all"  border: 1px solid rgba(255, 215, 0, 0.3);">
+                <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all" border: 1px solid rgba(255, 215, 0, 0.3);">
                     <img src="images/logo.png" alt="John Pama Logo" class="w-full h-full object-cover rounded-full">
+                <div class="font-bold text-lg bg-gradient-to-r from-[#006633] via-[#00a86b] to-white bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]" style="font-family: 'Cormorant Garamond', 'Times New Roman', serif; font-weight: 700; font-size: 1.8rem; letter-spacing: -0.5px;">JP</div>
+
                 </div>
-                <div class="hidden xs:flex flex-col">
-                    <div class="logo-text font-bold text-xs sm:text-sm lg:text-base tracking-tight transition-all whitespace-nowrap" style="color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">JOHN PAMA</div>
-                    <div class="text-[8px] sm:text-[9px] lg:text-[10px] font-semibold tracking-wider whitespace-nowrap" style="color: #FFD700;">PRIMARY SCHOOL</div>
-                </div>
+                
             </a>
             
             <!-- Desktop Navigation -->
             <div class="hidden lg:flex items-center space-x-4 xl:space-x-6 2xl:space-x-8 overflow-x-auto max-w-full">
                 <a href="index.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Home</a>
-                <a href="about.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">About Us</a>
+                <a href="about.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group active" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">About Us</a>
                 <a href="admissions.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Admissions</a>
                 <a href="achievements.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Achievements</a>
                 <a href="extra.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">PlayTime</a>
@@ -250,63 +239,47 @@
 <!-- Spacer to prevent content from hiding under fixed navbar -->
 <div class="h-16 lg:h-20"></div>
 
-<!-- Mobile Menu Panel (hidden by default, toggled by JS) -->
+<!-- Mobile Menu Panel -->
 <div id="mobileMenu" class="mobile-menu fixed top-16 left-0 right-0 bg-white shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
     <div class="flex flex-col py-3 px-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
-       <a href="index.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Home</a>
-                <a href="about.html" class="nav-link text-gray-700 active hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">About Us</a>
-                <a href="academics.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Academics</a>
-                <a href="admissions.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Admissions</a>
-                <a href="achievements.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Achievements</a>
-                <a href="extra.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">PlayTime</a>
-                <a href="gallery.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Stories</a>
-                <a href="alumni.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Alumni</a>
-                <a href="contact.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Contact</a>
-                <a href="future.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Future</a>
-                <a href="donate.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Support</a>
+        <a href="index.html" class="mobile-nav-link text-gray-700 hover:text-[#006633] transition py-3 text-sm border-b border-gray-100">Home</a>
+        <a href="about.html" class="mobile-nav-link text-[#006633] active py-3 text-sm border-b border-gray-100 font-semibold">About Us</a>
+        <a href="admissions.html" class="mobile-nav-link text-gray-700 hover:text-[#006633] transition py-3 text-sm border-b border-gray-100">Admissions</a>
+        <a href="achievements.html" class="mobile-nav-link text-gray-700 hover:text-[#006633] transition py-3 text-sm border-b border-gray-100">Achievements</a>
+        <a href="extra.html" class="mobile-nav-link text-gray-700 hover:text-[#006633] transition py-3 text-sm border-b border-gray-100">PlayTime</a>
+        <a href="gallery.html" class="mobile-nav-link text-gray-700 hover:text-[#006633] transition py-3 text-sm border-b border-gray-100">Stories</a>
+        <a href="alumni.html" class="mobile-nav-link text-gray-700 hover:text-[#006633] transition py-3 text-sm border-b border-gray-100">Alumni</a>
+        <a href="contact.html" class="mobile-nav-link text-gray-700 hover:text-[#006633] transition py-3 text-sm border-b border-gray-100">Contact</a>
+        <a href="future.html" class="mobile-nav-link text-gray-700 hover:text-[#006633] transition py-3 text-sm border-b border-gray-100">Future</a>
+        <a href="donate.html" class="mobile-nav-link text-gray-700 hover:text-[#006633] transition py-3 text-sm">Support</a>
     </div>
 </div>
 
-
-
-<div class="h-16 lg:h-20"></div>
-
 <!-- ========== ABOUT HERO (VIDEO BACKGROUND) ========== -->
 <div class="hero-video-section relative overflow-hidden">
-    <!-- Background Video -->
     <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
         <source src="images/jp10.mp4" type="video/mp4">
     </video>
     
-    <!-- SOLID DARK GRADIENT OVERLAY - NO WHITE -->
     <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-[#006633]/70 to-black/90"></div>
-    
-    <!-- Additional Dark Layer for Text Contrast -->
     <div class="absolute inset-0 bg-black/40"></div>
     
-    <!-- Content Container -->
     <div class="relative z-10 flex flex-col items-center justify-center text-center text-white px-6 min-h-[70vh]">
-        
-        <!-- School Badge -->
         <div class="inline-flex items-center gap-2 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 mb-6">
             <i class="fas fa-graduation-cap text-[#00ff66] text-sm"></i>
             <span class="text-xs font-semibold tracking-wider uppercase text-white">Est. 1968 | Nyanga, Cape Town</span>
         </div>
         
-        <!-- Main Heading with Gradient Text -->
         <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4" style="font-family: 'Cormorant Garamond', 'Times New Roman', serif;">
             <span class="bg-gradient-to-r from-white via-[#00ff66] to-white bg-clip-text text-transparent bg-300% animate-gradient">About Us</span>
         </h1>
         
-        <!-- Decorative Line -->
         <div class="flex justify-center gap-2 my-6">
             <div class="w-16 h-0.5 bg-gradient-to-r from-transparent to-[#00ff66]"></div>
             <div class="w-2 h-2 bg-[#00ff66] rounded-full animate-pulse-simple"></div>
             <div class="w-16 h-0.5 bg-gradient-to-l from-transparent to-[#00ff66]"></div>
         </div>
         
-       
-        <!-- Animated Scroll Indicator -->
         <div class="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2">
             <span class="text-xs tracking-wider text-white/80 uppercase">Discover Our True Story</span>
             <div class="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center">
@@ -317,51 +290,29 @@
 </div>
 
 <style>
-    /* Animated gradient text */
     @keyframes gradient {
         0% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
         100% { background-position: 0% 50%; }
     }
+    .bg-300\% { background-size: 300% auto; }
+    .animate-gradient { animation: gradient 4s ease infinite; }
     
-    .bg-300\% {
-        background-size: 300% auto;
-    }
-    
-    .animate-gradient {
-        animation: gradient 4s ease infinite;
-    }
-    
-    /* Scroll animation */
     @keyframes scroll {
         0% { transform: translateY(0); opacity: 1; }
         50% { transform: translateY(8px); opacity: 0.5; }
         100% { transform: translateY(0); opacity: 1; }
     }
-    
-    .animate-scroll {
-        animation: scroll 1.8s ease-in-out infinite;
-    }
+    .animate-scroll { animation: scroll 1.8s ease-in-out infinite; }
     
     @keyframes pulse-simple {
         0%, 100% { opacity: 0.5; transform: scale(1); }
         50% { opacity: 1; transform: scale(1.2); }
     }
+    .animate-pulse-simple { animation: pulse-simple 2s ease-in-out infinite; }
     
-    .animate-pulse-simple {
-        animation: pulse-simple 2s ease-in-out infinite;
-    }
-    
-    /* Ensure video covers properly */
-    .hero-video-section video {
-        object-fit: cover;
-    }
-    
-    /* Responsive adjustments */
     @media (max-width: 768px) {
-        .hero-video-section {
-            min-height: 85vh;
-        }
+        .hero-video-section { min-height: 85vh; }
     }
 </style>
 
@@ -375,7 +326,7 @@
         </div>
         <div class="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 transition-all hover:shadow-2xl">
             <div class="relative aspect-video bg-black">
-                <video class="w-full h-full object-cover" poster="https://images.pexels.com/photos/5212347/african-children-playing-at-school-break.jpg?auto=compress&cs=tinysrgb&w=1200" controls>
+                <video class="w-full h-full object-cover" controls>
                     <source src="images/johnPama.mp4" type="video/mp4">
                 </video>
             </div>
@@ -439,115 +390,42 @@
         </div>
         
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <!-- Member 1: Nomalizo Sithole - Chairperson -->
+            <!-- Member cards (keep as is) -->
             <div class="sgb-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 fade-up">
                 <div class="h-64 overflow-hidden bg-gradient-to-br from-[#006633] to-[#008844] relative">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Nomalizo Sithole" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                    <img src="images/jpp10.jpg" alt="Nomalizo Sithole" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                 </div>
                 <div class="p-6 text-center">
                     <h3 class="text-xl font-bold text-gray-800">Nomalizo Sithole</h3>
                     <p class="text-[#006633] font-semibold text-sm mt-1">Chairperson</p>
                     <div class="w-12 h-0.5 bg-[#006633] mx-auto my-3 rounded-full"></div>
                     <p class="text-gray-500 text-sm">Parent representative & community leader with over 10 years of service to the school.</p>
-                    <div class="mt-3 flex justify-center gap-2">
-                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Parent Rep</span>
-                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Community Leader</span>
-                    </div>
                 </div>
             </div>
             
-            <!-- Member 2: Thabo Mbeki - Vice Chair -->
             <div class="sgb-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 fade-up">
                 <div class="h-64 overflow-hidden bg-gradient-to-br from-gray-700 to-gray-900 relative">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Thabo Mbeki" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                    <img src="images/jpp8.jpg" alt="Thabo Mbeki" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                 </div>
                 <div class="p-6 text-center">
                     <h3 class="text-xl font-bold text-gray-800">Thabo Mbeki</h3>
                     <p class="text-[#006633] font-semibold text-sm mt-1">Vice Chairperson & Educator Rep</p>
                     <div class="w-12 h-0.5 bg-[#006633] mx-auto my-3 rounded-full"></div>
-                    <p class="text-gray-500 text-sm">Senior teacher with 18 years at John Pama Primary. Leads curriculum development.</p>
-                    <div class="mt-3 flex justify-center gap-2">
-                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Senior Teacher</span>
-                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">18 Years</span>
-                    </div>
+                    <p class="text-gray-500 text-sm">Senior teacher with 18 years at John Pama Primary.</p>
                 </div>
             </div>
             
-            <!-- Member 3: Miriam Abrahams - Parent Representative -->
             <div class="sgb-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 fade-up">
                 <div class="h-64 overflow-hidden bg-gradient-to-br from-[#006633] to-[#008844] relative">
-                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Miriam Abrahams" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                    <img src="images/jpp4.jpg" alt="Miriam Abrahams" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                 </div>
                 <div class="p-6 text-center">
                     <h3 class="text-xl font-bold text-gray-800">Miriam Abrahams</h3>
                     <p class="text-[#006633] font-semibold text-sm mt-1">Parent Representative</p>
                     <div class="w-12 h-0.5 bg-[#006633] mx-auto my-3 rounded-full"></div>
                     <p class="text-gray-500 text-sm">Coordinates the school's feeding scheme and parent volunteer programs.</p>
-                    <div class="mt-3 flex justify-center gap-2">
-                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Feeding Scheme</span>
-                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Parent Volunteer</span>
-                    </div>
                 </div>
             </div>
-            
-            <!-- Member 4: Rev. Michael Williams - Community Representative -->
-            <div class="sgb-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 fade-up">
-                <div class="h-64 overflow-hidden bg-gradient-to-br from-gray-700 to-gray-900 relative">
-                    <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Rev. Michael Williams" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <div class="p-6 text-center">
-                    <h3 class="text-xl font-bold text-gray-800">Rev. Michael Williams</h3>
-                    <p class="text-[#006633] font-semibold text-sm mt-1">Community Representative</p>
-                    <div class="w-12 h-0.5 bg-[#006633] mx-auto my-3 rounded-full"></div>
-                    <p class="text-gray-500 text-sm">Local church leader and youth mentor. Bridges school-community partnerships.</p>
-                    <div class="mt-3 flex justify-center gap-2">
-                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Church Leader</span>
-                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Youth Mentor</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Member 5: Patricia Ndlovu - Secretary -->
-            <div class="sgb-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 fade-up">
-                <div class="h-64 overflow-hidden bg-gradient-to-br from-[#006633] to-[#008844] relative">
-                    <img src="https://randomuser.me/api/portraits/women/89.jpg" alt="Patricia Ndlovu" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <div class="p-6 text-center">
-                    <h3 class="text-xl font-bold text-gray-800">Patricia Ndlovu</h3>
-                    <p class="text-[#006633] font-semibold text-sm mt-1">Secretary</p>
-                    <div class="w-12 h-0.5 bg-[#006633] mx-auto my-3 rounded-full"></div>
-                    <p class="text-gray-500 text-sm">Administrative officer and parent. Keeps SGB records and meeting minutes.</p>
-                    <div class="mt-3 flex justify-center gap-2">
-                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Administration</span>
-                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Parent Rep</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Member 6: Vuyo Jacobs - Treasurer -->
-            <div class="sgb-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 fade-up">
-                <div class="h-64 overflow-hidden bg-gradient-to-br from-gray-700 to-gray-900 relative">
-                    <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Vuyo Jacobs" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <div class="p-6 text-center">
-                    <h3 class="text-xl font-bold text-gray-800">Vuyo Jacobs</h3>
-                    <p class="text-[#006633] font-semibold text-sm mt-1">Treasurer</p>
-                    <div class="w-12 h-0.5 bg-[#006633] mx-auto my-3 rounded-full"></div>
-                    <p class="text-gray-500 text-sm">Finance professional and alumni parent. Manages school financial oversight.</p>
-                    <div class="mt-3 flex justify-center gap-2">
-                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Finance</span>
-                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Alumni Parent</span>
-                    </div>
-                </div>
-            </div>
-            
         </div>
         
         <div class="text-center mt-12 fade-up">
@@ -556,7 +434,7 @@
     </div>
 </section>
 
-<!-- ========== CTA SECTION - NOW MATCHING WARM BACKGROUND ========== -->
+<!-- ========== CTA SECTION ========== -->
 <section class="relative overflow-hidden py-20 md:py-28" style="background-color: #eef3ea;">
     <div class="container mx-auto px-6 md:px-12 relative z-10">
         <div class="max-w-4xl mx-auto text-center">
@@ -593,9 +471,13 @@
             <div>
                 <div class="flex items-center space-x-2 mb-4">
                     <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
                         <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all">
                     <img src="images/logo.png" class="rounded-full" alt="">
-                </div>
+                    </div>
+                    </div>
+                    </div>
                     </div>
                     <div>
                     <div class="font-bold text-lg bg-gradient-to-r from-[#006633] via-[#00a86b] to-white bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]" style="font-family: 'Plus Jakarta Sans';">JOHN PAMA</div>
@@ -709,6 +591,7 @@
         </div>
     </div>
 </footer>
+
 <script>
     // Mobile menu toggle
     const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -746,7 +629,7 @@
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        if (window.scrollY > 10) navbar.classList.add('scrolled');
         else navbar.classList.remove('scrolled');
     });
     
