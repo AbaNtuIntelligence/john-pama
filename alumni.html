@@ -202,6 +202,17 @@
             animation-duration: 0.6s;
         }
     }
+     @keyframes modalFadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
     
     </style>
 </head>
@@ -399,76 +410,390 @@
             <p class="text-center text-gray-500 text-sm mt-3">Community clean-up, parent workshops, and Heritage Day celebrations — together we thrive.</p>
         </div>
     </section>
+<!-- ========== ALUMNI SPOTLIGHT SECTION ========== -->
+<section class="py-20" style="background-color: #eef3ea;">
+    <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+            <span class="text-[#006633] font-semibold tracking-wider text-sm">
+                <i class="fas fa-star-of-life mr-2"></i> FROM OUR HALLS TO THE WORLD
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2" style="font-family: 'Cormorant Garamond', serif;">Alumni Who Inspire</h2>
+            <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-600 mt-3 max-w-2xl mx-auto">Meet the extraordinary individuals who once walked these halls and are now shaping the world.</p>
+        </div>
+        
+        <!-- Alumni Grid -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Card 1: Thabele Phangalele - WITH YOUR UPDATED BIO -->
+            <div class="alumni-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer" data-id="0" style="background: white;">
+                <div class="relative overflow-hidden" style="height: 280px;">
+                    <img src="images/TEPP.jpeg" alt="Thabele Phangalele" class="w-full h-full object-cover" onerror="this.src='https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=400'">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">Thabele "TechBridger" Phangalele</h3>
+                            <p class="text-[#006633] text-sm font-semibold">Class of 1999</p>
+                        </div>
+                        <i class="fas fa-laptop-code text-2xl text-[#006633]"></i>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">Founder, Developer & Community Digital Strategist | AbaNtu Intelligence</p>
+                    <div class="mt-3 flex gap-2 flex-wrap">
+                        <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">System Development</span>
+                        <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">Mentor</span>
+                        <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">Tech Innovator</span>
+                    </div>
+                    <button class="alumni-view-btn mt-4 w-full py-2 text-center text-[#006633] font-semibold text-sm border-t border-gray-100 pt-3 hover:text-[#008844] transition-colors">
+                        Read Full Story <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Card 2: Nomasonto Skweyiya -->
+            <div class="alumni-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer" data-id="1" style="background: white;">
+                <div class="relative overflow-hidden" style="height: 280px;">
+                    <img src="images/jpp7.jpg" alt="Nomasonto Skweyiya" class="w-full h-full object-cover" onerror="this.src='https://images.pexels.com/photos/5212347/pexels-photo-5212347.jpeg?auto=compress&cs=tinysrgb&w=400'">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">Nomasonto Skweyiya</h3>
+                            <p class="text-[#006633] text-sm font-semibold">Class of 2010</p>
+                        </div>
+                        <i class="fas fa-chalkboard-user text-2xl text-[#006633]"></i>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">Head of Department, WCED. Champion for literacy in under-resourced schools.</p>
+                    <div class="mt-3 flex gap-2 flex-wrap">
+                        <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">Education Leadership</span>
+                        <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">Policy Making</span>
+                        <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">Literacy Advocate</span>
+                    </div>
+                    <button class="alumni-view-btn mt-4 w-full py-2 text-center text-[#006633] font-semibold text-sm border-t border-gray-100 pt-3 hover:text-[#008844] transition-colors">
+                        Read Full Story <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Card 3: Vukile Mavula -->
+            <div class="alumni-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer" data-id="2" style="background: white;">
+                <div class="relative overflow-hidden" style="height: 280px;">
+                    <img src="images/mavula.jfif" alt="Vukile Mavula" class="w-full h-full object-cover" onerror="this.src='https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=400'">
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">Vukile Mavula</h3>
+                            <p class="text-[#006633] text-sm font-semibold">Class of 2015</p>
+                        </div>
+                        <i class="fas fa-futbol text-2xl text-[#006633]"></i>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">Professional footballer, Cape Town City FC. Funds sports kits annually.</p>
+                    <div class="mt-3 flex gap-2 flex-wrap">
+                        <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">Professional Sports</span>
+                        <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">Philanthropy</span>
+                        <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">Youth Mentor</span>
+                    </div>
+                    <button class="alumni-view-btn mt-4 w-full py-2 text-center text-[#006633] font-semibold text-sm border-t border-gray-100 pt-3 hover:text-[#008844] transition-colors">
+                        Read Full Story <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- View All Button -->
+        <div class="text-center mt-12">
+            <a href="#" class="inline-block border-2 border-[#006633] text-[#006633] px-8 py-3 rounded-full font-semibold hover:bg-[#006633] hover:text-white transition-all duration-300 hover:shadow-lg">
+                <i class="fas fa-users mr-2"></i> View Full Alumni Directory
+            </a>
+        </div>
+    </div>
+</section>
 
-    <!-- ========== ALUMNI SPOTLIGHT GALLERY ========== -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-6 md:px-12 max-w-7xl">
-            <div class="text-center mb-12 fade-up">
-                <span class="text-[#006633] font-semibold tracking-wider text-sm"><i class="fas fa-star-of-life mr-2"></i> FROM OUR HALLS TO THE WORLD</span>
-                <h2 class="text-3xl md:text-4xl font-bold mt-2">Alumni Who Inspire</h2>
-                <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
-            </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div class="alumni-card bg-gray-50 rounded-2xl overflow-hidden shadow-md hover:shadow-xl fade-up">
-        <img src="images/TEPP.jpeg" alt="Alumni" class="w-30 h-30 rounded-full md:h-96 object-cover">
-        <div class="p-5">
-            <div class="flex justify-between items-start">
-                <div>
-                    <h3 class="text-xl font-bold">Thabele Phangalele</h3>
-                    <p class="text-[#006633] text-sm">Class of 1999</p>
-                </div>
-                <i class="fas fa-laptop-code text-2xl text-[#006633]"></i>
-            </div>
-            <p class="text-gray-600 text-sm mt-2">Founder, Developer & Community Digital Strategist | AbaNtu Intelligence</p>
-            <div class="mt-3 flex gap-2 flex-wrap">
-                <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">System Development</span>
-                <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">Mentor</span>
-            </div>
-        </div>
+<!-- ========== ALUMNI MODAL - WITH YOUR EXPANDED BIO ========== -->
+<div id="alumniModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(15px); z-index: 10000; align-items: center; justify-content: center;">
+    
+    <!-- Close Button -->
+    <div id="modalClose" style="position: absolute; top: 20px; right: 30px; width: 45px; height: 45px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; cursor: pointer; transition: all 0.3s ease; z-index: 10001;">
+        <i class="fas fa-times"></i>
     </div>
     
-    <div class="alumni-card bg-gray-50 rounded-2xl overflow-hidden shadow-md hover:shadow-xl fade-up">
-        <img src="images/jpp7.jpg" alt="Alumni" class="w-full h-80 rounded-full md:h-96 object-cover">
-        <div class="p-5">
-            <div class="flex justify-between items-start">
-                <div>
-                    <h3 class="text-xl font-bold">Nomasonto Skweyiya</h3>
-                    <p class="text-[#006633] text-sm">Class of 2010</p>
-                </div>
-                <i class="fas fa-chalkboard-user text-2xl text-[#006633]"></i>
-            </div>
-            <p class="text-gray-600 text-sm mt-2">Head of Department, WCED. Champion for literacy in under-resourced schools.</p>
-            <div class="mt-3 flex gap-2 flex-wrap">
-                <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">Education</span>
-                <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">Policy</span>
-            </div>
-        </div>
+    <!-- Prev Button -->
+    <div id="modalPrev" style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%); width: 50px; height: 50px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; cursor: pointer; transition: all 0.3s ease; z-index: 10001;">
+        <i class="fas fa-chevron-left"></i>
     </div>
     
-    <div class="alumni-card bg-gray-50 rounded-2xl overflow-hidden shadow-md hover:shadow-xl fade-up">
-        <img src="images/mavula.jfif" alt="Alumni" class="w-full h-80 rounded-full md:h-96 object-cover">
-        <div class="p-5">
-            <div class="flex justify-between items-start">
-                <div>
-                    <h3 class="text-xl font-bold">Vukile Mavula</h3>
-                    <p class="text-[#006633] text-sm">Class of 1999</p>
-                </div>
-                <i class="fas fa-futbol text-2xl text-[#006633]"></i>
-            </div>
-            <p class="text-gray-600 text-sm mt-2">Professional footballer, Cape Town City FC. Funds sports kits annually.</p>
-            <div class="mt-3 flex gap-2 flex-wrap">
-                <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">Sports</span>
-                <span class="text-xs bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">Philanthropy</span>
-            </div>
-        </div>
+    <!-- Next Button -->
+    <div id="modalNext" style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); width: 50px; height: 50px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; cursor: pointer; transition: all 0.3s ease; z-index: 10001;">
+        <i class="fas fa-chevron-right"></i>
+    </div>
+    
+    <!-- Modal Content -->
+    <div style="position: relative; max-width: 800px; width: 90vw; max-height: 85vh; background: white; border-radius: 24px; overflow: hidden; animation: modalFadeIn 0.3s ease;">
+        <!-- Header with Image -->
+        <!-- Header with Image - REDUCED SIZE -->
+<div style="position: relative; height: 200px; background: #1a1a2e;">
+    <img id="modalImage" src="" alt="" style="width: 100%; height: 100%; object-fit: contain; padding: 10px;">
+    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 20px 25px 15px;">
+        <h2 id="modalName" style="font-size: 1.5rem; font-weight: bold; color: white; margin: 0; font-family: 'Cormorant Garamond', serif;"></h2>
+        <p id="modalClass" style="color: #00ff66; font-weight: 600; margin: 5px 0 0; font-size: 0.85rem;"></p>
     </div>
 </div>
-            <div class="text-center mt-10 fade-up">
-                <a href="#" class="inline-block border-2 border-[#006633] text-[#006633] px-8 py-2.5 rounded-full font-semibold hover:bg-[#006633] hover:text-white transition"><i class="fas fa-arrow-right mr-2"></i> View Full Alumni Directory</a>
+        
+        <!-- Body Content - Scrollable -->
+        <div style="padding: 25px; max-height: 400px; overflow-y: auto;">
+            <!-- Badges -->
+            <div id="modalBadges" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;"></div>
+            
+            <!-- Current Role -->
+            <h3 style="font-size: 1rem; font-weight: bold; color: #1f2937; margin-bottom: 8px;">Current Role</h3>
+            <p id="modalRole" style="color: #4b5563; line-height: 1.6; margin-bottom: 20px;"></p>
+            
+            <!-- Journey & Impact - YOUR EXPANDED BIO GOES HERE -->
+            <h3 style="font-size: 1rem; font-weight: bold; color: #1f2937; margin-bottom: 8px;">Journey & Impact</h3>
+            <div id="modalStory" style="color: #4b5563; line-height: 1.6; margin-bottom: 20px;"></div>
+            
+            <!-- Quote Section -->
+            <div id="modalQuote" style="background: #eef3ea; padding: 20px; border-radius: 16px; margin-bottom: 20px;">
+                <div style="display: flex; gap: 12px;">
+                    <i class="fas fa-quote-left" style="color: #006633; font-size: 1.5rem;"></i>
+                    <p id="modalQuoteText" style="color: #374151; font-style: italic; margin: 0;"></p>
+                </div>
             </div>
+            
+            <!-- LinkedIn Button -->
+            <a id="modalLinkedIn" href="#" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: #006633; color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                <i class="fab fa-linkedin"></i> Connect on LinkedIn
+            </a>
         </div>
-    </section>
+    </div>
+    
+    <!-- Counter -->
+    <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; font-size: 0.8rem; background: rgba(0,0,0,0.5); padding: 4px 12px; border-radius: 20px;">
+        <span id="modalCounter"></span>
+    </div>
+</div>
 
+<style>
+    @keyframes modalFadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    .alumni-card {
+        transition: all 0.3s ease;
+    }
+    
+    .alumni-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    #modalClose:hover, #modalPrev:hover, #modalNext:hover {
+        background: #006633 !important;
+        transform: scale(1.05);
+    }
+    
+    #modalPrev:hover, #modalNext:hover {
+        transform: translateY(-50%) scale(1.05);
+    }
+    
+    /* Custom scrollbar */
+    .modal-scroll {
+        scrollbar-width: thin;
+        scrollbar-color: #006633 #eef3ea;
+    }
+    
+    .modal-scroll::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .modal-scroll::-webkit-scrollbar-track {
+        background: #eef3ea;
+        border-radius: 10px;
+    }
+    
+    .modal-scroll::-webkit-scrollbar-thumb {
+        background: #006633;
+        border-radius: 10px;
+    }
+</style>
+
+<script>
+    (function() {
+        // Alumni Data - WITH YOUR EXPANDED BIO
+        const alumniData = [
+            {
+                id: 0,
+                name: "Thabele Phangalele",
+                classYear: "Class of 1999",
+                role: "Founder, Developer & Community Digital Strategist | AbaNtu Intelligence",
+                image: "images/TEPP.jpeg",
+                imageFallback: "https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=400",
+                badges: ["System Development", "Mentor", "Tech Innovator"],
+                // YOUR EXPANDED BIO - First Person Story
+                story: `<p style="margin-bottom: 12px;">After leaving John Pama in 1999, I went on to complete high school in 2004. But the years after matric were a struggle — I moved between jobs, some good, some just to get by. There were long days and tough choices, and more than once I wondered if I'd ever find my path.</p>
+                        <p style="margin-bottom: 12px;">Then came the turning point. I admitted myself into a skills development programme with MICT SETA. I showed up, learned to code from nothing, and earned my <strong style="color: #006633;">National Qualification in System Development</strong>. That certification changed my life — it gave me proof that I belonged in this industry.</p>
+                        <p style="margin-bottom: 12px;">Today, I run my own practice as a solo developer and digital strategist. I build systems, solve problems, and create opportunities — not just for myself, but for anyone who reminds me of that younger me, still searching.</p>
+                        <p style="margin-bottom: 0;">But here's what matters most: I came back home. I'm back at John Pama to mentor, to teach coding workshops, and to show our learners that your starting point does not define your destination. If I can make it from Nyanga to building tech solutions that matter, so can they.</p>`,
+                // YOUR QUOTE
+                quote: "I didn't take a straight path. I took a real one. And if my journey shows these kids anything, it's that it's never too late to rewrite your story — and never too far to come back home.",
+                linkedin: "https://linkedin.com/in/thabele-phangalele"
+            },
+            {
+                id: 1,
+                name: "Nomasonto Skweyiya",
+                classYear: "Class of 2010",
+                role: "Head of Department, WCED | Literacy Advocate",
+                image: "images/jpp7.jpg",
+                imageFallback: "https://images.pexels.com/photos/5212347/pexels-photo-5212347.jpeg?auto=compress&cs=tinysrgb&w=400",
+                badges: ["Education Leadership", "Policy Making", "Literacy Advocate"],
+                story: `<p style="margin-bottom: 12px;">After John Pama, I pursued my Bachelor of Education at Stellenbosch University. The journey wasn't easy — being away from home, adjusting to university life, and carrying the weight of my community's expectations.</p>
+                        <p style="margin-bottom: 12px;">I spent 7 years teaching in rural Eastern Cape before returning to the Western Cape. Those years shaped my understanding of what true educational inequality looks like — and fueled my determination to change it.</p>
+                        <p style="margin-bottom: 0;">Today, as Head of Department at WCED, I lead a district-wide literacy initiative that has improved reading outcomes for over 15,000 learners across 45 schools. Every policy I shape, every resource I allocate — it's all for the child in Nyanga who reminds me of myself.</p>`,
+                quote: "I stand on the shoulders of teachers who believed in me at John Pama. Now I fight to ensure every learner has that same opportunity. Literacy is freedom, and freedom starts in the classroom.",
+                linkedin: "https://linkedin.com/in/nomasonto-skweyiya"
+            },
+            {
+                id: 2,
+                name: "Vukile Mavula",
+                classYear: "Class of 2015",
+                role: "Professional Footballer, Cape Town City FC",
+                image: "images/mavula.jfif",
+                imageFallback: "https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=400",
+                badges: ["Professional Sports", "Philanthropy", "Youth Mentor"],
+                story: `<p style="margin-bottom: 12px;">My talent was first spotted on the dusty fields of Nyanga during inter-school tournaments. I was just a kid with a dream and a worn-out pair of boots.</p>
+                        <p style="margin-bottom: 12px;">I joined the Cape Town City FC academy at 14. The training was intense, the sacrifices were real — but every early morning session and every late-night practice was worth it.</p>
+                        <p style="margin-bottom: 12px;">Today, I'm a starting midfielder for the first team with over 100 appearances. But my proudest achievement? The Mavula Foundation — providing sports equipment and coaching clinics to schools in the Cape Flats.</p>
+                        <p style="margin-bottom: 0;">Every off-season, I return to John Pama to host a week-long football camp. Over 300 children participate annually. Seeing their smiles? That's the real victory.</p>`,
+                quote: "The discipline and teamwork I learned at John Pama are still with me every time I step onto the pitch. I'm living proof that with hard work and the right support, you can make it from Nyanga to the big leagues.",
+                linkedin: "https://linkedin.com/in/vukile-mavula"
+            }
+        ];
+        
+        let currentIndex = 0;
+        const modal = document.getElementById('alumniModal');
+        
+        // Function to open modal
+        window.openAlumniModal = function(index) {
+            currentIndex = index;
+            const alumni = alumniData[currentIndex];
+            
+            // Set image with fallback
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = alumni.image;
+            modalImg.onerror = function() { this.src = alumni.imageFallback; };
+            
+            // Set text content
+            document.getElementById('modalName').textContent = alumni.name;
+            document.getElementById('modalClass').textContent = alumni.classYear;
+            document.getElementById('modalRole').textContent = alumni.role;
+            
+            // Set story as HTML (preserves formatting)
+            document.getElementById('modalStory').innerHTML = alumni.story;
+            
+            document.getElementById('modalQuoteText').textContent = `"${alumni.quote}"`;
+            document.getElementById('modalLinkedIn').href = alumni.linkedin;
+            document.getElementById('modalCounter').textContent = `${currentIndex + 1} / ${alumniData.length}`;
+            
+            // Render badges
+            const badgesContainer = document.getElementById('modalBadges');
+            badgesContainer.innerHTML = '';
+            alumni.badges.forEach(badge => {
+                const span = document.createElement('span');
+                span.className = 'text-xs bg-[#e8f3ed] text-[#006633] px-3 py-1.5 rounded-full font-semibold';
+                span.textContent = badge;
+                badgesContainer.appendChild(span);
+            });
+            
+            // Show modal
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        };
+        
+        // Close modal
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        
+        // Next alumni
+        function nextAlumni() {
+            let next = currentIndex + 1;
+            if (next >= alumniData.length) next = 0;
+            openAlumniModal(next);
+        }
+        
+        // Previous alumni
+        function prevAlumni() {
+            let prev = currentIndex - 1;
+            if (prev < 0) prev = alumniData.length - 1;
+            openAlumniModal(prev);
+        }
+        
+        // Attach event listeners when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Alumni modal script loaded');
+            
+            // Card click handlers
+            const cards = document.querySelectorAll('.alumni-card');
+            console.log('Found', cards.length, 'alumni cards');
+            
+            cards.forEach((card, idx) => {
+                // Click on card (but not button)
+                card.addEventListener('click', function(e) {
+                    if (!e.target.closest('.alumni-view-btn')) {
+                        console.log('Card clicked:', idx);
+                        openAlumniModal(idx);
+                    }
+                });
+                
+                // Click on button
+                const btn = card.querySelector('.alumni-view-btn');
+                if (btn) {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        console.log('Button clicked for alumni:', idx);
+                        openAlumniModal(idx);
+                    });
+                }
+            });
+            
+            // Modal close handlers
+            const closeBtn = document.getElementById('modalClose');
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            
+            const prevBtn = document.getElementById('modalPrev');
+            if (prevBtn) prevBtn.addEventListener('click', prevAlumni);
+            
+            const nextBtn = document.getElementById('modalNext');
+            if (nextBtn) nextBtn.addEventListener('click', nextAlumni);
+            
+            // Close on background click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (modal.style.display === 'flex') {
+                    if (e.key === 'Escape') closeModal();
+                    if (e.key === 'ArrowRight') nextAlumni();
+                    if (e.key === 'ArrowLeft') prevAlumni();
+                }
+            });
+        });
+    })();
+</script>
+    
+  
     <!-- ========== UPCOMING EVENTS ========== -->
     <section class="py-20 bg-[#fafbfb]">
         <div class="container mx-auto px-6 md:px-12 max-w-5xl">
@@ -660,6 +985,50 @@
         </div>
     </div>
 </footer>
+  <!-- Modal Content -->
+    <div style="position: relative; max-width: 800px; width: 90vw; max-height: 85vh; background: white; border-radius: 24px; overflow: hidden; animation: modalFadeIn 0.3s ease;">
+        <!-- Header with Image -->
+        <div style="position: relative; height: 250px;">
+            <img id="modalImage" src="" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 30px 25px 20px;">
+                <h2 id="modalName" style="font-size: 1.8rem; font-weight: bold; color: white; margin: 0; font-family: 'Cormorant Garamond', serif;"></h2>
+                <p id="modalClass" style="color: #00ff66; font-weight: 600; margin: 5px 0 0;"></p>
+            </div>
+        </div>
+        
+        <!-- Body Content -->
+        <div style="padding: 25px; max-height: 400px; overflow-y: auto;">
+            <!-- Badges -->
+            <div id="modalBadges" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;"></div>
+            
+            <!-- Current Role -->
+            <h3 style="font-size: 1rem; font-weight: bold; color: #1f2937; margin-bottom: 8px;">Current Role</h3>
+            <p id="modalRole" style="color: #4b5563; line-height: 1.6; margin-bottom: 20px;"></p>
+            
+            <!-- Story -->
+            <h3 style="font-size: 1rem; font-weight: bold; color: #1f2937; margin-bottom: 8px;">Journey & Impact</h3>
+            <p id="modalStory" style="color: #4b5563; line-height: 1.6; margin-bottom: 20px;"></p>
+            
+            <!-- Quote -->
+            <div id="modalQuote" style="background: #eef3ea; padding: 20px; border-radius: 16px; margin-bottom: 20px;">
+                <div style="display: flex; gap: 12px;">
+                    <i class="fas fa-quote-left" style="color: #006633; font-size: 1.5rem;"></i>
+                    <p id="modalQuoteText" style="color: #374151; font-style: italic; margin: 0;"></p>
+                </div>
+            </div>
+            
+            <!-- LinkedIn Button -->
+            <a id="modalLinkedIn" href="#" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: #006633; color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                <i class="fab fa-linkedin"></i> Connect on LinkedIn
+            </a>
+        </div>
+    </div>
+    
+    <!-- Counter -->
+    <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; font-size: 0.8rem; background: rgba(0,0,0,0.5); padding: 4px 12px; border-radius: 20px;">
+        <span id="modalCounter"></span>
+    </div>
+</div>
 
 <script>
     // Mobile menu toggle
@@ -684,6 +1053,7 @@
     const faders = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
     faders.forEach(el => observer.observe(el));
+
 </script>
 </body>
 </html>
