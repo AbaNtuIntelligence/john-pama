@@ -543,31 +543,56 @@
 </div>
         
         <!-- Body Content - Scrollable -->
-        <div style="padding: 25px; max-height: 400px; overflow-y: auto;">
-            <!-- Badges -->
-            <div id="modalBadges" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;"></div>
-            
-            <!-- Current Role -->
-            <h3 style="font-size: 1rem; font-weight: bold; color: #1f2937; margin-bottom: 8px;">Current Role</h3>
-            <p id="modalRole" style="color: #4b5563; line-height: 1.6; margin-bottom: 20px;"></p>
-            
-            <!-- Journey & Impact - YOUR EXPANDED BIO GOES HERE -->
-            <h3 style="font-size: 1rem; font-weight: bold; color: #1f2937; margin-bottom: 8px;">Journey & Impact</h3>
-            <div id="modalStory" style="color: #4b5563; line-height: 1.6; margin-bottom: 20px;"></div>
-            
-            <!-- Quote Section -->
-            <div id="modalQuote" style="background: #eef3ea; padding: 20px; border-radius: 16px; margin-bottom: 20px;">
-                <div style="display: flex; gap: 12px;">
-                    <i class="fas fa-quote-left" style="color: #006633; font-size: 1.5rem;"></i>
-                    <p id="modalQuoteText" style="color: #374151; font-style: italic; margin: 0;"></p>
-                </div>
-            </div>
-            
+       <div style="padding: 25px; max-height: 400px; overflow-y: auto;">
+    <!-- Badges -->
+    <div id="modalBadges" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;"></div>
+    
+    <!-- Current Role -->
+    <h3 style="font-size: 1rem; font-weight: bold; color: #1f2937; margin-bottom: 8px;">Current Role</h3>
+    <p id="modalRole" style="color: #4b5563; line-height: 1.6; margin-bottom: 20px;"></p>
+    
+    <!-- Journey & Impact -->
+    <h3 style="font-size: 1rem; font-weight: bold; color: #1f2937; margin-bottom: 8px;">Journey & Impact</h3>
+    <div id="modalStory" style="color: #4b5563; line-height: 1.6; margin-bottom: 20px;"></div>
+    
+    <!-- Quote Section -->
+    <div id="modalQuote" style="background: #eef3ea; padding: 20px; border-radius: 16px; margin-bottom: 20px;">
+        <div style="display: flex; gap: 12px;">
+            <i class="fas fa-quote-left" style="color: #006633; font-size: 1.5rem;"></i>
+            <p id="modalQuoteText" style="color: #374151; font-style: italic; margin: 0;"></p>
+        </div>
+    </div>
+    
+    <!-- Contact Section - LinkedIn, Email, WhatsApp -->
+    <div style="margin-bottom: 10px;">
+        <h3 style="font-size: 0.9rem; font-weight: bold; color: #1f2937; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-address-card" style="color: #006633; font-size: 0.9rem;"></i> 
+            Connect With This Alumnus
+        </h3>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
             <!-- LinkedIn Button -->
-            <a id="modalLinkedIn" href="#" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: #006633; color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
-                <i class="fab fa-linkedin"></i> Connect on LinkedIn
+            <a id="modalLinkedIn" href="#" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #0077b5; color: white; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-weight: 500; font-size: 0.85rem; transition: all 0.3s ease;">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            
+            <!-- Email Button -->
+            <a id="modalEmail" href="#" style="display: inline-flex; align-items: center; gap: 8px; background: #ea4335; color: white; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-weight: 500; font-size: 0.85rem; transition: all 0.3s ease;">
+                <i class="fas fa-envelope"></i> Email
+            </a>
+            
+            <!-- WhatsApp Button -->
+            <a id="modalWhatsApp" href="#" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 10px 18px; border-radius: 50px; text-decoration: none; font-weight: 500; font-size: 0.85rem; transition: all 0.3s ease;">
+                <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
         </div>
+        
+        <!-- Note for visitors -->
+        <p style="font-size: 0.7rem; color: #9ca3af; margin-top: 12px; text-align: center;">
+            <i class="fas fa-shield-alt"></i> Alumni have chosen to share these contact methods
+        </p>
+    </div>
+</div>
     </div>
     
     <!-- Counter -->
