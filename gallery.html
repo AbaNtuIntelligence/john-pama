@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>John Pama Primary | Gallery</title>
+    <title>John Pama Primary | Gallery – Moments That Matter</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* COMPLETE RESET - NO WHITE OVERLAY */
         * {
             margin: 0;
             padding: 0;
@@ -20,117 +19,181 @@
         }
         
         body, html {
-            background-color: #eef3ea !important;
+            background-color: #eef3ea;
             font-family: 'Lora', 'Cormorant Garamond', Georgia, serif;
             color: #1f2937;
+            scroll-behavior: smooth;
         }
         
-        /* NO white backgrounds anywhere */
-        section, div, main, .container, .mx-auto {
-            background-color: transparent !important;
+        /* Navbar */
+        .nav-link {
+            position: relative;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
         
-        /* Fix for Tailwind's default white */
-        .bg-white, .bg-gray-50, .bg-gray-100 {
-            background-color: transparent !important;
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #006633, #00ff66);
+            transition: width 0.3s ease;
+            border-radius: 2px;
         }
         
-        /* Only cards get white background */
-        .gallery-item {
-            background-color: white !important;
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            cursor: pointer;
+        .nav-link:hover::before {
+            width: 80%;
         }
         
-        .gallery-item:hover {
-            transform: translateY(-5px);
+        .nav-link:hover {
+            color: #00ff66 !important;
         }
         
-        .gallery-item img, .gallery-item video {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+            padding: 1rem 0;
         }
         
-        .gallery-overlay {
-            padding: 1rem;
+        /* Gallery Cards - 2026 Premium Design */
+        .gallery-card {
             background: white;
-        }
-        
-        .gallery-overlay p {
-            margin: 0;
-            font-weight: 600;
-            color: #006633;
-        }
-        
-        /* Video thumb play button */
-        .video-thumb {
+            border-radius: 1.5rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             position: relative;
         }
         
-        .play-icon {
+        .gallery-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px -12px rgba(0, 102, 51, 0.25);
+        }
+        
+        .gallery-card::after {
+            content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
-            background: #006633;
+            inset: 0;
+            border-radius: 1.5rem;
+            padding: 2px;
+            background: linear-gradient(135deg, transparent, #006633, #00ff66, transparent);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+        
+        .gallery-card:hover::after {
+            opacity: 1;
+        }
+        
+        .gallery-media {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-card:hover .gallery-media {
+            transform: scale(1.05);
+        }
+        
+        .video-thumb {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+        
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 102, 51, 0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.5rem;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
         }
         
-        /* Grid layout */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            padding: 1rem 0;
+        .gallery-card:hover .play-button {
+            transform: scale(1.1);
+            background: #006633;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.5);
         }
         
-        /* Section headers */
+        .gallery-info {
+            padding: 1.2rem;
+            background: white;
+        }
+        
+        .gallery-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #006633;
+            margin-bottom: 0.25rem;
+        }
+        
+        .gallery-desc {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+        
+        .category-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #eef3ea;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #006633;
+            margin-top: 0.5rem;
+        }
+        
+        /* Section Headers */
         .section-header {
-            margin-bottom: 2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #c8dbc8;
+            text-align: center;
+            margin-bottom: 2.5rem;
         }
         
         .section-header h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: #006633;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 3px solid #006633;
+            padding-bottom: 0.5rem;
         }
         
-        /* Navbar */
-        .prestige-nav {
-            background-color: white !important;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .nav-link {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            text-decoration: none;
-            color: #374151;
-            transition: color 0.2s;
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            color: #006633;
-        }
-        
-        /* Modal */
+        /* Modal - 2026 Premium */
         .modal {
             display: none;
             position: fixed;
@@ -138,90 +201,159 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 1000;
+            background: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
             align-items: center;
             justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
         .modal.active {
             display: flex;
+            opacity: 1;
         }
         
-        .modal-content {
+        .modal-container {
+            position: relative;
             max-width: 90vw;
             max-height: 90vh;
+            animation: modalZoomIn 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
         
-        .modal-content img, .modal-content video {
-            max-width: 100%;
-            max-height: 85vh;
-            border-radius: 0.5rem;
+        @keyframes modalZoomIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .modal-media {
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
         
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 30px;
+            top: -50px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            font-size: 2rem;
+            font-size: 1.2rem;
             cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
         }
         
-        .modal-prev, .modal-next {
+        .modal-close:hover {
+            background: #006633;
+            transform: rotate(90deg);
+        }
+        
+        .modal-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            font-size: 2rem;
+            font-size: 1.2rem;
             cursor: pointer;
-            padding: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
         }
         
-        .modal-prev { left: 20px; }
-        .modal-next { right: 20px; }
+        .modal-nav:hover {
+            background: #006633;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .modal-prev {
+            left: -70px;
+        }
+        
+        .modal-next {
+            right: -70px;
+        }
         
         .modal-caption {
             text-align: center;
             color: white;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        .modal-caption h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .modal-caption p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+        
+        .modal-counter {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 0.8rem;
+            font-family: monospace;
+            letter-spacing: 1px;
         }
         
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, #006633, #008844) !important;
+            background: linear-gradient(135deg, #006633, #008844);
             color: white;
             text-align: center;
-            padding: 3rem 1rem;
+            padding: 4rem 1rem;
+            border-radius: 2rem;
+            margin: 2rem 1rem;
         }
         
         /* Footer */
         footer {
-            background-color: #111827 !important;
+            background-color: #111827;
             color: white;
             padding: 3rem 1rem 1rem;
         }
         
-        /* Utility */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
+        .footer-link {
+            transition: all 0.2s ease;
         }
         
-        .py-16 {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
+        .footer-link:hover {
+            color: #006633;
+            transform: translateX(4px);
+            display: inline-block;
         }
         
-        .text-center {
-            text-align: center;
-        }
-        
+        /* Animations */
         .fade-up {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
         
         .fade-up.visible {
@@ -229,42 +361,39 @@
             transform: translateY(0);
         }
         
-        .donate-btn {
-            background: #006633;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            text-decoration: none;
-            font-size: 0.875rem;
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
-        .h-16 {
-            height: 4rem;
+        .bg-300\% { background-size: 300% auto; }
+        .animate-gradient { animation: gradient 4s ease infinite; }
+        
+        @keyframes scroll {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(8px); opacity: 0.5; }
+            100% { transform: translateY(0); opacity: 1; }
         }
         
-        .lg\:h-20 {
-            height: 5rem;
-        }
+        .animate-scroll { animation: scroll 1.8s ease-in-out infinite; }
         
+        /* Responsive */
         @media (max-width: 768px) {
-            .mobile-menu {
-                position: fixed;
-                top: 4rem;
-                left: 0;
-                right: 0;
-                background: white;
-                transform: translateX(-100%);
-                transition: transform 0.3s;
-                z-index: 99;
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1rem;
             }
-            .mobile-menu.open {
-                transform: translateX(0);
+            
+            .modal-prev { left: 10px; }
+            .modal-next { right: 10px; }
+            .modal-nav {
+                width: 40px;
+                height: 40px;
             }
-            .mobile-nav-link {
-                display: block;
-                padding: 0.75rem 1rem;
-                text-decoration: none;
-                color: #374151;
+            
+            .section-header h2 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -275,250 +404,107 @@
 <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300" style="background: rgba(10, 20, 15, 0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
     <div class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16 lg:h-20">
-            
-            <!-- Logo -->
             <a href="index.html" class="logo-link flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
-                <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all"  border: 1px solid rgba(255, 215, 0, 0.3);">
-                    <img src="images/logo.png" alt="John Pama Logo" class="w-full h-full object-cover rounded-full">
-                <div class="font-bold text-lg bg-gradient-to-r from-[#006633] via-[#00a86b] to-white bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]" style="font-family: 'Cormorant Garamond', 'Times New Roman', serif; font-weight: 700; font-size: 1.8rem; letter-spacing: -0.5px;">JP</div>
+                <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: rgba(0, 102, 51, 0.9); border: 1px solid rgba(255, 215, 0, 0.3);">
+                    <div class="font-bold text-xl bg-gradient-to-r from-[#006633] via-[#00a86b] to-white bg-clip-text text-transparent" style="font-family: 'Cormorant Garamond', serif;">JP</div>
                 </div>
-                
+                <div class="hidden sm:flex flex-col">
+                    <div class="font-bold text-sm lg:text-base text-white">JOHN PAMA</div>
+                    <div class="text-[8px] lg:text-[10px] text-[#FFD700] font-semibold">PRIMARY SCHOOL</div>
+                </div>
             </a>
             
-            <!-- Desktop Navigation -->
-            <div class="hidden lg:flex items-center space-x-4 xl:space-x-6 2xl:space-x-8 overflow-x-auto max-w-full">
-                <a href="index.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Home</a>
-                <a href="about.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">About Us</a>
-                <a href="admissions.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Admissions</a>
-                <a href="achievements.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Achievements</a>
-                <a href="extra.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">PlayTime</a>
-                <a href="gallery.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Stories</a>
-                <a href="alumni.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Alumni</a>
-                <a href="contact.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Contact</a>
-                <a href="future.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Future</a>
-                <a href="donate.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Support</a>
+            <div class="hidden lg:flex items-center space-x-6">
+                <a href="index.html" class="nav-link text-white/80 hover:text-white py-2">Home</a>
+                <a href="about.html" class="nav-link text-white/80 hover:text-white py-2">About Us</a>
+                <a href="admissions.html" class="nav-link text-white/80 hover:text-white py-2">Admissions</a>
+                <a href="achievements.html" class="nav-link text-white/80 hover:text-white py-2">Achievements</a>
+                <a href="extra.html" class="nav-link text-white/80 hover:text-white py-2">PlayTime</a>
+                <a href="gallery.html" class="nav-link text-white/80 hover:text-white active py-2">Stories</a>
+                <a href="alumni.html" class="nav-link text-white/80 hover:text-white py-2">Alumni</a>
+                <a href="contact.html" class="nav-link text-white/80 hover:text-white py-2">Contact</a>
+                <a href="future.html" class="nav-link text-white/80 hover:text-white py-2">Future</a>
+                <a href="donate.html" class="nav-link text-white/80 hover:text-white py-2">Support</a>
             </div>
             
-            <!-- Desktop Donate Button + Mobile Hamburger -->
-            <div class="flex items-center gap-2 sm:gap-3 lg:gap-4 flex-shrink-0">
-                <a href="donate.html" class="donate-btn hidden lg:flex px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-bold items-center gap-1.5 shadow-lg transition-all duration-300 transform hover:scale-105 whitespace-nowrap" style="background: #FFD700; color: #0a140f;">
-                    <i class="fas fa-heart text-[10px] lg:text-xs" style="color: #dc2626;"></i>
-                    <span>Donate Now</span>
+            <div class="flex items-center gap-3">
+                <a href="donate.html" class="bg-[#FFD700] text-[#0a140f] px-5 py-2 rounded-full text-sm font-bold flex items-center gap-2 hover:scale-105 transition-transform">
+                    <i class="fas fa-heart text-red-600"></i> Donate
                 </a>
-                
-                <a href="donate.html" class="donate-btn hidden md:flex lg:hidden px-3 py-1.5 rounded-full text-xs font-bold items-center gap-1 shadow-lg transition-all whitespace-nowrap" style="background: #FFD700; color: #0a140f;">
-                    <i class="fas fa-heart text-[10px]" style="color: #dc2626;"></i>
-                    <span>Donate</span>
-                </a>
-                
-                <button id="hamburgerBtn" class="hamburger-btn-mobile lg:hidden w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all" style="color: white; background: rgba(255, 255, 255, 0.1);">
-                    <i id="hamburgerIcon" class="fas fa-bars text-base sm:text-lg"></i>
+                <button id="hamburgerBtn" class="lg:hidden w-9 h-9 rounded-full flex items-center justify-center bg-white/10 text-white">
+                    <i id="hamburgerIcon" class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </div>
 </header>
 
-
-<!-- Mobile Menu Panel (hidden by default, toggled by JS) -->
-<div id="mobileMenu" class="mobile-menu fixed top-16 left-0 right-0 bg-white shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
-    <div class="flex flex-col py-3 px-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
-        <a href="index.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Home</a>
-                <a href="about.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">About Us</a>
-                <a href="academics.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Academics</a>
-                <a href="admissions.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Admissions</a>
-                <a href="achievements.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Achievements</a>
-                <a href="extra.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Playfield</a>
-                <a href="alumni.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Alumni</a>
-                <a href="contact.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Contact</a>
-                <a href="future.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Future</a>
-                <a href="donate.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Support</a>
-    </div>
-</div>
 <div class="h-16 lg:h-20"></div>
 
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="fixed top-16 left-0 right-0 bg-white shadow-xl z-40 transform -translate-x-full transition-transform duration-300 md:hidden">
+    <div class="flex flex-col py-3 px-4">
+        <a href="index.html" class="py-3 text-gray-700 border-b border-gray-100">Home</a>
+        <a href="about.html" class="py-3 text-gray-700 border-b border-gray-100">About Us</a>
+        <a href="admissions.html" class="py-3 text-gray-700 border-b border-gray-100">Admissions</a>
+        <a href="achievements.html" class="py-3 text-gray-700 border-b border-gray-100">Achievements</a>
+        <a href="extra.html" class="py-3 text-gray-700 border-b border-gray-100">PlayTime</a>
+        <a href="gallery.html" class="py-3 text-[#006633] font-semibold border-b border-gray-100">Stories</a>
+        <a href="alumni.html" class="py-3 text-gray-700 border-b border-gray-100">Alumni</a>
+        <a href="contact.html" class="py-3 text-gray-700 border-b border-gray-100">Contact</a>
+        <a href="future.html" class="py-3 text-gray-700 border-b border-gray-100">Future</a>
+        <a href="donate.html" class="py-3 text-gray-700">Support</a>
+    </div>
+</div>
 
-<!-- Hero -->
-<section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-    <!-- Background Video/Slideshow Effect -->
+<!-- Hero Section -->
+<section class="relative h-[60vh] min-h-[450px] flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
         <video class="w-full h-full object-cover" autoplay loop muted playsinline>
             <source src="images/jp10.mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-black/50"></div>
-        
-        <!-- Cutting Edge Linear Gradient Overlay - Gallery/Museum Theme -->
-        <div class="absolute inset-0 bg-gradient-to-br from-black/85 via-[#006633]/60 to-[#1a1a2e]/90"></div>
-        
-        <!-- Cinematic Letterbox Effect (Top & Bottom) -->
-        <div class="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-black/80 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-black/80 to-transparent"></div>
-        
-        <!-- Diagonal Premium Accent - Gallery Light Rays -->
-        <div class="absolute inset-0 bg-gradient-to-tr from-[#00ff66]/10 via-transparent to-[#ffcc00]/5"></div>
-        
-        <!-- Top Edge Gallery Light -->
-        <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#00ff66] to-transparent animate-pulse"></div>
-        
-        <!-- Animated Light Sweep - Like a projector -->
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent transform -skew-x-12 translate-x-[-100%] animate-scan"></div>
-        
-        <!-- Floating Photo Particles -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="absolute top-1/4 left-1/4 w-1.5 h-1.5 bg-[#00ff66] rounded-full animate-float" style="animation-delay: 0s;"></div>
-            <div class="absolute top-1/2 right-1/3 w-2 h-2 bg-white rounded-full animate-float" style="animation-delay: 0.5s;"></div>
-            <div class="absolute bottom-1/3 left-1/3 w-1 h-1 bg-[#ffcc00] rounded-full animate-float" style="animation-delay: 1s;"></div>
-            <div class="absolute top-2/3 right-1/4 w-1.5 h-1.5 bg-[#00ff66] rounded-full animate-float" style="animation-delay: 1.5s;"></div>
-            <div class="absolute bottom-1/4 left-2/3 w-1 h-1 bg-white rounded-full animate-float" style="animation-delay: 2s;"></div>
-            <div class="absolute top-1/3 left-3/4 w-0.5 h-0.5 bg-[#ffcc00] rounded-full animate-float" style="animation-delay: 2.5s;"></div>
-        </div>
-        
-        <!-- Subtle Frame Border - Like a Photo Frame -->
-        <div class="absolute inset-4 pointer-events-none border border-white/5 rounded-2xl"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-black/80 via-[#006633]/60 to-black/85"></div>
     </div>
     
-    <!-- Content Container -->
-    <div class="relative z-10 text-center text-white px-6 max-w-5xl mx-auto">
-        
-        <!-- Gallery Badge - Museum Quality -->
-        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/20 mb-6 animate-fade-in">
+    <div class="relative z-10 text-center text-white px-6">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 mb-6">
             <i class="fas fa-camera text-[#00ff66] text-xs"></i>
-            <span class="text-xs font-semibold tracking-[0.15em] uppercase text-white/90">Moments in Time • Visual Archive</span>
+            <span class="text-xs tracking-wider uppercase">Visual Archive • 2026</span>
             <i class="fas fa-images text-[#00ff66] text-xs"></i>
         </div>
         
-        <!-- Main Heading with Gradient Text -->
-        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 animate-fade-in-up" style="font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;">
+        <h1 class="text-5xl md:text-7xl font-bold mb-4" style="font-family: 'Cormorant Garamond', serif;">
             <span class="bg-gradient-to-r from-white via-[#00ff66] to-[#ffcc00] bg-clip-text text-transparent bg-300% animate-gradient">Our Gallery</span>
         </h1>
         
-        <!-- Decorative Line with Camera Icon -->
-        <div class="flex justify-center gap-3 my-6 animate-fade-in-up delay-100">
-            <div class="w-12 h-0.5 bg-gradient-to-r from-transparent to-[#00ff66]"></div>
-            <i class="fas fa-camera-retro text-[#00ff66] text-sm animate-pulse-slow"></i>
-            <i class="fas fa-image text-[#00ff66] text-sm animate-pulse-slow" style="animation-delay: 0.3s;"></i>
-            <i class="fas fa-video text-[#00ff66] text-sm animate-pulse-slow" style="animation-delay: 0.6s;"></i>
-            <div class="w-12 h-0.5 bg-gradient-to-l from-transparent to-[#00ff66]"></div>
-        </div>
-        
-        <!-- Punchline Paragraph -->
-        <p class="text-xl md:text-2xl lg:text-3xl mt-4 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-200" style="font-family: 'Lora', 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+        <p class="text-xl md:text-2xl mt-4 max-w-2xl mx-auto italic font-light">
             "Moments frozen in time. Smiles, victories, and daily miracles — captured for eternity."
         </p>
-
-    </div>
-            <!-- Scroll Hint -->
-        <div class="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2 animate-fade-in delay-600">
-            <span class="text-[10px] tracking-[0.2em] text-white/60 uppercase">Scroll to Explore</span>
-            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-                <div class="w-1.5 h-2.5 bg-gradient-to-b from-[#00ff66] to-[#ffcc00] rounded-full mt-2 animate-scroll"></div>
+        
+        <div class="absolute bottom-8 left-0 right-0 flex flex-col items-center">
+            <span class="text-[10px] tracking-wider text-white/60 uppercase">Scroll to Explore</span>
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center mt-2">
+                <div class="w-1.5 h-2.5 bg-[#00ff66] rounded-full mt-2 animate-scroll"></div>
             </div>
         </div>
+    </div>
 </section>
 
-<style>
-    /* Gradient Text Animation */
-    @keyframes gradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-    
-    .bg-300\% {
-        background-size: 300% auto;
-    }
-    
-    .animate-gradient {
-        animation: gradient 4s ease infinite;
-    }
-    
-    /* Fade In Animations */
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-    
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    .animate-fade-in {
-        animation: fadeIn 0.8s ease forwards;
-    }
-    
-    .animate-fade-in-up {
-        opacity: 0;
-        animation: fadeInUp 0.8s ease forwards;
-    }
-    
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
-    .delay-400 { animation-delay: 0.4s; }
-    .delay-500 { animation-delay: 0.5s; }
-    .delay-600 { animation-delay: 0.6s; }
-    
-    /* Pulse for Icons and Edges */
-    @keyframes pulse-slow {
-        0%, 100% { opacity: 0.6; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.1); }
-    }
-    
-    .animate-pulse-slow {
-        animation: pulse-slow 2s ease-in-out infinite;
-    }
-    
-    /* Scroll Animation */
-    @keyframes scroll {
-        0% { transform: translateY(0); opacity: 1; }
-        50% { transform: translateY(8px); opacity: 0.5; }
-        100% { transform: translateY(0); opacity: 1; }
-    }
-    
-    .animate-scroll {
-        animation: scroll 1.8s ease-in-out infinite;
-    }
-    
-    /* Float Animation for Particles */
-    @keyframes float {
-        0% { transform: translateY(0) scale(1); opacity: 0; }
-        50% { opacity: 0.8; }
-        100% { transform: translateY(-100px) scale(0); opacity: 0; }
-    }
-    
-    .animate-float {
-        animation: float 4s ease-in-out infinite;
-    }
-    
-    /* Scan Line Animation */
-    @keyframes scan {
-        0% { transform: translateX(-100%) skewX(-12deg); }
-        100% { transform: translateX(200%) skewX(-12deg); }
-    }
-    
-    .animate-scan {
-        animation: scan 8s linear infinite;
-    }
-    
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-        .animate-fade-in-up {
-            animation-duration: 0.6s;
-        }
-    }
-</style>
+<!-- Filter Tabs -->
+<div class="sticky top-16 lg:top-20 z-30 bg-[#eef3ea] py-4 border-b border-[#c8dbc8]">
+    <div class="container mx-auto px-6">
+        <div class="flex justify-center gap-4 flex-wrap">
+            <button class="filter-btn active px-6 py-2 rounded-full font-semibold transition-all" data-filter="all" style="background: #006633; color: white;">All Moments</button>
+            <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all" data-filter="video" style="background: white; color: #006633; border: 1px solid #006633;">Videos</button>
+            <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all" data-filter="image" style="background: white; color: #006633; border: 1px solid #006633;">Photos</button>
+        </div>
+    </div>
+</div>
 
 <!-- Videos Section -->
-<section class="py-16" style="background-color: #eef3ea;">
-    <div class="container">
-        <div class="section-header">
+<section class="py-12" style="background-color: #eef3ea;">
+    <div class="container mx-auto px-6">
+        <div class="section-header fade-up">
             <h2><i class="fas fa-video mr-3"></i> Watch Our Story</h2>
         </div>
         <div id="videosGrid" class="gallery-grid"></div>
@@ -526,9 +512,9 @@
 </section>
 
 <!-- Images Section -->
-<section class="py-16" style="background-color: #eef3ea;">
-    <div class="container">
-        <div class="section-header">
+<section class="py-12" style="background-color: #eef3ea;">
+    <div class="container mx-auto px-6">
+        <div class="section-header fade-up">
             <h2><i class="fas fa-camera mr-3"></i> Captured Moments</h2>
         </div>
         <div id="imagesGrid" class="gallery-grid"></div>
@@ -538,75 +524,63 @@
 <!-- Modal -->
 <div id="modal" class="modal">
     <div class="modal-close"><i class="fas fa-times"></i></div>
-    <div class="modal-prev"><i class="fas fa-chevron-left"></i></div>
-    <div class="modal-next"><i class="fas fa-chevron-right"></i></div>
-    <div class="modal-content">
-        <img id="modalImage" src="" alt="">
-        <video id="modalVideo" controls style="display: none;"></video>
-        <div class="modal-caption" id="modalCaption"></div>
+    <div class="modal-nav modal-prev"><i class="fas fa-chevron-left"></i></div>
+    <div class="modal-nav modal-next"><i class="fas fa-chevron-right"></i></div>
+    <div class="modal-container">
+        <img id="modalImage" class="modal-media" src="" alt="" style="display: none;">
+        <video id="modalVideo" class="modal-media" controls style="display: none;"></video>
+        <div class="modal-caption">
+            <h3 id="modalTitle"></h3>
+            <p id="modalDesc"></p>
+        </div>
+        <div class="modal-counter" id="modalCounter"></div>
     </div>
 </div>
 
-<!-- CTA -->
-<section class="cta-section">
-    <div class="container">
+<!-- CTA Section -->
+<section class="cta-section fade-up">
+    <div class="container mx-auto px-6">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">Share Your Memories</h2>
         <p class="text-lg max-w-2xl mx-auto mb-6">Have a photo or video from your time at John Pama? Help us build our living archive.</p>
-        <a href="#" class="inline-block bg-white text-[#006633] px-8 py-3 rounded-full font-bold"><i class="fas fa-upload mr-2"></i> Contribute to Gallery</a>
+        <a href="#" class="inline-block bg-white text-[#006633] px-8 py-3 rounded-full font-bold hover:shadow-xl transition-all hover:scale-105"><i class="fas fa-upload mr-2"></i> Contribute to Gallery</a>
     </div>
 </section>
 
-<!-- ========== PRESTIGIOUS FOOTER ========== -->
+<!-- Footer -->
 <footer class="bg-gray-900 text-white pt-16 pb-8">
     <div class="container mx-auto px-6 md:px-12">
-        <!-- Main Footer Grid -->
         <div class="grid md:grid-cols-4 gap-10">
-            <!-- Column 1: School Info -->
             <div>
                 <div class="flex items-center space-x-2 mb-4">
-                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
-                        <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
-                        <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
-                        <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all">
-                    <img src="images/logo.png" class="rounded-full" alt="">
-                    </div>
-                    </div>
-                    </div>
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center bg-[#006633]">
+                        <span class="font-bold text-white">JP</span>
                     </div>
                     <div>
-                    <div class="font-bold text-lg bg-gradient-to-r from-[#006633] via-[#00a86b] to-white bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]" style="font-family: 'Plus Jakarta Sans';">JOHN PAMA</div>
-                    <div class="text-[10px] text-[#006633] font-semibold">PRIMARY SCHOOL</div>
+                        <div class="font-bold text-lg bg-gradient-to-r from-[#006633] via-[#00a86b] to-white bg-clip-text text-transparent">JOHN PAMA</div>
+                        <div class="text-[10px] text-[#006633] font-semibold">PRIMARY SCHOOL</div>
                     </div>
                 </div>
                 <p class="text-gray-400 text-sm">Sithandathu Ave, Nyanga, Cape Town</p>
                 <p class="text-gray-400 text-sm mt-2"><i class="fas fa-phone-alt mr-2 text-[#006633]"></i> 021 385 1830</p>
-                <p class="text-gray-400 text-sm mt-1"><i class="fas fa-envelope mr-2 text-[#006633]"></i> donations@johnpamaprimary.co.za</p>
             </div>
-
-            <!-- Column 2: Academics -->
             <div>
-                <h4 class="font-semibold text-lg mb-4" style="font-family: 'Plus Jakarta Sans';">Academics</h4>
+                <h4 class="font-semibold text-lg mb-4">Academics</h4>
                 <ul class="space-y-2 text-gray-400 text-sm">
                     <li><a href="#" class="footer-link hover:text-[#006633] transition">CAPS Overview</a></li>
                     <li><a href="#" class="footer-link hover:text-[#006633] transition">Foundation Phase</a></li>
                     <li><a href="#" class="footer-link hover:text-[#006633] transition">Intermediate Phase</a></li>
-                    <li><a href="#" class="footer-link hover:text-[#006633] transition">Assessment Schedule</a></li>
                 </ul>
             </div>
-
-            <!-- Column 3: Resources -->
             <div>
-                <h4 class="font-semibold text-lg mb-4" style="font-family: 'Plus Jakarta Sans';">Resources</h4>
+                <h4 class="font-semibold text-lg mb-4">Resources</h4>
                 <ul class="space-y-2 text-gray-400 text-sm">
                     <li><a href="#" class="footer-link hover:text-[#006633] transition">School Calendar</a></li>
                     <li><a href="#" class="footer-link hover:text-[#006633] transition">Parent Portal</a></li>
                     <li><a href="#" class="footer-link hover:text-[#006633] transition">DBE Workbooks</a></li>
                 </ul>
             </div>
-
-            <!-- Column 4: Connect -->
             <div>
-                <h4 class="font-semibold text-lg mb-4" style="font-family: 'Plus Jakarta Sans';">Connect</h4>
+                <h4 class="font-semibold text-lg mb-4">Connect</h4>
                 <div class="flex space-x-4 text-gray-400 text-xl">
                     <i class="fab fa-facebook-f hover:text-[#006633] cursor-pointer transition"></i>
                     <i class="fab fa-instagram hover:text-[#006633] cursor-pointer transition"></i>
@@ -615,129 +589,95 @@
                 <p class="text-gray-500 text-xs mt-4">#JohnPamaPride #InvestInNyanga</p>
             </div>
         </div>
-
-        <!-- Copyright Divider -->
-        <div class="border-t border-gray-800 mt-12 pt-8">
-            <!-- Main Copyright -->
-            <div class="text-center text-gray-500 text-xs mb-6">
-                © 2026 John Pama Primary School — CAPS-aligned. Rooted in Nyanga. Reaching for excellence. 🇿🇦
-            </div>
-
-            <!-- ✨ CUTTING-EDGE 2026 POWERED BY SIGNATURE ✨ -->
-            <div class="flex flex-col items-center justify-center gap-3">
-                <!-- Decorative divider with dot pattern -->
-                <div class="flex items-center gap-3">
-                    <span class="w-8 h-px bg-gradient-to-r from-transparent to-gray-700"></span>
-                    <span class="text-[10px] text-gray-500 tracking-widest uppercase font-mono">Powered By</span>
-                    <span class="w-8 h-px bg-gradient-to-l from-transparent to-gray-700"></span>
-                </div>
-
-                <!-- Partners Row with hover effects -->
-                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-                    <a href="#" class="group text-xs font-medium text-gray-400 hover:text-[#006633] transition-all duration-300 border-b border-transparent hover:border-[#006633] pb-0.5">AbaNtu Intelligence</a>
-                    <span class="text-gray-700 text-[10px]">✦</span>
-                    <a href="#" class="group text-xs font-medium text-gray-400 hover:text-[#006633] transition-all duration-300 border-b border-transparent hover:border-[#006633] pb-0.5">Render Cloud</a>
-                    <span class="text-gray-700 text-[10px]">✦</span>
-                    <a href="#" class="group text-xs font-medium text-gray-400 hover:text-[#006633] transition-all duration-300 border-b border-transparent hover:border-[#006633] pb-0.5">AI Analytics Suite</a>
-                    <span class="text-gray-700 text-[10px]">✦</span>
-                    <a href="#" class="group text-xs font-medium text-gray-400 hover:text-[#006633] transition-all duration-300 border-b border-transparent hover:border-[#006633] pb-0.5">Green Hosting</a>
-                </div>
-
-                <!-- Tech Stack & Metrics -->
-                <div class="flex flex-wrap items-center justify-center gap-3 mt-1">
-                    <div class="flex items-center gap-1.5">
-                        <span class="text-[9px] px-1.5 py-0.5 bg-gray-800/50 rounded text-gray-400 font-mono">React 19</span>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-gray-800/50 rounded text-gray-400 font-mono">Tailwind CSS</span>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-gray-800/50 rounded text-gray-400 font-mono">Node.js</span>
-                    </div>
-                    
-                    <!-- Live Metrics Dot -->
-                    <div class="flex items-center gap-1.5 pl-2 border-l border-gray-800">
-                        <div class="relative">
-                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping absolute"></div>
-                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full relative"></div>
-                        </div>
-                        <span class="text-[9px] text-gray-500 font-mono">99.99% Uptime</span>
-                    </div>
-                    
-                    <div class="flex items-center gap-1.5">
-                        <svg class="w-2.5 h-2.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                        <span class="text-[9px] text-gray-500 font-mono">0.28s Load Time</span>
-                    </div>
-                </div>
-
-                <!-- Version / Build Signature -->
-                <div class="text-center mt-2">
-                    <div class="inline-flex items-center gap-2 text-[9px] text-gray-600 font-mono">
-                        <span>🚀 v2026.1.0</span>
-                        <span>•</span>
-                        <span>🔒 A+ Security</span>
-                        <span>•</span>
-                        <span>🌍 Carbon Neutral Hosting</span>
-                        <span>•</span>
-                        <span>⚡ Deployed @ Render</span>
-                    </div>
-                </div>
-            </div>
-            <!-- ✨ END POWERED BY SIGNATURE ✨ -->
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-xs">
+            © 2026 John Pama Primary School — CAPS-aligned. Rooted in Nyanga. Reaching for excellence. 🇿🇦
         </div>
     </div>
 </footer>
 
 <script>
-    // Gallery Data
+    // Gallery Data - Updated with real content paths
     const videosData = [
-        { type: 'video', url: 'https://www.w3schools.com/html/mov_bbb.mp4', poster: 'https://images.pexels.com/photos/6646932/pexels-photo-6646932.jpeg?auto=compress&cs=tinysrgb&w=800', title: 'Sports Day Highlights', description: 'Annual athletics championship - 100m finals' },
-        { type: 'video', url: 'https://www.w3schools.com/html/mov_bbb.mp4', poster: 'https://images.pexels.com/photos/5212347/african-children-playing-at-school-break.jpg?auto=compress&cs=tinysrgb&w=800', title: 'Coding Club in Action', description: 'Young innovators showcase robotics projects' },
-        { type: 'video', url: 'https://www.w3schools.com/html/mov_bbb.mp4', poster: 'https://images.pexels.com/photos/3285203/pexels-photo-3285203.jpeg?auto=compress&cs=tinysrgb&w=800', title: 'Marimba Band Performance', description: 'Cultural day celebration' }
+        { type: 'video', url: 'images/jp8.mp4', poster: 'images/jpp12.jfif', title: 'Marimba Band Performance', description: 'Cultural day celebration', category: 'Culture' },
+        { type: 'video', url: 'images/JohnPama.mp4', poster: 'images/kids.jfif', title: 'Sports Day Highlights', description: 'Annual athletics championship - 100m finals', category: 'Sports' },
+        { type: 'video', url: 'images/jp3.mp4', poster: 'images/jpp13.jfif', title: 'Coding Club in Action', description: 'Young innovators showcase robotics projects', category: 'Academics' },
+        { type: 'video', url: 'images/jp10.mp4', poster: 'images/jp12.webp', title: 'Everyday Literacy Day', description: 'Reading Day', category: 'Academics' }
+
     ];
     
     const imagesData = [
-        { type: 'image', url: 'https://images.pexels.com/photos/5212347/african-children-playing-at-school-break.jpg?auto=compress&cs=tinysrgb&w=800', title: 'Classroom Excellence', description: 'Grade 6 learners during mathematics lesson' },
-        { type: 'image', url: 'https://images.pexels.com/photos/5429061/pexels-photo-5429061.jpeg?auto=compress&cs=tinysrgb&w=800', title: 'Library Hour', description: 'Reading period in our library' },
-        { type: 'image', url: 'https://images.pexels.com/photos/4678320/boys-playing-soccer-together-outdoors.jpg?auto=compress&cs=tinysrgb&w=800', title: 'Soccer Champions', description: 'U13 team after winning trophy' },
-        { type: 'image', url: 'https://images.pexels.com/photos/5072979/girls-playing-netball-on-school-court.jpg?auto=compress&cs=tinysrgb&w=800', title: 'Netball Victory', description: '3rd consecutive win celebration' }
+        { type: 'image', url: 'images/jp17.jfif', title: 'Classroom Excellence', description: 'Grade 6 learners during mathematics lesson', category: 'Academics' },
+        { type: 'image', url: 'images/jp4.jpg', title: 'Soccer Champions', description: 'U13 team after winning trophy', category: 'Sports' },
+        { type: 'image', url: 'images/jp16.jpg', title: 'Netball Victory', description: '3rd consecutive win celebration', category: 'Sports' },
+        { type: 'image', url: 'images/jpp12.jfif', title: 'Graduation Ceremony', description: 'Class of 2025 celebrations', category: 'Events' },
+        { type: 'image', url: 'images/jp14.webp', title: 'Literacy Week', description: 'Book reading session', category: 'Academics' },
+        { type: 'image', url: 'images/com.jfif', title: 'Heritage Day', description: 'Traditional attire showcase', category: 'Culture' }
     ];
     
     let allMedia = [...videosData, ...imagesData];
     let currentModalIndex = 0;
+    let currentFilter = 'all';
     
     function renderVideos() {
         const grid = document.getElementById('videosGrid');
         if (!grid) return;
         grid.innerHTML = '';
-        videosData.forEach((video) => {
-            const globalIndex = allMedia.findIndex(m => m === video);
-            const card = document.createElement('div');
-            card.className = 'gallery-item fade-up';
-            card.innerHTML = `
-                <div class="video-thumb">
-                    <img src="${video.poster}" alt="${video.title}">
-                    <div class="play-icon"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="gallery-overlay"><p>${video.title}</p></div>
-            `;
-            card.addEventListener('click', () => openModal(globalIndex));
+        
+        const filtered = videosData.filter(item => currentFilter === 'all' || currentFilter === 'video');
+        
+        filtered.forEach((video, idx) => {
+            const globalIndex = allMedia.findIndex(m => m.title === video.title && m.type === 'video');
+            const card = createCard(video, globalIndex);
             grid.appendChild(card);
         });
-        observeFade();
     }
     
     function renderImages() {
         const grid = document.getElementById('imagesGrid');
         if (!grid) return;
         grid.innerHTML = '';
-        imagesData.forEach((image) => {
-            const globalIndex = allMedia.findIndex(m => m === image);
-            const card = document.createElement('div');
-            card.className = 'gallery-item fade-up';
-            card.innerHTML = `<img src="${image.url}" alt="${image.title}"><div class="gallery-overlay"><p>${image.title}</p></div>`;
-            card.addEventListener('click', () => openModal(globalIndex));
+        
+        const filtered = imagesData.filter(item => currentFilter === 'all' || currentFilter === 'image');
+        
+        filtered.forEach((image, idx) => {
+            const globalIndex = allMedia.findIndex(m => m.title === image.title && m.type === 'image');
+            const card = createCard(image, globalIndex);
             grid.appendChild(card);
         });
-        observeFade();
+    }
+    
+    function createCard(item, index) {
+        const card = document.createElement('div');
+        card.className = 'gallery-card fade-up';
+        card.setAttribute('data-type', item.type);
+        
+        if (item.type === 'video') {
+            card.innerHTML = `
+                <div class="video-thumb">
+                    <img src="${item.poster}" alt="${item.title}" class="gallery-media">
+                    <div class="play-overlay">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">${item.title}</div>
+                    <div class="gallery-desc">${item.description}</div>
+                    <span class="category-badge"><i class="fas fa-video mr-1"></i>${item.category || 'Video'}</span>
+                </div>
+            `;
+        } else {
+            card.innerHTML = `
+                <img src="${item.url}" alt="${item.title}" class="gallery-media">
+                <div class="gallery-info">
+                    <div class="gallery-title">${item.title}</div>
+                    <div class="gallery-desc">${item.description}</div>
+                    <span class="category-badge"><i class="fas fa-camera mr-1"></i>${item.category || 'Photo'}</span>
+                </div>
+            `;
+        }
+        
+        card.addEventListener('click', () => openModal(index));
+        return card;
     }
     
     function openModal(index) {
@@ -746,7 +686,9 @@
         const modal = document.getElementById('modal');
         const modalImg = document.getElementById('modalImage');
         const modalVideo = document.getElementById('modalVideo');
-        const modalCaption = document.getElementById('modalCaption');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalCounter = document.getElementById('modalCounter');
         
         modalImg.style.display = 'none';
         modalVideo.style.display = 'none';
@@ -756,13 +698,16 @@
             modalVideo.src = item.url;
             if (item.poster) modalVideo.poster = item.poster;
             modalVideo.load();
-            modalVideo.play().catch(e => console.log('Autoplay prevented'));
+            modalVideo.play().catch(e => console.log('Autoplay prevented - user interaction required'));
         } else {
             modalImg.style.display = 'block';
             modalImg.src = item.url;
             if (modalVideo) modalVideo.pause();
         }
-        modalCaption.textContent = `${item.title} — ${item.description}`;
+        
+        modalTitle.textContent = item.title;
+        modalDesc.textContent = item.description;
+        modalCounter.textContent = `${currentModalIndex + 1} / ${allMedia.length}`;
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
@@ -787,14 +732,80 @@
         openModal(prevIndex);
     }
     
+    function setupFilters() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    if (b === btn) {
+                        currentFilter = btn.getAttribute('data-filter');
+                        b.style.background = '#006633';
+                        b.style.color = 'white';
+                        b.style.border = 'none';
+                    } else {
+                        b.style.background = 'white';
+                        b.style.color = '#006633';
+                        b.style.border = '1px solid #006633';
+                    }
+                });
+                
+                renderVideos();
+                renderImages();
+                
+                setTimeout(observeFade, 100);
+            });
+        });
+    }
+    
     function observeFade() {
         const faders = document.querySelectorAll('.fade-up');
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
         }, { threshold: 0.1 });
         faders.forEach(el => observer.observe(el));
     }
     
+    // Mobile Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const hamburgerIcon = document.getElementById('hamburgerIcon');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let isMenuOpen = false;
+    
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.add('translate-x-0');
+                mobileMenu.classList.remove('-translate-x-full');
+                hamburgerIcon.classList.remove('fa-bars');
+                hamburgerIcon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('-translate-x-full');
+                hamburgerIcon.classList.remove('fa-times');
+                hamburgerIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        document.querySelectorAll('.mobile-nav-link, .mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('-translate-x-full');
+                hamburgerIcon.classList.remove('fa-times');
+                hamburgerIcon.classList.add('fa-bars');
+                isMenuOpen = false;
+                document.body.style.overflow = '';
+            });
+        });
+    }
+    
+    // Modal Event Listeners
     document.querySelector('.modal-close')?.addEventListener('click', closeModal);
     document.querySelector('.modal-prev')?.addEventListener('click', prevModal);
     document.querySelector('.modal-next')?.addEventListener('click', nextModal);
@@ -809,35 +820,21 @@
         if (e.target === document.getElementById('modal')) closeModal();
     });
     
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const hamburgerIcon = document.getElementById('hamburgerIcon');
-    const mobileMenu = document.getElementById('mobileMenu');
-    let isMenuOpen = false;
-    if (hamburgerBtn) {
-        hamburgerBtn.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            if (isMenuOpen) {
-                mobileMenu.classList.add('open');
-                hamburgerIcon.classList.remove('fa-bars');
-                hamburgerIcon.classList.add('fa-times');
-            } else {
-                mobileMenu.classList.remove('open');
-                hamburgerIcon.classList.remove('fa-times');
-                hamburgerIcon.classList.add('fa-bars');
-            }
-        });
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-                hamburgerIcon.classList.remove('fa-times');
-                hamburgerIcon.classList.add('fa-bars');
-                isMenuOpen = false;
-            });
-        });
-    }
+    // Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) {
+            navbar.style.background = 'rgba(5, 12, 9, 0.98)';
+        } else {
+            navbar.style.background = 'rgba(10, 20, 15, 0.95)';
+        }
+    });
     
+    // Initialize
     renderVideos();
     renderImages();
+    setupFilters();
+    setTimeout(observeFade, 200);
 </script>
 </body>
 </html>
