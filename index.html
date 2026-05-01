@@ -312,6 +312,14 @@
     .talking-card:hover .card-link i {
         transform: translateX(4px);
     }
+    @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+    animation: gradient 3s ease infinite;
+}
     </style>
 </head>
 <body>
@@ -522,7 +530,7 @@
             </a>
             
             <!-- Card 4: Achievements - Trophy / victory -->
-            <a href="achievements.html" class="talking-card group no-underline relative overflow-hidden rounded-2xl" style="background-image: url('images/jp15.webp'); background-size: cover; background-position: center;">
+            <a href="achievements.html" class="talking-card group no-underline relative overflow-hidden rounded-2xl" style="background-image: url('images/kids.jfif'); background-size: cover; background-position: center;">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
                 <div class="relative z-10 p-6 min-h-[280px] flex flex-col">
                     <div class="card-icon bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-trophy text-white text-xl"></i></div>
@@ -681,12 +689,17 @@
             <!-- Column 1: School Info -->
             <div>
                 <div class="flex items-center space-x-2 mb-4">
-                    <div class="w-10 h-10 bg-[#006633] rounded-full flex items-center justify-center text-white font-bold">JP</div>
-                    <div>
-                        <div class="font-bold text-lg" style="font-family: 'Plus Jakarta Sans';">JOHN PAMA</div>
-                        <div class="text-[10px] text-[#006633] font-semibold">PRIMARY SCHOOL</div>
-                    </div>
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+                        <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all">
+                    <img src="images/logo.png" class="rounded-full" alt="">
                 </div>
+                    </div>
+                    <div>
+                    <div class="font-bold text-lg bg-gradient-to-r from-[#006633] via-[#00a86b] to-white bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]" style="font-family: 'Plus Jakarta Sans';">JOHN PAMA</div>
+                    <div class="text-[10px] text-[#006633] font-semibold">PRIMARY SCHOOL</div>
+                    </div>
+
+     </div>
                 <p class="text-gray-400 text-sm">Sithandathu Ave, Nyanga, Cape Town</p>
                 <p class="text-gray-400 text-sm mt-2"><i class="fas fa-phone-alt mr-2 text-[#006633]"></i> 021 385 1830</p>
                 <p class="text-gray-400 text-sm mt-1"><i class="fas fa-envelope mr-2 text-[#006633]"></i> donations@johnpamaprimary.co.za</p>

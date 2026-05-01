@@ -82,6 +82,9 @@
             font-family: 'SF Mono', 'Fira Code', monospace;
             font-weight: 600;
         }
+        .navbar{
+        background: linear-gradient(135deg, #008844, #006633);
+    }
     </style>
 </head>
 <body>
@@ -89,59 +92,54 @@
 <!-- ========== NAVBAR ========== -->
 
 <!-- ========== PRESTIGIOUS WORKING NAVBAR ========== -->
-<header id="navbar" class="fixed top-0 left-0 w-full bg-white border-b border-gray-100 z-50 prestige-nav">
+<header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300" style="background: rgba(10, 20, 15, 0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
     <div class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16 lg:h-20">
             
-            <!-- Logo - More compact on mobile -->
+            <!-- Logo -->
             <a href="index.html" class="logo-link flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
-               <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all">
-                    <img src="images/logo.png" alt="">
+                <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all"  border: 1px solid rgba(255, 215, 0, 0.3);">
+                    <img src="images/logo.png" alt="John Pama Logo" class="w-full h-full object-cover rounded-full">
                 </div>
                 <div class="hidden xs:flex flex-col">
-                    <div class="logo-text font-bold text-xs sm:text-sm lg:text-base tracking-tight text-gray-800 transition-all whitespace-nowrap">JOHN PAMA</div>
-                    <div class="text-[8px] sm:text-[9px] lg:text-[10px] text-[#006633] font-semibold tracking-wider whitespace-nowrap">PRIMARY SCHOOL</div>
+                    <div class="logo-text font-bold text-xs sm:text-sm lg:text-base tracking-tight transition-all whitespace-nowrap" style="color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">JOHN PAMA</div>
+                    <div class="text-[8px] sm:text-[9px] lg:text-[10px] font-semibold tracking-wider whitespace-nowrap" style="color: #FFD700;">PRIMARY SCHOOL</div>
                 </div>
             </a>
             
-            <!-- Desktop Navigation - Wrapped in overflow-auto for safety -->
+            <!-- Desktop Navigation -->
             <div class="hidden lg:flex items-center space-x-4 xl:space-x-6 2xl:space-x-8 overflow-x-auto max-w-full">
-                <a href="index.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Home</a>
-                <a href="about.html" class="nav-link text-gray-700  hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">About Us</a>
-                
-                <a href="admissions.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Admissions</a>
-                <a href="achievements.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Achievements</a>
-                <a href="extra.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">PlayTime</a>
-                <a href="gallery.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Stories</a>
-                <a href="alumni.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Alumni</a>
-                <a href="contact.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Contact</a>
-                <a href="future.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Future</a>
-                <a href="donate.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Support</a>
+                <a href="index.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Home</a>
+                <a href="about.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">About Us</a>
+                <a href="admissions.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Admissions</a>
+                <a href="achievements.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Achievements</a>
+                <a href="extra.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">PlayTime</a>
+                <a href="gallery.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Stories</a>
+                <a href="alumni.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Alumni</a>
+                <a href="contact.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Contact</a>
+                <a href="future.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Future</a>
+                <a href="donate.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Support</a>
             </div>
             
             <!-- Desktop Donate Button + Mobile Hamburger -->
             <div class="flex items-center gap-2 sm:gap-3 lg:gap-4 flex-shrink-0">
-                <!-- Donate Button - Desktop -->
-                <a href="donate.html" class="donate-btn hidden lg:flex text-white px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold items-center gap-1.5 shadow-md whitespace-nowrap">
-                    <i class="fas fa-heart text-[10px] lg:text-xs"></i>
+                <a href="donate.html" class="donate-btn hidden lg:flex px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-bold items-center gap-1.5 shadow-lg transition-all duration-300 transform hover:scale-105 whitespace-nowrap" style="background: #FFD700; color: #0a140f;">
+                    <i class="fas fa-heart text-[10px] lg:text-xs" style="color: #dc2626;"></i>
+                    <span>Donate Now</span>
+                </a>
+                
+                <a href="donate.html" class="donate-btn hidden md:flex lg:hidden px-3 py-1.5 rounded-full text-xs font-bold items-center gap-1 shadow-lg transition-all whitespace-nowrap" style="background: #FFD700; color: #0a140f;">
+                    <i class="fas fa-heart text-[10px]" style="color: #dc2626;"></i>
                     <span>Donate</span>
                 </a>
                 
-                <!-- Donate Button - Tablet (visible on md to lg) -->
-                <a href="donate.html" class="donate-btn hidden md:flex lg:hidden text-white px-3 py-1.5 rounded-full text-xs font-semibold items-center gap-1 shadow-md whitespace-nowrap">
-                    <i class="fas fa-heart text-[10px]"></i>
-                    <span>Donate</span>
-                </a>
-                
-                <!-- Hamburger Button (visible on screens below lg) -->
-                <button id="hamburgerBtn" class="hamburger-btn-mobile lg:hidden w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-gray-700 transition-all hover:bg-gray-100">
+                <button id="hamburgerBtn" class="hamburger-btn-mobile lg:hidden w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all" style="color: white; background: rgba(255, 255, 255, 0.1);">
                     <i id="hamburgerIcon" class="fas fa-bars text-base sm:text-lg"></i>
                 </button>
             </div>
         </div>
     </div>
 </header>
-
 <!-- Spacer to prevent content from hiding under fixed navbar -->
 <div class="h-16 lg:h-20"></div>
 
@@ -427,10 +425,16 @@
             <!-- Column 1: School Info -->
             <div>
                 <div class="flex items-center space-x-2 mb-4">
-                    <div class="w-10 h-10 bg-[#006633] rounded-full flex items-center justify-center text-white font-bold">JP</div>
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+                        <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all">
+                    <img src="images/logo.png" class="rounded-full" alt="">
+                    </div>
+                    </div>
+                    </div>
                     <div>
-                        <div class="font-bold text-lg" style="font-family: 'Plus Jakarta Sans';">JOHN PAMA</div>
-                        <div class="text-[10px] text-[#006633] font-semibold">PRIMARY SCHOOL</div>
+                    <div class="font-bold text-lg bg-gradient-to-r from-[#006633] via-[#00a86b] to-white bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]" style="font-family: 'Plus Jakarta Sans';">JOHN PAMA</div>
+                    <div class="text-[10px] text-[#006633] font-semibold">PRIMARY SCHOOL</div>
                     </div>
                 </div>
                 <p class="text-gray-400 text-sm">Sithandathu Ave, Nyanga, Cape Town</p>

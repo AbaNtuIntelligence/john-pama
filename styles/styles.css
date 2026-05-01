@@ -103,3 +103,17 @@ blockquote, .museum-quote, .testimonial {
     .animate-ping {
         animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
+    @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+    animation: gradient 3s ease infinite;
+}
+footer{
+    font-family: var(--font-serif-prestige);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}

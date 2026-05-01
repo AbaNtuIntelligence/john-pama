@@ -9,6 +9,9 @@
         font-weight: 600;
     }
     
+    .navbar{
+        background: linear-gradient(135deg, #008844, #006633);
+    }
     .nav-link.active::after {
         width: 80%;
     }
