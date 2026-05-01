@@ -404,58 +404,68 @@
 <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300" style="background: rgba(10, 20, 15, 0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
     <div class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16 lg:h-20">
+            
+            <!-- Logo -->
             <a href="index.html" class="logo-link flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
-                <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: rgba(0, 102, 51, 0.9); border: 1px solid rgba(255, 215, 0, 0.3);">
-                    <div class="font-bold text-xl bg-gradient-to-r from-[#006633] via-[#00a86b] to-white bg-clip-text text-transparent" style="font-family: 'Cormorant Garamond', serif;">JP</div>
+                <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all"  border: 1px solid rgba(255, 215, 0, 0.3);">
+                    <img src="images/logo.png" alt="John Pama Logo" class="w-full h-full object-cover rounded-full">
+                <div class="font-bold text-lg bg-gradient-to-r from-[#006633] via-[#00a86b] to-white bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]" style="font-family: 'Cormorant Garamond', 'Times New Roman', serif; font-weight: 700; font-size: 1.8rem; letter-spacing: -0.5px;">JP</div>
                 </div>
-                <div class="hidden sm:flex flex-col">
-                    <div class="font-bold text-sm lg:text-base text-white">JOHN PAMA</div>
-                    <div class="text-[8px] lg:text-[10px] text-[#FFD700] font-semibold">PRIMARY SCHOOL</div>
-                </div>
+                
             </a>
             
-            <div class="hidden lg:flex items-center space-x-6">
-                <a href="index.html" class="nav-link text-white/80 hover:text-white py-2">Home</a>
-                <a href="about.html" class="nav-link text-white/80 hover:text-white py-2">About Us</a>
-                <a href="admissions.html" class="nav-link text-white/80 hover:text-white py-2">Admissions</a>
-                <a href="achievements.html" class="nav-link text-white/80 hover:text-white py-2">Achievements</a>
-                <a href="extra.html" class="nav-link text-white/80 hover:text-white py-2">PlayTime</a>
-                <a href="gallery.html" class="nav-link text-white/80 hover:text-white active py-2">Stories</a>
-                <a href="alumni.html" class="nav-link text-white/80 hover:text-white py-2">Alumni</a>
-                <a href="contact.html" class="nav-link text-white/80 hover:text-white py-2">Contact</a>
-                <a href="future.html" class="nav-link text-white/80 hover:text-white py-2">Future</a>
-                <a href="donate.html" class="nav-link text-white/80 hover:text-white py-2">Support</a>
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-4 xl:space-x-6 2xl:space-x-8 overflow-x-auto max-w-full">
+                <a href="index.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Home</a>
+                <a href="about.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">About Us</a>
+                <a href="admissions.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Admissions</a>
+                <a href="achievements.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Achievements</a>
+                <a href="extra.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">PlayTime</a>
+                <a href="gallery.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Stories</a>
+                <a href="alumni.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Alumni</a>
+                <a href="contact.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Contact</a>
+                <a href="future.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Future</a>
+                <a href="donate.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Support</a>
             </div>
             
-            <div class="flex items-center gap-3">
-                <a href="donate.html" class="bg-[#FFD700] text-[#0a140f] px-5 py-2 rounded-full text-sm font-bold flex items-center gap-2 hover:scale-105 transition-transform">
-                    <i class="fas fa-heart text-red-600"></i> Donate
+            <!-- Desktop Donate Button + Mobile Hamburger -->
+            <div class="flex items-center gap-2 sm:gap-3 lg:gap-4 flex-shrink-0">
+                <a href="donate.html" class="donate-btn hidden lg:flex px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-bold items-center gap-1.5 shadow-lg transition-all duration-300 transform hover:scale-105 whitespace-nowrap" style="background: #FFD700; color: #0a140f;">
+                    <i class="fas fa-heart text-[10px] lg:text-xs" style="color: #dc2626;"></i>
+                    <span>Donate Now</span>
                 </a>
-                <button id="hamburgerBtn" class="lg:hidden w-9 h-9 rounded-full flex items-center justify-center bg-white/10 text-white">
-                    <i id="hamburgerIcon" class="fas fa-bars"></i>
+                
+                <a href="donate.html" class="donate-btn hidden md:flex lg:hidden px-3 py-1.5 rounded-full text-xs font-bold items-center gap-1 shadow-lg transition-all whitespace-nowrap" style="background: #FFD700; color: #0a140f;">
+                    <i class="fas fa-heart text-[10px]" style="color: #dc2626;"></i>
+                    <span>Donate</span>
+                </a>
+                
+                <button id="hamburgerBtn" class="hamburger-btn-mobile lg:hidden w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all" style="color: white; background: rgba(255, 255, 255, 0.1);">
+                    <i id="hamburgerIcon" class="fas fa-bars text-base sm:text-lg"></i>
                 </button>
             </div>
         </div>
     </div>
 </header>
 
-<div class="h-16 lg:h-20"></div>
 
-<!-- Mobile Menu -->
-<div id="mobileMenu" class="fixed top-16 left-0 right-0 bg-white shadow-xl z-40 transform -translate-x-full transition-transform duration-300 md:hidden">
-    <div class="flex flex-col py-3 px-4">
-        <a href="index.html" class="py-3 text-gray-700 border-b border-gray-100">Home</a>
-        <a href="about.html" class="py-3 text-gray-700 border-b border-gray-100">About Us</a>
-        <a href="admissions.html" class="py-3 text-gray-700 border-b border-gray-100">Admissions</a>
-        <a href="achievements.html" class="py-3 text-gray-700 border-b border-gray-100">Achievements</a>
-        <a href="extra.html" class="py-3 text-gray-700 border-b border-gray-100">PlayTime</a>
-        <a href="gallery.html" class="py-3 text-[#006633] font-semibold border-b border-gray-100">Stories</a>
-        <a href="alumni.html" class="py-3 text-gray-700 border-b border-gray-100">Alumni</a>
-        <a href="contact.html" class="py-3 text-gray-700 border-b border-gray-100">Contact</a>
-        <a href="future.html" class="py-3 text-gray-700 border-b border-gray-100">Future</a>
-        <a href="donate.html" class="py-3 text-gray-700">Support</a>
+
+<!-- Mobile Menu Panel (hidden by default, toggled by JS) -->
+<div id="mobileMenu" class="mobile-menu fixed top-16 left-0 right-0 bg-white shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+    <div class="flex flex-col py-3 px-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <a href="index.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Home</a>
+                <a href="about.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">About Us</a>
+                <a href="academics.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Academics</a>
+                <a href="admissions.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Admissions</a>
+                <a href="achievements.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Achievements</a>
+                <a href="gallery.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Stories</a>
+                <a href="alumni.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Alumni</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Contact</a>
+                <a href="future.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Future</a>
+                <a href="donate.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Support</a>
     </div>
 </div>
+
 
 <!-- Hero Section -->
 <section class="relative h-[60vh] min-h-[450px] flex items-center justify-center overflow-hidden">
@@ -598,7 +608,7 @@
 <script>
     // Gallery Data - Updated with real content paths
     const videosData = [
-        { type: 'video', url: 'images/jp8.mp4', poster: 'images/jpp12.jfif', title: 'Marimba Band Performance', description: 'Cultural day celebration', category: 'Culture' },
+        { type: 'video', url: 'images/jp8.mp4', poster: 'images/jp6.jpg', title: 'Marimba Band Performance', description: 'Cultural day celebration', category: 'Culture' },
         { type: 'video', url: 'images/JohnPama.mp4', poster: 'images/kids.jfif', title: 'Sports Day Highlights', description: 'Annual athletics championship - 100m finals', category: 'Sports' },
         { type: 'video', url: 'images/jp3.mp4', poster: 'images/jpp13.jfif', title: 'Coding Club in Action', description: 'Young innovators showcase robotics projects', category: 'Academics' },
         { type: 'video', url: 'images/jp10.mp4', poster: 'images/jp12.webp', title: 'Everyday Literacy Day', description: 'Reading Day', category: 'Academics' }
