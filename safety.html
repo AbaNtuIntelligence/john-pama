@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>John Pama Primary | Safety & Wellness – A Safe Haven in Nyanga</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            background-color: #eef3ea;
+            font-family: 'Lora', 'Cormorant Garamond', Georgia, serif;
+            color: #1f2937;
+            scroll-behavior: smooth;
+        }
+        
+        /* Navbar Styles */
+        .nav-link {
+            position: relative;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #006633, #00ff66);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::before {
+            width: 80%;
+        }
+        
+        .nav-link:hover {
+            color: #00ff66 !important;
+        }
+        
+        /* Safety Cards */
+        .safety-card {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .safety-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px -12px rgba(0, 102, 51, 0.25);
+        }
+        
+        /* Stat Cards */
+        .stat-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Intervention Card */
+        .intervention-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid #006633;
+        }
+        
+        .intervention-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Resource Card */
+        .resource-card {
+            background: linear-gradient(135deg, #006633, #008844);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px -10px rgba(0, 102, 51, 0.4);
+        }
+        
+        /* Fade Up Animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .bg-300\% { background-size: 300% auto; }
+        .animate-gradient { animation: gradient 4s ease infinite; }
+        
+        @keyframes scroll {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(8px); opacity: 0.5; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        .animate-scroll { animation: scroll 1.8s ease-in-out infinite; }
+        
+        .footer-link {
+            transition: all 0.2s ease;
+        }
+        .footer-link:hover {
+            color: #006633;
+            transform: translateX(4px);
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<!-- ========== PRESTIGIOUS WORKING NAVBAR ========== -->
+<header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300" style="background: rgba(10, 20, 15, 0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+    <div class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16 lg:h-20">
+            
+            <!-- Logo -->
+            <a href="index.html" class="logo-link flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
+                <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all" border: 1px solid rgba(255, 215, 0, 0.3);">
+                    <img src="images/logo.png" alt="John Pama Logo" class="w-full h-full object-cover rounded-full">
+                <div class="font-bold text-lg bg-gradient-to-r from-[#006633] via-[#00a86b] to-white bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]" style="font-family: 'Cormorant Garamond', 'Times New Roman', serif; font-weight: 700; font-size: 1.8rem; letter-spacing: -0.5px;">JP</div>
+
+                </div>
+                
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-4 xl:space-x-6 2xl:space-x-8 overflow-x-auto max-w-full">
+                <a href="index.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Home</a>
+                <a href="about.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group active" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">About Us</a>
+                <a href="admissions.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Admissions</a>
+                <a href="achievements.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Achievements</a>
+                <a href="extra.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">PlayTime</a>
+                <a href="gallery.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Stories</a>
+                <a href="alumni.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Alumni</a>
+                <a href="contact.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Contact</a>
+                <a href="future.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Future</a>
+                <a href="support.html" class="nav-link py-2 text-sm xl:text-base whitespace-nowrap relative group" style="color: rgba(255, 255, 255, 0.9); transition: all 0.3s ease;">Support</a>
+            </div>
+            
+            <!-- Desktop Donate Button + Mobile Hamburger -->
+            <div class="flex items-center gap-2 sm:gap-3 lg:gap-4 flex-shrink-0">
+                <a href="donate.html" class="donate-btn hidden lg:flex px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-bold items-center gap-1.5 shadow-lg transition-all duration-300 transform hover:scale-105 whitespace-nowrap" style="background: #FFD700; color: #0a140f;">
+                    <i class="fas fa-heart text-[10px] lg:text-xs" style="color: #dc2626;"></i>
+                    <span>Donate Now</span>
+                </a>
+                
+                <a href="donate.html" class="donate-btn hidden md:flex lg:hidden px-3 py-1.5 rounded-full text-xs font-bold items-center gap-1 shadow-lg transition-all whitespace-nowrap" style="background: #FFD700; color: #0a140f;">
+                    <i class="fas fa-heart text-[10px]" style="color: #dc2626;"></i>
+                    <span>Donate</span>
+                </a>
+                
+                <button id="hamburgerBtn" class="hamburger-btn-mobile lg:hidden w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all" style="color: white; background: rgba(255, 255, 255, 0.1);">
+                    <i id="hamburgerIcon" class="fas fa-bars text-base sm:text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Spacer to prevent content from hiding under fixed navbar -->
+<div class="h-16 lg:h-20"></div>
+
+<!-- Mobile Menu Panel (hidden by default, toggled by JS) -->
+<div id="mobileMenu" class="mobile-menu fixed top-16 left-0 right-0 bg-white shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+    <div class="flex flex-col py-3 px-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
+       <a href="index.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Home</a>
+                <a href="about.html" class="nav-link text-gray-700 active hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">About Us</a>
+                <a href="academics.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Academics</a>
+                <a href="admissions.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Admissions</a>
+                <a href="achievements.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Achievements</a>
+                <a href="extra.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">PlayTime</a>
+                <a href="gallery.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Stories</a>
+                <a href="alumni.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Alumni</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Contact</a>
+                <a href="future.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Future</a>
+                <a href="donate.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Support</a>
+    </div>
+</div>
+<!-- Hero Section with Video Background -->
+<section class="relative h-[70vh] min-h-[550px] flex items-center justify-center overflow-hidden">
+    <!-- Background Video -->
+    <div class="absolute inset-0">
+        <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+            <source src="images/jp10.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-br from-black/80 via-[#006633]/60 to-black/85"></div>
+    </div>
+    
+    <div class="relative z-10 text-center text-white px-6 max-w-5xl mx-auto">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 mb-6">
+            <i class="fas fa-shield-alt text-[#00ff66] text-xs"></i>
+            <span class="text-xs tracking-wider uppercase">A Safe Haven • A Second Home</span>
+            <i class="fas fa-hand-holding-heart text-[#00ff66] text-xs"></i>
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-4" style="font-family: 'Cormorant Garamond', serif;">
+            <span class="bg-gradient-to-r from-white via-[#00ff66] to-[#ffcc00] bg-clip-text text-transparent bg-300% animate-gradient">Safety & Wellness</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl mt-4 max-w-3xl mx-auto italic font-light leading-relaxed">
+            "Protecting our children from drugs, gangs, and harm — because every child deserves to learn in peace."
+        </p>
+    </div>
+    <div class="absolute bottom-8 left-0 right-0 flex flex-col items-center">
+            <span class="text-[10px] tracking-wider text-white/60 uppercase">Scroll to Learn How We Protect</span>
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center mt-2">
+                <div class="w-1.5 h-2.5 bg-[#00ff66] rounded-full mt-2 animate-scroll"></div>
+            </div>
+        </div>
+</section>
+
+<!-- ========== THE REALITY SECTION ========== -->
+<section class="py-20" style="background-color: #eef3ea;">
+    <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+        <div class="text-center mb-12 fade-up">
+            <span class="text-[#006633] font-semibold tracking-wider text-sm"><i class="fas fa-exclamation-triangle mr-2"></i> THE REALITY WE FACE</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2" style="font-family: 'Cormorant Garamond', serif;">Confronting the Crisis</h2>
+            <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-600 mt-3 max-w-3xl mx-auto">Nyanga faces some of the highest rates of gang violence and drug abuse in the country. But at John Pama, we refuse to let these challenges define our children's futures.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="stat-card fade-up">
+                <i class="fas fa-chart-line text-4xl text-[#006633] mb-3"></i>
+                <div class="text-3xl font-bold text-gray-800">60%</div>
+                <p class="text-gray-600 text-sm">of Nyanga youth report exposure to gang violence</p>
+            </div>
+            <div class="stat-card fade-up">
+                <i class="fas fa-capsules text-4xl text-[#006633] mb-3"></i>
+                <div class="text-3xl font-bold text-gray-800">1 in 4</div>
+                <p class="text-gray-600 text-sm">learners know someone struggling with substance abuse</p>
+            </div>
+            <div class="stat-card fade-up">
+                <i class="fas fa-school text-4xl text-[#006633] mb-3"></i>
+                <div class="text-3xl font-bold text-gray-800">800+</div>
+                <p class="text-gray-600 text-sm">children who find safety within our gates daily</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== OUR RESPONSE SECTION ========== -->
+<section class="py-20" style="background-color: #eef3ea;">
+    <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+        <div class="text-center mb-12 fade-up">
+            <span class="text-[#006633] font-semibold tracking-wider text-sm"><i class="fas fa-hand-holding-heart mr-2"></i> OUR COMMITMENT</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2" style="font-family: 'Cormorant Garamond', serif;">How We Protect & Empower</h2>
+            <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-600 mt-3 max-w-3xl mx-auto">We are not just a school — we are a fortress of hope, a sanctuary, and a launchpad for brighter futures.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Program 1 -->
+            <div class="intervention-card fade-up">
+                <i class="fas fa-hand-peace text-3xl text-[#006633] mb-3"></i>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Peace & Conflict Resolution</h3>
+                <p class="text-gray-600 text-sm">Peer mediation programs and restorative justice circles to resolve conflicts without violence.</p>
+            </div>
+            
+            <!-- Program 2 -->
+            <div class="intervention-card fade-up">
+                <i class="fas fa-brain text-3xl text-[#006633] mb-3"></i>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Substance Abuse Prevention</h3>
+                <p class="text-gray-600 text-sm">Regular workshops, counselling, and awareness campaigns about the dangers of drugs and alcohol.</p>
+            </div>
+            
+            <!-- Program 3 -->
+            <div class="intervention-card fade-up">
+                <i class="fas fa-user-shield text-3xl text-[#006633] mb-3"></i>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Safety & Security Measures</h3>
+                <p class="text-gray-600 text-sm">Controlled access, trained security personnel, and safe passage protocols for learners.</p>
+            </div>
+            
+            <!-- Program 4 -->
+            <div class="intervention-card fade-up">
+                <i class="fas fa-chalkboard-user text-3xl text-[#006633] mb-3"></i>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Life Skills Education</h3>
+                <p class="text-gray-600 text-sm">Age-appropriate curriculum teaching resilience, decision-making, and personal safety.</p>
+            </div>
+            
+            <!-- Program 5 -->
+            <div class="intervention-card fade-up">
+                <i class="fas fa-heartbeat text-3xl text-[#006633] mb-3"></i>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Psychosocial Support</h3>
+                <p class="text-gray-600 text-sm">On-site social workers and trauma-informed care for affected learners and families.</p>
+            </div>
+            
+            <!-- Program 6 -->
+            <div class="intervention-card fade-up">
+                <i class="fas fa-futbol text-3xl text-[#006633] mb-3"></i>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Positive After-School Activities</h3>
+                <p class="text-gray-600 text-sm">Sports, arts, and clubs to keep children engaged in safe, constructive environments.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== OUR IMPACT SECTION ========== -->
+<section class="py-20" style="background-color: #eef3ea;">
+    <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="fade-up">
+                <span class="text-[#006633] font-semibold tracking-wider text-sm"><i class="fas fa-chart-simple mr-2"></i> MEASURABLE CHANGE</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4" style="font-family: 'Cormorant Garamond', serif;">Our Impact Speaks Volumes</h2>
+                <p class="text-gray-600 leading-relaxed mb-6">Since implementing our comprehensive safety and wellness framework, we've seen remarkable improvements in learner well-being and academic performance.</p>
+                
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-gray-700">Learners reporting feeling SAFE at school</span>
+                            <span class="text-sm font-bold text-[#006633]">94%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-[#006633] h-2 rounded-full" style="width: 94%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-gray-700">Reduction in disciplinary incidents</span>
+                            <span class="text-sm font-bold text-[#006633]">67%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-[#006633] h-2 rounded-full" style="width: 67%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-gray-700">Parents engaged in safety programs</span>
+                            <span class="text-sm font-bold text-[#006633]">500+</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-[#006633] h-2 rounded-full" style="width: 78%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fade-up">
+                <img src="images/para.jpg" alt="Safe learning environment" class="rounded-2xl shadow-xl w-full object-cover" style="height: 350px;">
+                <div class="mt-4 text-center">
+                    <p class="text-sm text-gray-500 italic">"John Pama is a safe haven. My children can learn without fear." — Parent of Grade 6 learner</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== PARTNERS & RESOURCES SECTION ========== -->
+<section class="py-20" style="background-color: #eef3ea;">
+    <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+        <div class="text-center mb-12 fade-up">
+            <span class="text-[#006633] font-semibold tracking-wider text-sm"><i class="fas fa-handshake mr-2"></i> WE DON'T DO THIS ALONE</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2" style="font-family: 'Cormorant Garamond', serif;">Our Partners in Protection</h2>
+            <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-600 mt-3 max-w-2xl mx-auto">Strategic partnerships that strengthen our safety net and extend our reach.</p>
+        </div>
+        
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 fade-up">
+            
+            <!-- Partner 1: Nyanga CPF -->
+            <div class="group bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="w-28 h-28 mx-auto mb-4 rounded-xl bg-[#eef3ea] flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:bg-[#006633]/10">
+                    <img src="images/cpff.jfif" class="w-20 h-20 object-contain" alt="Nyanga CPF">
+                </div>
+                <h3 class="font-bold text-gray-800 text-lg">Nyanga CPF</h3>
+                <p class="text-xs text-[#006633] font-semibold mt-1">Community Policing Forum</p>
+                <p class="text-xs text-gray-500 mt-2 px-2">Working hand-in-hand with SAPS to patrol and secure our school routes.</p>
+                <div class="mt-3 flex justify-center gap-2">
+                    <span class="inline-block text-[10px] bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">✓ Active Patrols</span>
+                    <span class="inline-block text-[10px] bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">✓ Rapid Response</span>
+                </div>
+            </div>
+            
+            <!-- Partner 2: Nicro -->
+            <div class="group bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="w-28 h-28 mx-auto mb-4 rounded-xl bg-[#eef3ea] flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:bg-[#006633]/10">
+                    <img src="images/nic.png" class="w-20 h-20 object-contain" alt="Nicro">
+                </div>
+                <h3 class="font-bold text-gray-800 text-lg">Nicro</h3>
+                <p class="text-xs text-[#006633] font-semibold mt-1">Violence Prevention</p>
+                <p class="text-xs text-gray-500 mt-2 px-2">Substance abuse counselling and gang intervention programs for at-risk youth.</p>
+                <div class="mt-3 flex justify-center gap-2">
+                    <span class="inline-block text-[10px] bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">✓ Counselling</span>
+                    <span class="inline-block text-[10px] bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">✓ Rehab Referrals</span>
+                </div>
+            </div>
+            
+            <!-- Partner 3: Cape Metro Police -->
+            <div class="group bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="w-28 h-28 mx-auto mb-4 rounded-xl bg-[#eef3ea] flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:bg-[#006633]/10">
+                    <img src="images/law.jfif" class="w-20 h-20 object-contain" alt="Cape Metro Police">
+                </div>
+                <h3 class="font-bold text-gray-800 text-lg">Cape Metro Police</h3>
+                <p class="text-xs text-[#006633] font-semibold mt-1">Law Enforcement</p>
+                <p class="text-xs text-gray-500 mt-2 px-2">Regular patrols during drop-off and pick-up times. Immediate emergency response.</p>
+                <div class="mt-3 flex justify-center gap-2">
+                    <span class="inline-block text-[10px] bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">✓ School Patrols</span>
+                    <span class="inline-block text-[10px] bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">✓ 24/7 Support</span>
+                </div>
+            </div>
+            
+            <!-- Partner 4: WCED Psycho-Social -->
+            <div class="group bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="w-28 h-28 mx-auto mb-4 rounded-xl bg-[#eef3ea] flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:bg-[#006633]/10">
+                    <img src="images/wes.jfif" class="w-20 h-20 object-contain" alt="WCED">
+                </div>
+                <h3 class="font-bold text-gray-800 text-lg">WCED</h3>
+                <p class="text-xs text-[#006633] font-semibold mt-1">Psycho-Social Services</p>
+                <p class="text-xs text-gray-500 mt-2 px-2">On-site social workers, trauma support, and learner wellness programs.</p>
+                <div class="mt-3 flex justify-center gap-2">
+                    <span class="inline-block text-[10px] bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">✓ Social Workers</span>
+                    <span class="inline-block text-[10px] bg-[#e8f3ed] text-[#006633] px-2 py-1 rounded-full">✓ Trauma Support</span>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Additional note -->
+        <div class="text-center mt-10 fade-up">
+            <p class="text-sm text-gray-500">
+                <i class="fas fa-handshake text-[#006633] mr-1"></i> 
+                Interested in partnering with us? <a href="contact.html" class="text-[#006633] font-semibold hover:underline">Contact our Safety Committee →</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .partner-card {
+        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    
+    .partner-card:hover {
+        transform: translateY(-5px);
+    }
+</style>
+
+<!-- ========== EMERGENCY CONTACT SECTION ========== -->
+<section class="py-16" style="background: linear-gradient(135deg, #006633, #004d26);">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+        <div class="fade-up">
+            <i class="fas fa-phone-alt text-4xl text-white mb-4"></i>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" style="font-family: 'Cormorant Garamond', serif;">Need Help? Reach Out</h2>
+            <p class="text-white/80 mb-6 max-w-2xl mx-auto">If you or someone you know needs support, these resources are available 24/7.</p>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <div class="resource-card">
+                    <i class="fas fa-phone text-2xl text-white mb-2"></i>
+                    <p class="font-bold text-white">SAPS Emergency</p>
+                    <p class="text-white/80 text-lg font-bold">10111</p>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-heartbeat text-2xl text-white mb-2"></i>
+                    <p class="font-bold text-white">Substance Abuse Helpline</p>
+                    <p class="text-white/80 text-lg font-bold">0800 12 13 14</p>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-child text-2xl text-white mb-2"></i>
+                    <p class="font-bold text-white">Childline SA</p>
+                    <p class="text-white/80 text-lg font-bold">116</p>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-school text-2xl text-white mb-2"></i>
+                    <p class="font-bold text-white">School Social Worker</p>
+                    <p class="text-white/80 text-sm">021 385 1830</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== GET INVOLVED SECTION ========== -->
+<section class="py-20" style="background-color: #eef3ea;">
+    <div class="container mx-auto px-6 md:px-12 max-w-5xl text-center">
+        <div class="fade-up">
+            <span class="text-[#006633] font-semibold tracking-wider text-sm"><i class="fas fa-hands-helping mr-2"></i> JOIN THE MOVEMENT</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4" style="font-family: 'Cormorant Garamond', serif;">You Can Make a Difference</h2>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">Whether through volunteering, donating resources, or simply being a positive presence, your support strengthens our safety net.</p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="volunteer.html" class="inline-flex items-center gap-2 bg-[#006633] text-white px-8 py-3 rounded-full font-bold hover:bg-[#004d26] transition-all hover:scale-105">
+                    <i class="fas fa-hands-helping"></i> Become a Volunteer
+                </a>
+                <a href="donate.html" class="inline-flex items-center gap-2 border-2 border-[#006633] text-[#006633] px-8 py-3 rounded-full font-bold hover:bg-[#006633] hover:text-white transition-all">
+                    <i class="fas fa-heart"></i> Support Our Programs
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== PRESTIGIOUS FOOTER ========== -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="container mx-auto px-6 md:px-12">
+        <!-- Main Footer Grid -->
+        <div class="grid md:grid-cols-4 gap-10">
+            <!-- Column 1: School Info -->
+            <div>
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+                        <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all">
+                    <img src="images/logo.png" class="rounded-full" alt="">
+                    </div>
+                    </div>
+                    </div>
+                    <div>
+                    <div class="font-bold text-lg bg-gradient-to-r from-[#006633] via-[#00a86b] to-white bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]" style="font-family: 'Plus Jakarta Sans';">JOHN PAMA</div>
+                    <div class="text-[10px] text-[#006633] font-semibold">PRIMARY SCHOOL</div>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm">Sithandathu Ave, Nyanga, Cape Town</p>
+                <p class="text-gray-400 text-sm mt-2"><i class="fas fa-phone-alt mr-2 text-[#006633]"></i> 021 385 1830</p>
+                <p class="text-gray-400 text-sm mt-1"><i class="fas fa-envelope mr-2 text-[#006633]"></i> donations@johnpamaprimary.co.za</p>
+            </div>
+
+            <!-- Column 2: Academics -->
+            <div>
+                <h4 class="font-semibold text-lg mb-4" style="font-family: 'Plus Jakarta Sans';">Academics</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="#" class="footer-link hover:text-[#006633] transition">CAPS Overview</a></li>
+                    <li><a href="#" class="footer-link hover:text-[#006633] transition">Foundation Phase</a></li>
+                    <li><a href="#" class="footer-link hover:text-[#006633] transition">Intermediate Phase</a></li>
+                    <li><a href="#" class="footer-link hover:text-[#006633] transition">Assessment Schedule</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Resources -->
+            <div>
+                <h4 class="font-semibold text-lg mb-4" style="font-family: 'Plus Jakarta Sans';">Resources</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="#" class="footer-link hover:text-[#006633] transition">School Calendar</a></li>
+                    <li><a href="#" class="footer-link hover:text-[#006633] transition">Parent Portal</a></li>
+                    <li><a href="#" class="footer-link hover:text-[#006633] transition">DBE Workbooks</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Connect -->
+            <div>
+                <h4 class="font-semibold text-lg mb-4" style="font-family: 'Plus Jakarta Sans';">Connect</h4>
+                <div class="flex space-x-4 text-gray-400 text-xl">
+                    <i class="fab fa-facebook-f hover:text-[#006633] cursor-pointer transition"></i>
+                    <i class="fab fa-instagram hover:text-[#006633] cursor-pointer transition"></i>
+                    <i class="fab fa-whatsapp hover:text-[#006633] cursor-pointer transition"></i>
+                </div>
+                <p class="text-gray-500 text-xs mt-4">#JohnPamaPride #InvestInNyanga</p>
+            </div>
+        </div>
+
+        <!-- Copyright Divider -->
+        <div class="border-t border-gray-800 mt-12 pt-8">
+            <!-- Main Copyright -->
+            <div class="text-center text-gray-500 text-xs mb-6">
+                © 2026 John Pama Primary School — CAPS-aligned. Rooted in Nyanga. Reaching for excellence. 🇿🇦
+            </div>
+
+            <!-- ✨ CUTTING-EDGE 2026 POWERED BY SIGNATURE ✨ -->
+            <div class="flex flex-col items-center justify-center gap-3">
+                <!-- Decorative divider with dot pattern -->
+                <div class="flex items-center gap-3">
+                    <span class="w-8 h-px bg-gradient-to-r from-transparent to-gray-700"></span>
+                    <span class="text-[10px] text-gray-500 tracking-widest uppercase font-mono">Powered By</span>
+                    <span class="w-8 h-px bg-gradient-to-l from-transparent to-gray-700"></span>
+                </div>
+
+                <!-- Partners Row with hover effects -->
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+                    <a href="#" class="group text-xs font-medium text-gray-400 hover:text-[#006633] transition-all duration-300 border-b border-transparent hover:border-[#006633] pb-0.5">AbaNtu Intelligence</a>
+                    <span class="text-gray-700 text-[10px]">✦</span>
+                    <a href="#" class="group text-xs font-medium text-gray-400 hover:text-[#006633] transition-all duration-300 border-b border-transparent hover:border-[#006633] pb-0.5">Render Cloud</a>
+                    <span class="text-gray-700 text-[10px]">✦</span>
+                    <a href="#" class="group text-xs font-medium text-gray-400 hover:text-[#006633] transition-all duration-300 border-b border-transparent hover:border-[#006633] pb-0.5">AI Analytics Suite</a>
+                    <span class="text-gray-700 text-[10px]">✦</span>
+                    <a href="#" class="group text-xs font-medium text-gray-400 hover:text-[#006633] transition-all duration-300 border-b border-transparent hover:border-[#006633] pb-0.5">Green Hosting</a>
+                </div>
+
+                <!-- Tech Stack & Metrics -->
+                <div class="flex flex-wrap items-center justify-center gap-3 mt-1">
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-[9px] px-1.5 py-0.5 bg-gray-800/50 rounded text-gray-400 font-mono">React 19</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-gray-800/50 rounded text-gray-400 font-mono">Tailwind CSS</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-gray-800/50 rounded text-gray-400 font-mono">Node.js</span>
+                    </div>
+                    
+                    <!-- Live Metrics Dot -->
+                    <div class="flex items-center gap-1.5 pl-2 border-l border-gray-800">
+                        <div class="relative">
+                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping absolute"></div>
+                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full relative"></div>
+                        </div>
+                        <span class="text-[9px] text-gray-500 font-mono">99.99% Uptime</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-1.5">
+                        <svg class="w-2.5 h-2.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        <span class="text-[9px] text-gray-500 font-mono">0.28s Load Time</span>
+                    </div>
+                </div>
+
+                <!-- Version / Build Signature -->
+                <div class="text-center mt-2">
+                    <div class="inline-flex items-center gap-2 text-[9px] text-gray-600 font-mono">
+                        <span>🚀 v2026.1.0</span>
+                        <span>•</span>
+                        <span>🔒 A+ Security</span>
+                        <span>•</span>
+                        <span>🌍 Carbon Neutral Hosting</span>
+                        <span>•</span>
+                        <span>⚡ Deployed @ Render</span>
+                    </div>
+                </div>
+            </div>
+            <!-- ✨ END POWERED BY SIGNATURE ✨ -->
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const hamburgerIcon = document.getElementById('hamburgerIcon');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let isMenuOpen = false;
+    
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.add('translate-x-0');
+                mobileMenu.classList.remove('-translate-x-full');
+                hamburgerIcon.classList.remove('fa-bars');
+                hamburgerIcon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('-translate-x-full');
+                hamburgerIcon.classList.remove('fa-times');
+                hamburgerIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        document.querySelectorAll('.mobile-nav-link, .mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('-translate-x-full');
+                hamburgerIcon.classList.remove('fa-times');
+                hamburgerIcon.classList.add('fa-bars');
+                isMenuOpen = false;
+                document.body.style.overflow = '';
+            });
+        });
+    }
+    
+    // Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) {
+            navbar.style.background = 'rgba(5, 12, 9, 0.98)';
+        } else {
+            navbar.style.background = 'rgba(10, 20, 15, 0.95)';
+        }
+    });
+    
+    // Fade-up observer
+    const faders = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    faders.forEach(el => observer.observe(el));
+    
+    // Set active link for safety-wellness page
+    document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+        if (link.getAttribute('href') === 'safety-wellness.html') {
+            link.classList.add('active');
+        }
+    });
+</script>
+</body>
+</html>
