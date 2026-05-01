@@ -73,3 +73,33 @@ blockquote, .museum-quote, .testimonial {
     font-weight: 600;
     letter-spacing: -0.02em;
 }
+.footer-link {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .footer-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -2px;
+        left: 0;
+        background-color: #006633;
+        transition: width 0.3s ease;
+    }
+    
+    .footer-link:hover::after {
+        width: 100%;
+    }
+    
+    @keyframes ping {
+        75%, 100% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+    
+    .animate-ping {
+        animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
