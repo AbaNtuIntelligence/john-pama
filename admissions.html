@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>John Pama Primary | Admissions – Enrol Your Child</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- 2026 PRESTIGE SERIF FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navbar.css">
+    <style>
+        :root {
+            --font-serif-heading: 'Cormorant Garamond', 'Lora', 'Times New Roman', Georgia, serif;
+            --font-serif-body: 'Lora', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+            --jp-green: #006633;
+            --jp-green-dark: #004d26;
+            --jp-green-light: #e8f3ed;
+        }
+        
+        body {
+            font-family: var(--font-serif-body);
+            background-color: #ffffff;
+            color: #1f2937;
+            line-height: 1.65;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif-heading);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        h1 { font-weight: 700; letter-spacing: -0.02em; }
+        
+        nav, .nav-link, .donate-btn, button, .footer-link, .mobile-nav-link {
+            font-family: var(--font-sans);
+        }
+        
+        /* Navbar styles */
+        .prestige-nav { transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1); }
+        .prestige-nav.scrolled { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+        .nav-link { position: relative; font-weight: 500; font-size: 0.9375rem; transition: all 0.3s ease; padding: 0.5rem 0; }
+        .nav-link::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--jp-green); transition: width 0.35s ease; }
+        .nav-link:hover::before { width: 80%; }
+        .nav-link:hover { color: var(--jp-green); }
+        .nav-link.active { color: var(--jp-green); font-weight: 600; }
+        .nav-link.active::before { width: 80%; }
+        .donate-btn { background: linear-gradient(135deg, var(--jp-green), #008844); transition: all 0.3s ease; }
+        .donate-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,102,51,0.3); }
+        .mobile-menu { position: fixed; top: 64px; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); transform: translateX(-100%); transition: transform 0.4s ease; z-index: 999; }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-nav-link { transition: all 0.25s ease; border-left: 3px solid transparent; }
+        .mobile-nav-link:hover { background: rgba(0,102,51,0.05); padding-left: 1.25rem; color: var(--jp-green); border-left-color: var(--jp-green); }
+        .mobile-nav-link.active { background: rgba(0,102,51,0.08); color: var(--jp-green); border-left-color: var(--jp-green); }
+        
+        .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        
+        .step-card {
+            transition: all 0.3s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+        .document-list li {
+            transition: all 0.2s ease;
+        }
+        .document-list li:hover {
+            transform: translateX(5px);
+            color: var(--jp-green);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+
+<!-- ========== PRESTIGIOUS WORKING NAVBAR ========== -->
+<header id="navbar" class="fixed top-0 left-0 w-full bg-white border-b border-gray-100 z-50 prestige-nav">
+    <div class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16 lg:h-20">
+            
+            <!-- Logo - More compact on mobile -->
+            <a href="index.html" class="logo-link flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
+                <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 bg-[#006633] rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all">
+                    JP
+                </div>
+                <div class="hidden xs:flex flex-col">
+                    <div class="logo-text font-bold text-xs sm:text-sm lg:text-base tracking-tight text-gray-800 transition-all whitespace-nowrap">JOHN PAMA</div>
+                    <div class="text-[8px] sm:text-[9px] lg:text-[10px] text-[#006633] font-semibold tracking-wider whitespace-nowrap">PRIMARY SCHOOL</div>
+                </div>
+            </a>
+            
+            <!-- Desktop Navigation - Wrapped in overflow-auto for safety -->
+            <div class="hidden lg:flex items-center space-x-4 xl:space-x-6 2xl:space-x-8 overflow-x-auto max-w-full">
+                <a href="index.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Home</a>
+                <a href="about.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">About Us</a>
+                <a href="academics.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Academics</a>
+                <a href="achievements.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Achievements</a>
+                <a href="extra.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">PlayTime</a>
+                <a href="gallery.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Stories</a>
+                <a href="alumni.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Alumni</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Contact</a>
+                <a href="future.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Future</a>
+                <a href="donate.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Support</a>
+            </div>
+            
+            <!-- Desktop Donate Button + Mobile Hamburger -->
+            <div class="flex items-center gap-2 sm:gap-3 lg:gap-4 flex-shrink-0">
+                <!-- Donate Button - Desktop -->
+                <a href="donate.html" class="donate-btn hidden lg:flex text-white px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold items-center gap-1.5 shadow-md whitespace-nowrap">
+                    <i class="fas fa-heart text-[10px] lg:text-xs"></i>
+                    <span>Donate</span>
+                </a>
+                
+                <!-- Donate Button - Tablet (visible on md to lg) -->
+                <a href="donate.html" class="donate-btn hidden md:flex lg:hidden text-white px-3 py-1.5 rounded-full text-xs font-semibold items-center gap-1 shadow-md whitespace-nowrap">
+                    <i class="fas fa-heart text-[10px]"></i>
+                    <span>Donate</span>
+                </a>
+                
+                <!-- Hamburger Button (visible on screens below lg) -->
+                <button id="hamburgerBtn" class="hamburger-btn-mobile lg:hidden w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-gray-700 transition-all hover:bg-gray-100">
+                    <i id="hamburgerIcon" class="fas fa-bars text-base sm:text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Spacer to prevent content from hiding under fixed navbar -->
+<div class="h-16 lg:h-20"></div>
+
+<!-- Mobile Menu Panel (hidden by default, toggled by JS) -->
+<div id="mobileMenu" class="mobile-menu fixed top-16 left-0 right-0 bg-white shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+    <div class="flex flex-col py-3 px-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <a href="index.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Home</a>
+                <a href="about.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">About Us</a>
+                <a href="academics.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Academics</a>
+                <a href="achievements.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Achievements</a>
+                <a href="extra.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">PlayTime</a>
+                <a href="gallery.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Stories</a>
+                <a href="alumni.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Alumni</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Contact</a>
+                <a href="future.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Future</a>
+                <a href="donate.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Support</a>
+    </div>
+</div>
+<div class="h-16 lg:h-20"></div>
+<!-- ========== HERO SECTION ========== -->
+<section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+    <!-- Background Image - Welcoming school entrance / children -->
+    <div class="absolute inset-0">
+<div class="absolute inset-0">
+        <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+            <source src="images/jp10.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-black/50"></div>
+    </div>        
+        <!-- Cutting Edge Linear Gradient Overlay - Warm & Welcoming -->
+        <div class="absolute inset-0 bg-gradient-to-br from-black/85 via-[#006633]/70 to-[#004d26]/90"></div>
+        
+        <!-- Golden Accent Gradient for Hope & Opportunity -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#ffcc00]/10 via-transparent to-transparent"></div>
+        
+        <!-- Diagonal Premium Accent -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-[#00ff66]/5 via-transparent to-[#ffcc00]/5"></div>
+        
+        <!-- Top Edge Glow -->
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00ff66] to-transparent"></div>
+        
+        <!-- Bottom Glow Line -->
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent"></div>
+        
+        <!-- Animated Light Sweep -->
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 translate-x-[-100%] animate-scan"></div>
+        
+        <!-- Floating Particles - Hope Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-1 h-1 bg-[#00ff66] rounded-full animate-float" style="animation-delay: 0s;"></div>
+            <div class="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-[#ffcc00] rounded-full animate-float" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-1/3 left-1/3 w-1 h-1 bg-white rounded-full animate-float" style="animation-delay: 2s;"></div>
+        </div>
+    </div>
+    
+    <!-- Content Container -->
+    <div class="relative z-10 text-center text-white px-6 max-w-5xl mx-auto">
+        
+        <!-- Admissions Badge -->
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/20 mb-6 animate-fade-in">
+            <i class="fas fa-door-open text-[#00ff66] text-xs"></i>
+            <span class="text-xs font-semibold tracking-[0.15em] uppercase text-white/90">Open Your Child's Future</span>
+            <i class="fas fa-hand-peace text-[#00ff66] text-xs"></i>
+        </div>
+        
+        <!-- Main Heading with Gradient Text -->
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 animate-fade-in-up" style="font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;">
+            <span class="bg-gradient-to-r from-white via-[#00ff66] to-[#ffcc00] bg-clip-text text-transparent bg-300% animate-gradient">Admissions</span>
+        </h1>
+        
+        <!-- Decorative Line with Animation -->
+        <div class="flex justify-center gap-2 my-6 animate-fade-in-up delay-100">
+            <div class="w-16 h-0.5 bg-gradient-to-r from-transparent to-[#00ff66]"></div>
+            <div class="w-2 h-2 bg-[#ffcc00] rounded-full animate-pulse-simple"></div>
+            <div class="w-16 h-0.5 bg-gradient-to-l from-transparent to-[#00ff66]"></div>
+        </div>
+        
+        <!-- Punchline Paragraph -->
+        <p class="text-xl md:text-2xl lg:text-3xl mt-4 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-200" style="font-family: 'Lora', 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+            "Open the door to excellence. Your child's journey begins here."
+        </p>
+        
+       
+        
+   
+        
+    </div>
+     <!-- Scroll Hint -->
+        <div class="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2 animate-fade-in delay-600">
+            <span class="text-[10px] tracking-[0.2em] text-white/60 uppercase">Learn How to Apply</span>
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <div class="w-1.5 h-2.5 bg-[#00ff66] rounded-full mt-2 animate-scroll"></div>
+            </div>
+        </div>
+</section>
+
+<style>
+    /* Gradient Text Animation */
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    .bg-300\% {
+        background-size: 300% auto;
+    }
+    
+    .animate-gradient {
+        animation: gradient 4s ease infinite;
+    }
+    
+    /* Fade In Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-fade-in {
+        animation: fadeIn 0.8s ease forwards;
+    }
+    
+    .animate-fade-in-up {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    .delay-600 { animation-delay: 0.6s; }
+    
+    /* Scroll Animation */
+    @keyframes scroll {
+        0% { transform: translateY(0); opacity: 1; }
+        50% { transform: translateY(8px); opacity: 0.5; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    .animate-scroll {
+        animation: scroll 1.8s ease-in-out infinite;
+    }
+    
+    /* Pulse Animation for Dot */
+    @keyframes pulse-simple {
+        0%, 100% { opacity: 0.5; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.2); }
+    }
+    
+    .animate-pulse-simple {
+        animation: pulse-simple 2s ease-in-out infinite;
+    }
+    
+    /* Float Animation for Particles */
+    @keyframes float {
+        0% { transform: translateY(0) scale(1); opacity: 0; }
+        50% { opacity: 0.8; }
+        100% { transform: translateY(-100px) scale(0); opacity: 0; }
+    }
+    
+    .animate-float {
+        animation: float 4s ease-in-out infinite;
+    }
+    
+    /* Scan Line Animation */
+    @keyframes scan {
+        0% { transform: translateX(-100%) skewX(-12deg); }
+        100% { transform: translateX(200%) skewX(-12deg); }
+    }
+    
+    .animate-scan {
+        animation: scan 8s linear infinite;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .animate-fade-in-up {
+            animation-duration: 0.6s;
+        }
+    }
+</style>
+
+<!-- ========== WELCOME MESSAGE ========== -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-6 md:px-12 max-w-4xl text-center fade-up">
+        <span class="text-[#006633] font-semibold tracking-wider text-sm" style="font-family: 'Plus Jakarta Sans', sans-serif;"><i class="fas fa-door-open mr-2"></i> WELCOME HOME</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2 text-gray-800">Enrolment for 2027 is Now Open</h2>
+        <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
+        <p class="text-gray-600 mt-6 leading-relaxed">John Pama Primary School welcomes learners from Grade R to Grade 7. We are a public, no-fee school (Quintile 2) committed to providing excellent education rooted in the South African CAPS curriculum. Admission is open to all children regardless of race, religion, or background — guided by the Constitution of South Africa and the South African Schools Act.</p>
+    </div>
+</section>
+
+<!-- ========== KEY INFO BANNER (Age requirements, Fees, Language) ========== -->
+<section class="py-10 bg-[#e8f3ed]">
+    <div class="container mx-auto px-6 md:px-12 max-w-6xl">
+        <div class="grid md:grid-cols-3 gap-6 text-center">
+            <div class="bg-white p-6 rounded-xl shadow-md fade-up"><i class="fas fa-calendar-alt text-3xl text-[#006633] mb-3"></i><h3 class="text-xl font-bold" style="font-family: 'Cormorant Garamond', serif;">Age Requirements</h3><p class="text-gray-600 text-sm mt-2"><strong>Grade R:</strong> 4 turning 5 by 30 June<br><strong>Grade 1:</strong> 5 turning 6 by 30 June<br><strong>Other Grades:</strong> Age appropriate per CAPS</p></div>
+            <div class="bg-white p-6 rounded-xl shadow-md fade-up"><i class="fas fa-wallet text-3xl text-[#006633] mb-3"></i><h3 class="text-xl font-bold" style="font-family: 'Cormorant Garamond', serif;">School Fees</h3><p class="text-gray-600 text-sm mt-2"><strong>No-fee school (Quintile 2)</strong><br>No tuition fees required. Minimal voluntary contribution for activities.</p></div>
+            <div class="bg-white p-6 rounded-xl shadow-md fade-up"><i class="fas fa-language text-3xl text-[#006633] mb-3"></i><h3 class="text-xl font-bold" style="font-family: 'Cormorant Garamond', serif;">Language Policy</h3><p class="text-gray-600 text-sm mt-2"><strong>LoLT:</strong> English (First Additional Language)<br><strong>Home Language:</strong> isiXhosa<br>All learners receive instruction in both.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== APPLICATION PROCESS (5 Steps) ========== -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6 md:px-12 max-w-5xl">
+        <div class="text-center mb-12 fade-up">
+            <span class="text-[#006633] font-semibold tracking-wider text-sm" style="font-family: 'Plus Jakarta Sans', sans-serif;"><i class="fas fa-clipboard-list mr-2"></i> HOW TO APPLY</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2">Application Process</h2>
+            <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-600 mt-3">Follow these five steps to secure your child’s place</p>
+        </div>
+        <div class="space-y-6">
+            <div class="step-card flex flex-col md:flex-row gap-4 bg-gray-50 p-6 rounded-xl fade-up"><div class="flex-shrink-0 w-16 h-16 bg-[#006633] text-white rounded-full flex items-center justify-center text-2xl font-bold">1</div><div><h3 class="text-2xl font-bold" style="font-family: 'Cormorant Garamond', serif;">Collect Application Form</h3><p class="text-gray-600 mt-1">Visit the school admin office (Sithandathu Avenue, Nyanga) to collect a hard copy, or <a href="#" class="text-[#006633] font-semibold underline">download here</a>.</p></div></div>
+            <div class="step-card flex flex-col md:flex-row gap-4 bg-gray-50 p-6 rounded-xl fade-up"><div class="flex-shrink-0 w-16 h-16 bg-[#006633] text-white rounded-full flex items-center justify-center text-2xl font-bold">2</div><div><h3 class="text-2xl font-bold" style="font-family: 'Cormorant Garamond', serif;">Complete & Attach Documents</h3><p class="text-gray-600 mt-1">Fill in all sections clearly. Attach certified copies of the required documents (see list below).</p></div></div>
+            <div class="step-card flex flex-col md:flex-row gap-4 bg-gray-50 p-6 rounded-xl fade-up"><div class="flex-shrink-0 w-16 h-16 bg-[#006633] text-white rounded-full flex items-center justify-center text-2xl font-bold">3</div><div><h3 class="text-2xl font-bold" style="font-family: 'Cormorant Garamond', serif;">Submit in Person</h3><p class="text-gray-600 mt-1">Return the completed application pack to the school office. Deadline: <strong class="text-[#006633]">31 August 2026</strong> (for 2027 academic year).</p></div></div>
+            <div class="step-card flex flex-col md:flex-row gap-4 bg-gray-50 p-6 rounded-xl fade-up"><div class="flex-shrink-0 w-16 h-16 bg-[#006633] text-white rounded-full flex items-center justify-center text-2xl font-bold">4</div><div><h3 class="text-2xl font-bold" style="font-family: 'Cormorant Garamond', serif;">Await Placement Offer</h3><p class="text-gray-600 mt-1">The SGB Admission Committee reviews applications and offers placement based on capacity, proximity, and feeder zone priorities. Parents receive written notification.</p></div></div>
+            <div class="step-card flex flex-col md:flex-row gap-4 bg-gray-50 p-6 rounded-xl fade-up"><div class="flex-shrink-0 w-16 h-16 bg-[#006633] text-white rounded-full flex items-center justify-center text-2xl font-bold">5</div><div><h3 class="text-2xl font-bold" style="font-family: 'Cormorant Garamond', serif;">Accept Offer & Register</h3><p class="text-gray-600 mt-1">Accept the placement offer in writing and complete final registration at the school. Welcome to the John Pama family.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== REQUIRED DOCUMENTS (checklist style) ========== -->
+<section class="py-20 bg-[#fafbfb]">
+    <div class="container mx-auto px-6 md:px-12 max-w-4xl">
+        <div class="text-center mb-10 fade-up">
+            <span class="text-[#006633] font-semibold tracking-wider text-sm" style="font-family: 'Plus Jakarta Sans', sans-serif;"><i class="fas fa-folder-open mr-2"></i> PREPARE YOUR APPLICATION</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2">Required Documents</h2>
+            <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-2xl shadow-md fade-up"><h3 class="text-2xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-child text-[#006633]"></i> For the Learner</h3><ul class="document-list space-y-3 text-gray-700"><li><i class="fas fa-check-circle text-[#006633] mr-2"></i> Birth certificate (certified copy)</li><li><i class="fas fa-check-circle text-[#006633] mr-2"></i> Immunisation / Clinic card (Road to Health)</li><li><i class="fas fa-check-circle text-[#006633] mr-2"></i> Latest school report (if transferring)</li><li><i class="fas fa-check-circle text-[#006633] mr-2"></i> Transfer card / Last report from previous school</li></ul></div>
+            <div class="bg-white p-8 rounded-2xl shadow-md fade-up"><h3 class="text-2xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-users text-[#006633]"></i> For Parent/Guardian</h3><ul class="document-list space-y-3 text-gray-700"><li><i class="fas fa-check-circle text-[#006633] mr-2"></i> ID document (certified copy)</li><li><i class="fas fa-check-circle text-[#006633] mr-2"></i> Proof of residence (recent municipal bill or affidavit)</li><li><i class="fas fa-check-circle text-[#006633] mr-2"></i> Proof of income / grant letter (if applicable)</li><li><i class="fas fa-check-circle text-[#006633] mr-2"></i> Two passport-size photos of the learner</li></ul></div>
+        </div>
+        <div class="mt-8 p-5 bg-[#e8f3ed] rounded-xl text-center text-sm text-gray-700"><i class="fas fa-stamp mr-2 text-[#006633]"></i> All copies must be certified within the last 3 months. Bring original documents for verification during submission.</div>
+    </div>
+</section>
+
+<!-- ========== ADMISSION POLICY SUMMARY + LEARNER PROFILE ========== -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6 md:px-12 max-w-5xl">
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="fade-up"><h2 class="text-3xl font-bold mb-4">Admission Policy Summary</h2><div class="w-12 h-0.5 bg-[#006633] mb-4 rounded-full"></div><ul class="space-y-3 text-gray-700"><li><i class="fas fa-balance-scale text-[#006633] mr-2"></i> In line with SA Schools Act & SGB policy</li><li><i class="fas fa-map-marker-alt text-[#006633] mr-2"></i> Priority: Sibling, feeder zone, then proximity</li><li><i class="fas fa-wheelchair text-[#006633] mr-2"></i> Inclusive education – no learner turned away</li><li><i class="fas fa-clock text-[#006633] mr-2"></i> Late applications waitlisted</li></ul></div>
+            <div class="bg-gray-50 p-8 rounded-xl fade-up"><h3 class="text-2xl font-bold mb-3"><i class="fas fa-user-graduate text-[#006633] mr-2"></i> What We Look For</h3><p class="text-gray-600 mb-4">We believe every child has a gift. Our admission process considers the whole child — we don't administer entrance exams for Grades R–3. For higher grades, we conduct a baseline assessment to support placement.</p><div class="flex items-center gap-2 text-[#006633]"><i class="fas fa-heart"></i> <span>Children of all abilities are welcome.</span></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== CTA (Download / Contact) ========== -->
+<section class="relative overflow-hidden bg-gradient-to-br from-[#006633] to-[#008844] py-20">
+    <div class="container mx-auto px-6 text-center relative z-10">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Ready to Apply?</h2>
+        <p class="text-white/90 text-lg max-w-2xl mx-auto mb-8">Download the application form or visit our admissions office. Our friendly staff is here to guide you.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="#" class="bg-white text-[#006633] px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all flex items-center gap-2"><i class="fas fa-download"></i> Download Application Form</a>
+            <a href="contact.html" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition flex items-center gap-2"><i class="fas fa-calendar-alt"></i> Schedule a School Tour</a>
+        </div>
+        <p class="text-white/70 text-sm mt-8"><i class="fas fa-phone-alt mr-1"></i> Admissions Hotline: 021 385 1830 | Mon–Thu 8am–2:30pm</p>
+    </div>
+</section>
+
+<!-- ========== PRESTIGIOUS FOOTER ========== -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="container mx-auto px-6 md:px-12">
+        <div class="grid md:grid-cols-4 gap-10">
+            <div><div class="flex items-center space-x-2 mb-4"><div class="w-10 h-10 bg-[#006633] rounded-full flex items-center justify-center text-white font-bold">JP</div><div><div class="font-bold text-lg" style="font-family: 'Plus Jakarta Sans';">JOHN PAMA</div><div class="text-[10px] text-[#006633] font-semibold">PRIMARY SCHOOL</div></div></div><p class="text-gray-400 text-sm">Sithandathu Ave, Nyanga, Cape Town</p><p class="text-gray-400 text-sm mt-2"><i class="fas fa-phone-alt mr-2 text-[#006633]"></i> 021 385 1830</p><p class="text-gray-400 text-sm"><i class="fas fa-envelope mr-2 text-[#006633]"></i> admissions@johnpamaprimary.co.za</p></div>
+            <div><h4 class="font-semibold text-lg mb-4" style="font-family: 'Plus Jakarta Sans';">Quick Links</h4><ul class="space-y-2 text-gray-400 text-sm"><li><a href="#" class="footer-link hover:text-[#006633] transition">Download Forms</a></li><li><a href="#" class="footer-link hover:text-[#006633] transition">Fee Exemption</a></li><li><a href="#" class="footer-link hover:text-[#006633] transition">School Calendar</a></li><li><a href="#" class="footer-link hover:text-[#006633] transition">Transport Options</a></li></ul></div>
+            <div><h4 class="font-semibold text-lg mb-4" style="font-family: 'Plus Jakarta Sans';">Support</h4><ul class="space-y-2 text-gray-400 text-sm"><li><a href="#" class="footer-link hover:text-[#006633] transition">Donate to Bursaries</a></li><li><a href="#" class="footer-link hover:text-[#006633] transition">Volunteer as Tutor</a></li><li><a href="#" class="footer-link hover:text-[#006633] transition">Corporate Partnerships</a></li></ul></div>
+            <div><h4 class="font-semibold text-lg mb-4" style="font-family: 'Plus Jakarta Sans';">Connect</h4><div class="flex space-x-4 text-gray-400 text-xl"><i class="fab fa-facebook-f hover:text-[#006633] cursor-pointer transition"></i><i class="fab fa-instagram hover:text-[#006633] cursor-pointer transition"></i><i class="fab fa-whatsapp hover:text-[#006633] cursor-pointer transition"></i></div></div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-xs">© 2026 John Pama Primary School — Admissions in line with SA Schools Act, 1996 (Act 84 of 1996). No child is turned away due to inability to pay.</div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const hamburgerIcon = document.getElementById('hamburgerIcon');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let isMenuOpen = false;
+    if(hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if(isMenuOpen) { mobileMenu.classList.add('open'); hamburgerIcon.classList.remove('fa-bars'); hamburgerIcon.classList.add('fa-times'); }
+            else { mobileMenu.classList.remove('open'); hamburgerIcon.classList.remove('fa-times'); hamburgerIcon.classList.add('fa-bars'); }
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => { mobileMenu.classList.remove('open'); hamburgerIcon.classList.remove('fa-times'); hamburgerIcon.classList.add('fa-bars'); isMenuOpen = false; });
+        });
+    }
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { if(window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); });
+    const faders = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
+    faders.forEach(el => observer.observe(el));
+</script>
+<script src="navbar.js"></script>
+</body>
+</html>

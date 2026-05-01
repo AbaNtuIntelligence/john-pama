@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>John Pama Primary – Cape Flats Pride</title>
+    
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Google Fonts - Modern New Times Roman + Futuristic -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hero.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lora', 'Cormorant Garamond', Georgia, serif;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Video Container */
+        .hero-video-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .hero-video-wrapper video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .hero-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+        
+        /* Video slider dots */
+        .video-dots {
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            z-index: 20;
+        }
+        
+        .video-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .video-dot.active {
+            background-color: white;
+            transform: scale(1.3);
+            box-shadow: 0 0 0 2px #006633;
+        }
+        
+        .video-dot:hover {
+            background-color: white;
+        }
+        
+        /* Scroll hint */
+        .scroll-hint {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.875rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        /* ========== TALKING CARDS - DEEPSEEK STYLE ========== */
+        .cards-section {
+            position: relative;
+            z-index: 10;
+            background: #fefcf8;
+            padding: 5rem 1.5rem;
+        }
+        
+        .section-badge {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 9999px;
+            background: rgba(0, 102, 51, 0.1);
+            color: #006633;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        .talking-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.75rem;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid #eef2e6;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .talking-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #006633, #00cc44, #006633);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .talking-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -12px rgba(0, 102, 51, 0.15);
+            border-color: rgba(0, 102, 51, 0.2);
+        }
+        
+        .talking-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #e8f3ed, #d4e8d4);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            transition: all 0.3s ease;
+        }
+        
+        .talking-card:hover .card-icon {
+            background: linear-gradient(135deg, #006633, #008844);
+            transform: scale(1.05);
+        }
+        
+        .talking-card:hover .card-icon i {
+            color: white !important;
+        }
+        
+        .card-icon i {
+            font-size: 1.75rem;
+            color: #006633;
+            transition: all 0.3s ease;
+        }
+        
+        .card-title {
+            font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .card-description {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 0.875rem;
+            color: #6b7280;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        
+        .card-link {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #006633;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+        
+        .talking-card:hover .card-link {
+            gap: 0.75rem;
+        }
+        
+        .card-link i {
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .talking-card:hover .card-link i {
+            transform: translateX(4px);
+        }
+        
+        /* DeepSeek Quote Section */
+        .deepseek-quote {
+            background: linear-gradient(135deg, #006633, #008844);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        /* Futuristic elements */
+        .floating-shape {
+            position: absolute;
+            background: rgba(0, 102, 51, 0.05);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .cards-section {
+                padding: 3rem 1rem;
+            }
+            .talking-card {
+                padding: 1.25rem;
+            }
+            .card-title {
+                font-size: 1.25rem;
+            }
+        }
+
+          /* Additional CSS for the talking cards with background images */
+    .talking-card {
+        transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.3s ease;
+        display: block;
+        text-decoration: none;
+    }
+    
+    .talking-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .card-icon {
+        transition: all 0.3s ease;
+    }
+    
+    .talking-card:hover .card-icon {
+        background: rgba(0, 255, 102, 0.3);
+        transform: scale(1.05);
+    }
+    
+    .card-link {
+        transition: gap 0.3s ease;
+    }
+    
+    .talking-card:hover .card-link {
+        gap: 0.75rem;
+    }
+    
+    .talking-card:hover .card-link i {
+        transform: translateX(4px);
+    }
+    </style>
+</head>
+<body>
+
+    <!-- BACKGROUND VIDEO WRAPPER -->
+    <div class="hero-video-wrapper">
+        <video id="heroVideo" autoplay muted playsinline loop>
+            <source src="https://videos.pexels.com/video-files/3195393/3195393-uhd_2560_1440_24fps.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="hero-overlay"></div>
+
+    <!-- HAMBURGER BUTTON -->
+    <div class="hamburger-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- FULLSCREEN FUTURISTIC MENU -->
+    <div id="fullscreenMenu" class="fullscreen-menu">
+        <div class="menu-close">
+            <i class="fas fa-times"></i>
+        </div>
+        
+        <div class="menu-container">
+            <div class="flex flex-col items-center w-full max-w-md mx-auto">
+                <div class="menu-link-wrapper"><a href="index.html" class="menu-link active">HOME<span class="corner corner-tl"></span><span class="corner corner-tr"></span><span class="corner corner-bl"></span><span class="corner corner-br"></span><span class="pulse-ring"></span></a></div>
+                <div class="menu-link-wrapper"><a href="about.html" class="menu-link">ABOUT<span class="corner corner-tl"></span><span class="corner corner-tr"></span><span class="corner corner-bl"></span><span class="corner corner-br"></span><span class="pulse-ring"></span></a></div>
+                <div class="menu-link-wrapper"><a href="academics.html" class="menu-link">ACADEMICS<span class="corner corner-tl"></span><span class="corner corner-tr"></span><span class="corner corner-bl"></span><span class="corner corner-br"></span><span class="pulse-ring"></span></a></div>
+                <div class="menu-link-wrapper"><a href="admissions.html" class="menu-link">ADMISSIONS<span class="corner corner-tl"></span><span class="corner corner-tr"></span><span class="corner corner-bl"></span><span class="corner corner-br"></span><span class="pulse-ring"></span></a></div>
+                <div class="menu-link-wrapper"><a href="achievements.html" class="menu-link">ACHIEVEMENTS<span class="corner corner-tl"></span><span class="corner corner-tr"></span><span class="corner corner-bl"></span><span class="corner corner-br"></span><span class="pulse-ring"></span></a></div>
+                <div class="menu-link-wrapper"><a href="extra.html" class="menu-link">PLAYTIME<span class="corner corner-tl"></span><span class="corner corner-tr"></span><span class="corner corner-bl"></span><span class="corner corner-br"></span><span class="pulse-ring"></span></a></div>
+                <div class="menu-link-wrapper"><a href="gallery.html" class="menu-link">GALLERY<span class="corner corner-tl"></span><span class="corner corner-tr"></span><span class="corner corner-bl"></span><span class="corner corner-br"></span><span class="pulse-ring"></span></a></div>
+                <div class="menu-link-wrapper"><a href="alumni.html" class="menu-link">ALUMNI<span class="corner corner-tl"></span><span class="corner corner-tr"></span><span class="corner corner-bl"></span><span class="corner corner-br"></span><span class="pulse-ring"></span></a></div>
+                <div class="menu-link-wrapper"><a href="contact.html" class="menu-link">CONTACT<span class="corner corner-tl"></span><span class="corner corner-tr"></span><span class="corner corner-bl"></span><span class="corner corner-br"></span><span class="pulse-ring"></span></a></div>
+                <div class="menu-link-wrapper"><a href="future.html" class="menu-link">THE FUTURE<span class="corner corner-tl"></span><span class="corner corner-tr"></span><span class="corner corner-bl"></span><span class="corner corner-br"></span><span class="pulse-ring"></span></a></div>
+                <div class="menu-link-wrapper"><a href="donate.html" class="menu-link donate">SUPPORT US<span class="corner corner-tl"></span><span class="corner corner-tr"></span><span class="corner corner-bl"></span><span class="corner corner-br"></span><span class="pulse-ring"></span></a></div>
+            </div>
+        </div>
+        
+        <div id="particleContainer"></div>
+    </div>
+
+    <!-- HERO CONTENT - Modern New Times Roman Typography -->
+   <div class="hero-content">
+    <!-- Animated Gradient Background Overlay -->
+    <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-[#006633]/40 to-black/50"></div>
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-[#00ff66]/20 rounded-full blur-[100px] animate-pulse"></div>
+        <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-[#006633]/30 rounded-full blur-[100px] animate-pulse" style="animation-delay: 2s;"></div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="relative z-10 flex flex-col items-center justify-center">
+        
+        <!-- School Logo - Graduation Icon with Ring -->
+        <div class="mb-6 relative">
+            <!-- Outer glowing ring -->
+            <div class="absolute inset-0 rounded-full bg-[#00ff66]/20 blur-xl animate-pulse"></div>
+            <!-- Main logo circle -->
+            <div class="relative w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-[#006633] to-[#00cc44] rounded-full flex items-center justify-center shadow-2xl border-2 border-white/30">
+                <i class="fas fa-graduation-cap text-4xl md:text-5xl text-white drop-shadow-lg"></i>
+            </div>
+            <!-- Decorative small rings -->
+            <div class="absolute -top-2 -right-2 w-6 h-6 bg-[#00ff66]/40 rounded-full blur-sm"></div>
+            <div class="absolute -bottom-2 -left-2 w-4 h-4 bg-[#00ff66]/40 rounded-full blur-sm"></div>
+        </div>
+        
+        <!-- Full School Name -->
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight drop-shadow-2xl text-center" style="font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif; font-weight: 700; letter-spacing: -0.02em;">
+            <span class="bg-gradient-to-r from-white via-[#00ff66] to-white bg-clip-text text-transparent bg-300% animate-gradient">John Pama Primary</span>
+        </h1>
+        
+        <!-- Subtitle / Motto -->
+        <p class="text-lg md:text-xl mt-3 text-white/80 font-light tracking-wide" style="font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: 0.1em;">
+            EST. 19
+        </p>
+        
+        <!-- Inspirational Quote -->
+        <p class="text-xl md:text-2xl mt-6 max-w-2xl text-white/90 font-light italic drop-shadow-lg mx-auto" style="font-family: 'Lora', 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 400;">
+            "Where Courage Built a Classroom, and Love Built a Future."
+        </p>
+        
+        <!-- Decorative Green Line -->
+        <div class="flex justify-center gap-2 my-8">
+            <div class="w-12 h-0.5 bg-gradient-to-r from-transparent to-[#00ff66]"></div>
+            <div class="w-8 h-0.5 bg-[#00ff66] rounded-full"></div>
+            <div class="w-12 h-0.5 bg-gradient-to-l from-transparent to-[#00ff66]"></div>
+        </div>
+        
+        <!-- CTA Buttons -->
+        <div class="mt-2 flex flex-wrap gap-6 justify-center">
+            <!-- Primary CTA with Green Gradient -->
+            <a href="about.html" class="group relative overflow-hidden bg-gradient-to-r from-[#006633] to-[#00cc44] text-white px-8 py-3 rounded-full font-bold shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 flex items-center gap-2" style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-weight: 600;">
+                <span class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></span>
+                <i class="fas fa-book-open mr-2 group-hover:rotate-[-5deg] transition-transform"></i> Explore Legacy
+                <i class="fas fa-arrow-right ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+            </a>
+            
+            <!-- Secondary CTA with Green Border -->
+            <a href="donate.html" class="group relative overflow-hidden bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#006633] px-8 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 flex items-center gap-2" style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-weight: 600;">
+                <span class="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                <span class="relative z-10 flex items-center gap-2 group-hover:text-[#006633]">
+                    <i class="fas fa-hand-holding-heart mr-2 group-hover:scale-110 transition-transform"></i> Support Us
+                    <i class="fas fa-heart ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+    <!-- Video slider dots -->
+    <div id="videoDots" class="video-dots"></div>
+    
+    <!-- Scroll hint with green pulse -->
+    <div class="scroll-hint flex flex-col items-center gap-2">
+        <span class="text-sm tracking-wider">SCROLL</span>
+        <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+            <div class="w-1.5 h-3 bg-[#00ff66] rounded-full mt-2 animate-scrollDot"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Animated gradient text */
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    .bg-300\% {
+        background-size: 300% auto;
+    }
+    
+    .animate-gradient {
+        animation: gradient 4s ease infinite;
+    }
+    
+    /* Scroll dot animation */
+    @keyframes scrollDot {
+        0% { transform: translateY(0); opacity: 1; }
+        50% { transform: translateY(12px); opacity: 0.5; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    .animate-scrollDot {
+        animation: scrollDot 1.8s ease-in-out infinite;
+    }
+    
+    /* Pulse animation for glow effects */
+    @keyframes pulse {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 0.6; transform: scale(1.2); }
+    }
+    
+    .animate-pulse {
+        animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+</style>
+
+    <!-- TALKING CARDS SECTION - DEEPSEEK STYLE -->
+    <div class="cards-section">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <div class="section-badge">
+                <i class="fas fa-compass mr-2"></i> EXPLORE OUR WORLD
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4" style="font-family: 'Cormorant Garamond', serif;">
+                Discover John Pama
+            </h2>
+            <div class="w-20 h-0.5 bg-gradient-to-r from-[#006633] to-[#008844] mx-auto mb-6 rounded-full"></div>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto" style="font-family: 'Lora', serif;">
+                Every card tells a story. Every link opens a door. Welcome to our digital heart.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            
+            <!-- Card 1: About - School building / heritage -->
+            <a href="about.html" class="talking-card group no-underline relative overflow-hidden rounded-2xl" style="background-image: url('images/jp13.webp'); background-size: cover; background-position: center;">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
+                <div class="relative z-10 p-6 min-h-[280px] flex flex-col">
+                    <div class="card-icon bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-landmark text-white text-xl"></i></div>
+                    <h3 class="card-title text-white text-2xl font-bold mb-2">About Us</h3>
+                    <p class="card-description text-white/80 text-sm mb-4 flex-grow">Discover our 50+ year legacy, our mission, and the heart of Nyanga that beats through every classroom.</p>
+                    <span class="card-link text-[#00ff66] font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">Learn more <i class="fas fa-arrow-right text-sm"></i></span>
+                </div>
+            </a>
+            
+            <!-- Card 2: Academics - Classroom / learning -->
+            <a href="academics.html" class="talking-card group no-underline relative overflow-hidden rounded-2xl" style="background-image: url('images/jp14.webp'); background-size: cover; background-position: center;">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
+                <div class="relative z-10 p-6 min-h-[280px] flex flex-col">
+                    <div class="card-icon bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-graduation-cap text-white text-xl"></i></div>
+                    <h3 class="card-title text-white text-2xl font-bold mb-2">Academics</h3>
+                    <p class="card-description text-white/80 text-sm mb-4 flex-grow">CAPS curriculum excellence. From Foundation Phase to Grade 7 — shaping minds, building futures.</p>
+                    <span class="card-link text-[#00ff66] font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">Explore curriculum <i class="fas fa-arrow-right text-sm"></i></span>
+                </div>
+            </a>
+            
+            <!-- Card 3: Admissions - Welcome / open door -->
+            <a href="admissions.html" class="talking-card group no-underline relative overflow-hidden rounded-2xl" style="background-image: url('images/jp16.jpg'); background-size: cover; background-position: center;">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
+                <div class="relative z-10 p-6 min-h-[280px] flex flex-col">
+                    <div class="card-icon bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-door-open text-white text-xl"></i></div>
+                    <h3 class="card-title text-white text-2xl font-bold mb-2">Admissions</h3>
+                    <p class="card-description text-white/80 text-sm mb-4 flex-grow">Welcome to the family. Learn about our no-fee policy, requirements, and how to enrol your child.</p>
+                    <span class="card-link text-[#00ff66] font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">Apply now <i class="fas fa-arrow-right text-sm"></i></span>
+                </div>
+            </a>
+            
+            <!-- Card 4: Achievements - Trophy / victory -->
+            <a href="achievements.html" class="talking-card group no-underline relative overflow-hidden rounded-2xl" style="background-image: url('images/jp15.webp'); background-size: cover; background-position: center;">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
+                <div class="relative z-10 p-6 min-h-[280px] flex flex-col">
+                    <div class="card-icon bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-trophy text-white text-xl"></i></div>
+                    <h3 class="card-title text-white text-2xl font-bold mb-2">Achievements</h3>
+                    <p class="card-description text-white/80 text-sm mb-4 flex-grow">92% pass rate. District champions. Alumni who became doctors, engineers, and leaders.</p>
+                    <span class="card-link text-[#00ff66] font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">Celebrate with us <i class="fas fa-arrow-right text-sm"></i></span>
+                </div>
+            </a>
+            
+            <!-- Card 5: Playfield - Sports / soccer WITH VIDEO BACKGROUND -->
+<a href="playfield.html" class="talking-card group no-underline relative overflow-hidden rounded-2xl block">
+    <!-- Video Background -->
+    <video class="absolute top-0 left-0 w-full h-full object-cover z-0" autoplay loop muted playsinline>
+        <source src="images/jp8.mp4" type="video/mp4">
+    </video>
+    <!-- Dark Overlay for text readability -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40 z-5"></div>
+    <!-- Content -->
+    <div class="relative z-10 p-6 min-h-[280px] flex flex-col">
+        <div class="card-icon bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-futbol text-white text-xl"></i></div>
+        <h3 class="card-title text-white text-2xl font-bold mb-2">Playfield</h3>
+        <p class="card-description text-white/80 text-sm mb-4 flex-grow">Where champions are made. Soccer, netball, athletics — sports that build character and community.</p>
+        <span class="card-link text-[#00ff66] font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">Join the game <i class="fas fa-arrow-right text-sm"></i></span>
+    </div>
+</a>
+            
+            <a href="playfield.html" class="talking-card group no-underline relative overflow-hidden rounded-2xl block">
+    <!-- Video Background -->
+    <video class="absolute top-0 left-0 w-full h-full object-cover z-0" autoplay loop muted playsinline>
+        <source src="images/jp9.mp4" type="video/mp4">
+    </video>
+    <!-- Dark Overlay for text readability -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40 z-5"></div>
+    <!-- Content -->
+     <div class="relative z-10 p-6 min-h-[280px] flex flex-col">
+                    <div class="card-icon bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-images text-white text-xl"></i></div>
+                    <h3 class="card-title text-white text-2xl font-bold mb-2">Gallery</h3>
+                    <p class="card-description text-white/80 text-sm mb-4 flex-grow">Moments frozen in time. Smiles, victories, and daily miracles — captured for eternity.</p>
+                    <span class="card-link text-[#00ff66] font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">View memories <i class="fas fa-arrow-right text-sm"></i></span>
+                </div>
+</a>
+            
+            <!-- Card 7: Alumni - Graduates / success -->
+            <a href="playfield.html" class="talking-card group no-underline relative overflow-hidden rounded-2xl block">
+    <!-- Video Background -->
+    <video class="absolute top-0 left-0 w-full h-full object-cover z-0" autoplay loop muted playsinline>
+        <source src="images/johnPama.mp4" type="video/mp4">
+    </video>
+    <!-- Dark Overlay for text readability -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40 z-5"></div>
+    <!-- Content -->
+    <div class="relative z-10 p-6 min-h-[280px] flex flex-col">
+                    <div class="card-icon bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-users text-white text-xl"></i></div>
+                    <h3 class="card-title text-white text-2xl font-bold mb-2">Alumni</h3>
+                    <p class="card-description text-white/80 text-sm mb-4 flex-grow">From Nyanga to the world. Join our network of 1,200+ former learners making a difference.</p>
+                    <span class="card-link text-[#00ff66] font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">Reconnect <i class="fas fa-arrow-right text-sm"></i></span>
+                </div>
+</a>
+            
+            <!-- Card 8: Contact - Phone / communication -->
+            <a href="contact.html" class="talking-card group no-underline relative overflow-hidden rounded-2xl" style="background-image: url('images/jp20.png'); background-size: cover; background-position: center;">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
+                <div class="relative z-10 p-6 min-h-[280px] flex flex-col">
+                    <div class="card-icon bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-envelope text-white text-xl"></i></div>
+                    <h3 class="card-title text-white text-2xl font-bold mb-2">Contact</h3>
+                    <p class="card-description text-white/80 text-sm mb-4 flex-grow">Reach out. Ask questions. Schedule a tour. We're here, ready to welcome you.</p>
+                    <span class="card-link text-[#00ff66] font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">Get in touch <i class="fas fa-arrow-right text-sm"></i></span>
+                </div>
+            </a>
+            
+            <!-- Card 9: The Future - Futuristic / tech -->
+            <a href="future.html" class="talking-card group no-underline relative overflow-hidden rounded-2xl" style="background-image: url('https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800'); background-size: cover; background-position: center;">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
+                <div class="relative z-10 p-6 min-h-[280px] flex flex-col">
+                    <div class="card-icon bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-rocket text-white text-xl"></i></div>
+                    <h3 class="card-title text-white text-2xl font-bold mb-2">The Future</h3>
+                    <p class="card-description text-white/80 text-sm mb-4 flex-grow">AI, quantum learning, space-tech. Peek into Nyanga 2035 — where tomorrow is being built today.</p>
+                    <span class="card-link text-[#00ff66] font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">See the vision <i class="fas fa-arrow-right text-sm"></i></span>
+                </div>
+            </a>
+            
+            <!-- Card 10: Support Us - Hands / giving -->
+            <a href="donate.html" class="talking-card group no-underline relative overflow-hidden rounded-2xl" style="background-image: url('images/pama.jpg'); background-size: cover; background-position: center;">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
+                <div class="relative z-10 p-6 min-h-[280px] flex flex-col">
+                    <div class="card-icon bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-heart text-white text-xl"></i></div>
+                    <h3 class="card-title text-white text-2xl font-bold mb-2">Support Us</h3>
+                    <p class="card-description text-white/80 text-sm mb-4 flex-grow">Every rand plants a seed. Donate money, goods, or your time. Be the reason a child dreams bigger.</p>
+                    <span class="card-link text-[#00ff66] font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">Give today <i class="fas fa-arrow-right text-sm"></i></span>
+                </div>
+            </a>
+            <!-- Card 5: Playfield - Sports / soccer WITH VIDEO BACKGROUND -->
+<a href="playfield.html" class="talking-card group no-underline relative overflow-hidden rounded-2xl block">
+    <!-- Video Background -->
+    <video class="absolute top-0 left-0 w-full h-full object-cover z-0" autoplay loop muted playsinline>
+        <source src="images/jp10.mp4" type="video/mp4">
+    </video>
+    <!-- Dark Overlay for text readability -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40 z-5"></div>
+    <!-- Content -->
+    <div class="relative z-10 p-6 min-h-[280px] flex flex-col">
+        <div class="card-icon bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-futbol text-white text-xl"></i></div>
+        <h3 class="card-title text-white text-2xl font-bold mb-2">Playfield</h3>
+        <p class="card-description text-white/80 text-sm mb-4 flex-grow">Where champions are made. Soccer, netball, athletics — sports that build character and community.</p>
+        <span class="card-link text-[#00ff66] font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">Join the game <i class="fas fa-arrow-right text-sm"></i></span>
+    </div>
+</a>
+<!-- Card 5: Playfield - Sports / soccer WITH VIDEO BACKGROUND -->
+<a href="contact.html" class="talking-card group no-underline relative overflow-hidden rounded-2xl" style="background-image: url('https://images.pexels.com/photos/4140632/pexels-photo-4140632.jpeg?auto=compress&cs=tinysrgb&w=800'); background-size: cover; background-position: center;">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
+                <div class="relative z-10 p-6 min-h-[280px] flex flex-col">
+                    <div class="card-icon bg-white/20 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-envelope text-white text-xl"></i></div>
+                    <h3 class="card-title text-white text-2xl font-bold mb-2">Contact</h3>
+                    <p class="card-description text-white/80 text-sm mb-4 flex-grow">Reach out. Ask questions. Schedule a tour. We're here, ready to welcome you.</p>
+                    <span class="card-link text-[#00ff66] font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">Get in touch <i class="fas fa-arrow-right text-sm"></i></span>
+                </div>
+            </a>
+            
+        </div>
+    </div>
+</div>
+
+    <!-- DeepSeek Style Quote Section -->
+            <div class="deepseek-quote mt-16">
+                <i class="fas fa-quote-left text-3xl text-white/50 mb-4"></i>
+                <p class="text-white text-xl md:text-2xl italic max-w-3xl mx-auto" style="font-family: 'Cormorant Garamond', serif;">
+                    "We don't just teach children. We raise architects of possibility. From the Cape Flats to every corner of the Earth — our learners will be known by the depth of their questions, not just the correctness of their answers."
+                </p>
+                <p class="text-white/80 text-sm mt-6" style="font-family: 'Plus Jakarta Sans', sans-serif;">— The John Pama Promise</p>
+            </div>
+            
+            <!-- Stats Row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 text-center">
+                <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                    <div class="text-2xl md:text-3xl font-bold text-[#006633]" style="font-family: 'Cormorant Garamond', serif;">800+</div>
+                    <p class="text-gray-500 text-xs uppercase tracking-wide" style="font-family: 'Plus Jakarta Sans', sans-serif;">Learners</p>
+                </div>
+                <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                    <div class="text-2xl md:text-3xl font-bold text-[#006633]" style="font-family: 'Cormorant Garamond', serif;">92%</div>
+                    <p class="text-gray-500 text-xs uppercase tracking-wide" style="font-family: 'Plus Jakarta Sans', sans-serif;">Pass Rate</p>
+                </div>
+                <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                    <div class="text-2xl md:text-3xl font-bold text-[#006633]" style="font-family: 'Cormorant Garamond', serif;">1968</div>
+                    <p class="text-gray-500 text-xs uppercase tracking-wide" style="font-family: 'Plus Jakarta Sans', sans-serif;">Founded</p>
+                </div>
+                <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                    <div class="text-2xl md:text-3xl font-bold text-[#006633]" style="font-family: 'Cormorant Garamond', serif;">50+</div>
+                    <p class="text-gray-500 text-xs uppercase tracking-wide" style="font-family: 'Plus Jakarta Sans', sans-serif;">Dedicated Staff</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- ========== PRESTIGIOUS FOOTER ========== -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="container mx-auto px-6 md:px-12">
+        <div class="grid md:grid-cols-4 gap-10">
+            <div><div class="flex items-center space-x-2 mb-4"><div class="w-10 h-10 bg-[#006633] rounded-full flex items-center justify-center text-white font-bold">JP</div><div><div class="font-bold text-lg" style="font-family: 'Plus Jakarta Sans';">JOHN PAMA</div><div class="text-[10px] text-[#006633] font-semibold">PRIMARY SCHOOL</div></div></div><p class="text-gray-400 text-sm">Sithandathu Ave, Nyanga, Cape Town</p><p class="text-gray-400 text-sm mt-2"><i class="fas fa-phone-alt mr-2 text-[#006633]"></i> 021 385 1830</p></div>
+            <div><h4 class="font-semibold text-lg mb-4" style="font-family: 'Plus Jakarta Sans';">Academics</h4><ul class="space-y-2 text-gray-400 text-sm"><li><a href="#" class="footer-link hover:text-[#006633] transition">CAPS Overview</a></li><li><a href="#" class="footer-link hover:text-[#006633] transition">Foundation Phase</a></li><li><a href="#" class="footer-link hover:text-[#006633] transition">Intermediate Phase</a></li><li><a href="#" class="footer-link hover:text-[#006633] transition">Assessment Schedule</a></li></ul></div>
+            <div><h4 class="font-semibold text-lg mb-4" style="font-family: 'Plus Jakarta Sans';">Resources</h4><ul class="space-y-2 text-gray-400 text-sm"><li><a href="#" class="footer-link hover:text-[#006633] transition">School Calendar</a></li><li><a href="#" class="footer-link hover:text-[#006633] transition">Parent Portal</a></li><li><a href="#" class="footer-link hover:text-[#006633] transition">DBE Workbooks</a></li></ul></div>
+            <div><h4 class="font-semibold text-lg mb-4" style="font-family: 'Plus Jakarta Sans';">Connect</h4><div class="flex space-x-4 text-gray-400 text-xl"><i class="fab fa-facebook-f hover:text-[#006633] cursor-pointer transition"></i><i class="fab fa-instagram hover:text-[#006633] cursor-pointer transition"></i><i class="fab fa-whatsapp hover:text-[#006633] cursor-pointer transition"></i></div></div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-xs">© 2026 John Pama Primary School — CAPS-aligned. Rooted in Nyanga. Reaching for excellence. 🇿🇦</div>
+    </div>
+</footer>
+
+    
+    </script>
+    <script src="hero.js"></script>
+</body>
+</html>

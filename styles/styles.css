@@ -1,0 +1,75 @@
+/* ============================================
+   2026 PRESTIGE SERIF FONT STACK
+   Modern "New Times Roman" – Classic. Authoritative. Elegant.
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    /* Modern Serif (New Times Roman 2026) */
+    --font-serif-prestige: 'Cormorant Garamond', 'Lora', 'Times New Roman', Georgia, serif;
+    
+    /* Secondary Serif for body text (more readable) */
+    --font-serif-body: 'Lora', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    
+    /* Sans-serif for navigation & buttons (clean contrast) */
+    --font-sans-modern: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Monospace for stats */
+    --font-mono: 'SF Mono', 'Fira Code', monospace;
+}
+
+/* HEADINGS: Prestigious Serif (like NYT / Harper's Bazaar) */
+h1, h2, h3, h4, .prestige-heading {
+    font-family: var(--font-serif-prestige);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+/* H1 - Extra bold, authoritative */
+h1 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* Subheadings: Elegant italic or semi-bold */
+.subheading, .section-subtitle, .quote {
+    font-family: var(--font-serif-prestige);
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: -0.005em;
+}
+
+/* Body Text: Lora (super readable, modern serif) */
+body, p, .body-text, .card-text {
+    font-family: var(--font-serif-body);
+    font-weight: 400;
+    line-height: 1.65;
+    letter-spacing: 0;
+}
+
+/* Navigation & Buttons: Clean sans-serif for contrast */
+nav, .nav-link, button, .donate-btn, .footer-link {
+    font-family: var(--font-sans-modern);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+/* Blockquotes / Museum labels */
+blockquote, .museum-quote, .testimonial {
+    font-family: var(--font-serif-prestige);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+/* Stats and numbers */
+.stat-number, .year-badge {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}

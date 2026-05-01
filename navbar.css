@@ -1,0 +1,42 @@
+    /* Mobile menu open state */
+    .mobile-menu.open {
+        transform: translateX(0);
+    }
+    
+    /* Active link styling */
+    .nav-link.active {
+        color: #006633;
+        font-weight: 600;
+    }
+    
+    .nav-link.active::after {
+        width: 80%;
+    }
+    
+    .mobile-nav-link.active {
+        background-color: #e8f3ed;
+        color: #006633;
+        font-weight: 600;
+        border-left: 3px solid #006633;
+    }
+    
+    /* Hide logo text on very small screens if needed */
+    @media (max-width: 380px) {
+        .logo-text {
+            font-size: 0.7rem;
+        }
+    }
+    
+    /* Mobile menu scrollbar */
+    .mobile-menu .overflow-y-auto::-webkit-scrollbar {
+        width: 3px;
+    }
+    
+    .mobile-menu .overflow-y-auto::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    .mobile-menu .overflow-y-auto::-webkit-scrollbar-thumb {
+        background: #006633;
+        border-radius: 3px;
+    }

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>John Pama Primary | Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* COMPLETE RESET - NO WHITE OVERLAY */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            background-color: #eef3ea !important;
+            font-family: 'Lora', 'Cormorant Garamond', Georgia, serif;
+            color: #1f2937;
+        }
+        
+        /* NO white backgrounds anywhere */
+        section, div, main, .container, .mx-auto {
+            background-color: transparent !important;
+        }
+        
+        /* Fix for Tailwind's default white */
+        .bg-white, .bg-gray-50, .bg-gray-100 {
+            background-color: transparent !important;
+        }
+        
+        /* Only cards get white background */
+        .gallery-item {
+            background-color: white !important;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .gallery-overlay {
+            padding: 1rem;
+            background: white;
+        }
+        
+        .gallery-overlay p {
+            margin: 0;
+            font-weight: 600;
+            color: #006633;
+        }
+        
+        /* Video thumb play button */
+        .video-thumb {
+            position: relative;
+        }
+        
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: #006633;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Grid layout */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+        
+        /* Section headers */
+        .section-header {
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #c8dbc8;
+        }
+        
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #006633;
+        }
+        
+        /* Navbar */
+        .prestige-nav {
+            background-color: white !important;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .nav-link {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-decoration: none;
+            color: #374151;
+            transition: color 0.2s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: #006633;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+        
+        .modal-content img, .modal-content video {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 0.5rem;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        .modal-prev, .modal-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 1rem;
+        }
+        
+        .modal-prev { left: 20px; }
+        .modal-next { right: 20px; }
+        
+        .modal-caption {
+            text-align: center;
+            color: white;
+            margin-top: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #006633, #008844) !important;
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #111827 !important;
+            color: white;
+            padding: 3rem 1rem 1rem;
+        }
+        
+        /* Utility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .py-16 {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .donate-btn {
+            background: #006633;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+        
+        .h-16 {
+            height: 4rem;
+        }
+        
+        .lg\:h-20 {
+            height: 5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                position: fixed;
+                top: 4rem;
+                left: 0;
+                right: 0;
+                background: white;
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+                z-index: 99;
+            }
+            .mobile-menu.open {
+                transform: translateX(0);
+            }
+            .mobile-nav-link {
+                display: block;
+                padding: 0.75rem 1rem;
+                text-decoration: none;
+                color: #374151;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header id="navbar" class="fixed top-0 left-0 w-full bg-white border-b border-gray-100 z-50 prestige-nav">
+    <div class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16 lg:h-20">
+            
+            <!-- Logo - More compact on mobile -->
+            <a href="index.html" class="logo-link flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
+                <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 bg-[#006633] rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all">
+                    JP
+                </div>
+                <div class="hidden xs:flex flex-col">
+                    <div class="logo-text font-bold text-xs sm:text-sm lg:text-base tracking-tight text-gray-800 transition-all whitespace-nowrap">JOHN PAMA</div>
+                    <div class="text-[8px] sm:text-[9px] lg:text-[10px] text-[#006633] font-semibold tracking-wider whitespace-nowrap">PRIMARY SCHOOL</div>
+                </div>
+            </a>
+            
+            <!-- Desktop Navigation - Wrapped in overflow-auto for safety -->
+            <div class="hidden lg:flex items-center space-x-4 xl:space-x-6 2xl:space-x-8 overflow-x-auto max-w-full">
+                <a href="index.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Home</a>
+                <a href="about.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">About Us</a>
+                <a href="academics.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Academics</a>
+                <a href="admissions.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Admissions</a>
+                <a href="achievements.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Achievements</a>
+                <a href="extra.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Playfield</a>
+                <a href="alumni.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Alumni</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Contact</a>
+                <a href="future.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Future</a>
+                <a href="donate.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Support</a>
+            </div>
+            
+            <!-- Desktop Donate Button + Mobile Hamburger -->
+            <div class="flex items-center gap-2 sm:gap-3 lg:gap-4 flex-shrink-0">
+                <!-- Donate Button - Desktop -->
+                <a href="donate.html" class="donate-btn hidden lg:flex text-white px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold items-center gap-1.5 shadow-md whitespace-nowrap">
+                    <i class="fas fa-heart text-[10px] lg:text-xs"></i>
+                    <span>Donate</span>
+                </a>
+                
+                <!-- Donate Button - Tablet (visible on md to lg) -->
+                <a href="donate.html" class="donate-btn hidden md:flex lg:hidden text-white px-3 py-1.5 rounded-full text-xs font-semibold items-center gap-1 shadow-md whitespace-nowrap">
+                    <i class="fas fa-heart text-[10px]"></i>
+                    <span>Donate</span>
+                </a>
+                
+                <!-- Hamburger Button (visible on screens below lg) -->
+                <button id="hamburgerBtn" class="hamburger-btn-mobile lg:hidden w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-gray-700 transition-all hover:bg-gray-100">
+                    <i id="hamburgerIcon" class="fas fa-bars text-base sm:text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Spacer to prevent content from hiding under fixed navbar -->
+<div class="h-16 lg:h-20"></div>
+
+<!-- Mobile Menu Panel (hidden by default, toggled by JS) -->
+<div id="mobileMenu" class="mobile-menu fixed top-16 left-0 right-0 bg-white shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+    <div class="flex flex-col py-3 px-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <a href="index.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Home</a>
+                <a href="about.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">About Us</a>
+                <a href="academics.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Academics</a>
+                <a href="admissions.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Admissions</a>
+                <a href="achievements.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Achievements</a>
+                <a href="extra.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Playfield</a>
+                <a href="alumni.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Alumni</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Contact</a>
+                <a href="future.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Future</a>
+                <a href="donate.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Support</a>
+    </div>
+</div>
+<div class="h-16 lg:h-20"></div>
+
+
+<!-- Hero -->
+<section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+    <!-- Background Video/Slideshow Effect -->
+    <div class="absolute inset-0">
+        <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+            <source src="images/jp10.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-black/50"></div>
+        
+        <!-- Cutting Edge Linear Gradient Overlay - Gallery/Museum Theme -->
+        <div class="absolute inset-0 bg-gradient-to-br from-black/85 via-[#006633]/60 to-[#1a1a2e]/90"></div>
+        
+        <!-- Cinematic Letterbox Effect (Top & Bottom) -->
+        <div class="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-black/80 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-black/80 to-transparent"></div>
+        
+        <!-- Diagonal Premium Accent - Gallery Light Rays -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-[#00ff66]/10 via-transparent to-[#ffcc00]/5"></div>
+        
+        <!-- Top Edge Gallery Light -->
+        <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#00ff66] to-transparent animate-pulse"></div>
+        
+        <!-- Animated Light Sweep - Like a projector -->
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent transform -skew-x-12 translate-x-[-100%] animate-scan"></div>
+        
+        <!-- Floating Photo Particles -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-1.5 h-1.5 bg-[#00ff66] rounded-full animate-float" style="animation-delay: 0s;"></div>
+            <div class="absolute top-1/2 right-1/3 w-2 h-2 bg-white rounded-full animate-float" style="animation-delay: 0.5s;"></div>
+            <div class="absolute bottom-1/3 left-1/3 w-1 h-1 bg-[#ffcc00] rounded-full animate-float" style="animation-delay: 1s;"></div>
+            <div class="absolute top-2/3 right-1/4 w-1.5 h-1.5 bg-[#00ff66] rounded-full animate-float" style="animation-delay: 1.5s;"></div>
+            <div class="absolute bottom-1/4 left-2/3 w-1 h-1 bg-white rounded-full animate-float" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/3 left-3/4 w-0.5 h-0.5 bg-[#ffcc00] rounded-full animate-float" style="animation-delay: 2.5s;"></div>
+        </div>
+        
+        <!-- Subtle Frame Border - Like a Photo Frame -->
+        <div class="absolute inset-4 pointer-events-none border border-white/5 rounded-2xl"></div>
+    </div>
+    
+    <!-- Content Container -->
+    <div class="relative z-10 text-center text-white px-6 max-w-5xl mx-auto">
+        
+        <!-- Gallery Badge - Museum Quality -->
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/20 mb-6 animate-fade-in">
+            <i class="fas fa-camera text-[#00ff66] text-xs"></i>
+            <span class="text-xs font-semibold tracking-[0.15em] uppercase text-white/90">Moments in Time • Visual Archive</span>
+            <i class="fas fa-images text-[#00ff66] text-xs"></i>
+        </div>
+        
+        <!-- Main Heading with Gradient Text -->
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 animate-fade-in-up" style="font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;">
+            <span class="bg-gradient-to-r from-white via-[#00ff66] to-[#ffcc00] bg-clip-text text-transparent bg-300% animate-gradient">Our Gallery</span>
+        </h1>
+        
+        <!-- Decorative Line with Camera Icon -->
+        <div class="flex justify-center gap-3 my-6 animate-fade-in-up delay-100">
+            <div class="w-12 h-0.5 bg-gradient-to-r from-transparent to-[#00ff66]"></div>
+            <i class="fas fa-camera-retro text-[#00ff66] text-sm animate-pulse-slow"></i>
+            <i class="fas fa-image text-[#00ff66] text-sm animate-pulse-slow" style="animation-delay: 0.3s;"></i>
+            <i class="fas fa-video text-[#00ff66] text-sm animate-pulse-slow" style="animation-delay: 0.6s;"></i>
+            <div class="w-12 h-0.5 bg-gradient-to-l from-transparent to-[#00ff66]"></div>
+        </div>
+        
+        <!-- Punchline Paragraph -->
+        <p class="text-xl md:text-2xl lg:text-3xl mt-4 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-200" style="font-family: 'Lora', 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+            "Moments frozen in time. Smiles, victories, and daily miracles — captured for eternity."
+        </p>
+
+    </div>
+            <!-- Scroll Hint -->
+        <div class="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2 animate-fade-in delay-600">
+            <span class="text-[10px] tracking-[0.2em] text-white/60 uppercase">Scroll to Explore</span>
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <div class="w-1.5 h-2.5 bg-gradient-to-b from-[#00ff66] to-[#ffcc00] rounded-full mt-2 animate-scroll"></div>
+            </div>
+        </div>
+</section>
+
+<style>
+    /* Gradient Text Animation */
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    .bg-300\% {
+        background-size: 300% auto;
+    }
+    
+    .animate-gradient {
+        animation: gradient 4s ease infinite;
+    }
+    
+    /* Fade In Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-fade-in {
+        animation: fadeIn 0.8s ease forwards;
+    }
+    
+    .animate-fade-in-up {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    .delay-600 { animation-delay: 0.6s; }
+    
+    /* Pulse for Icons and Edges */
+    @keyframes pulse-slow {
+        0%, 100% { opacity: 0.6; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.1); }
+    }
+    
+    .animate-pulse-slow {
+        animation: pulse-slow 2s ease-in-out infinite;
+    }
+    
+    /* Scroll Animation */
+    @keyframes scroll {
+        0% { transform: translateY(0); opacity: 1; }
+        50% { transform: translateY(8px); opacity: 0.5; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    .animate-scroll {
+        animation: scroll 1.8s ease-in-out infinite;
+    }
+    
+    /* Float Animation for Particles */
+    @keyframes float {
+        0% { transform: translateY(0) scale(1); opacity: 0; }
+        50% { opacity: 0.8; }
+        100% { transform: translateY(-100px) scale(0); opacity: 0; }
+    }
+    
+    .animate-float {
+        animation: float 4s ease-in-out infinite;
+    }
+    
+    /* Scan Line Animation */
+    @keyframes scan {
+        0% { transform: translateX(-100%) skewX(-12deg); }
+        100% { transform: translateX(200%) skewX(-12deg); }
+    }
+    
+    .animate-scan {
+        animation: scan 8s linear infinite;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .animate-fade-in-up {
+            animation-duration: 0.6s;
+        }
+    }
+</style>
+
+<!-- Videos Section -->
+<section class="py-16" style="background-color: #eef3ea;">
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="fas fa-video mr-3"></i> Watch Our Story</h2>
+        </div>
+        <div id="videosGrid" class="gallery-grid"></div>
+    </div>
+</section>
+
+<!-- Images Section -->
+<section class="py-16" style="background-color: #eef3ea;">
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="fas fa-camera mr-3"></i> Captured Moments</h2>
+        </div>
+        <div id="imagesGrid" class="gallery-grid"></div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-close"><i class="fas fa-times"></i></div>
+    <div class="modal-prev"><i class="fas fa-chevron-left"></i></div>
+    <div class="modal-next"><i class="fas fa-chevron-right"></i></div>
+    <div class="modal-content">
+        <img id="modalImage" src="" alt="">
+        <video id="modalVideo" controls style="display: none;"></video>
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Share Your Memories</h2>
+        <p class="text-lg max-w-2xl mx-auto mb-6">Have a photo or video from your time at John Pama? Help us build our living archive.</p>
+        <a href="#" class="inline-block bg-white text-[#006633] px-8 py-3 rounded-full font-bold"><i class="fas fa-upload mr-2"></i> Contribute to Gallery</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="grid md:grid-cols-4 gap-10">
+            <div>
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-10 h-10 bg-[#006633] rounded-full flex items-center justify-center text-white font-bold">JP</div>
+                    <div><div class="font-bold text-lg">JOHN PAMA</div><div class="text-[10px] text-[#006633] font-semibold">PRIMARY SCHOOL</div></div>
+                </div>
+                <p class="text-gray-400 text-sm">Sithandathu Ave, Nyanga, Cape Town</p>
+                <p class="text-gray-400 text-sm mt-2"><i class="fas fa-phone-alt mr-2 text-[#006633]"></i> 021 385 1830</p>
+            </div>
+            <div><h4 class="font-semibold text-lg mb-4">Gallery</h4><ul class="space-y-2 text-gray-400 text-sm"><li><a href="#" class="hover:text-[#006633] transition">School Events</a></li><li><a href="#" class="hover:text-[#006633] transition">Sports Moments</a></li><li><a href="#" class="hover:text-[#006633] transition">Graduations</a></li></ul></div>
+            <div><h4 class="font-semibold text-lg mb-4">Connect</h4><ul class="space-y-2 text-gray-400 text-sm"><li><a href="#" class="hover:text-[#006633] transition">Instagram</a></li><li><a href="#" class="hover:text-[#006633] transition">Facebook</a></li><li><a href="#" class="hover:text-[#006633] transition">YouTube</a></li></ul></div>
+            <div><h4 class="font-semibold text-lg mb-4">Hashtags</h4><p class="text-gray-400 text-sm">#JohnPamaPride<br>#CapeFlatsToGlory<br>#NyangaRising</p></div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-xs">© 2026 John Pama Primary School — Our moments, our legacy. 🇿🇦</div>
+    </div>
+</footer>
+
+<script>
+    // Gallery Data
+    const videosData = [
+        { type: 'video', url: 'https://www.w3schools.com/html/mov_bbb.mp4', poster: 'https://images.pexels.com/photos/6646932/pexels-photo-6646932.jpeg?auto=compress&cs=tinysrgb&w=800', title: 'Sports Day Highlights', description: 'Annual athletics championship - 100m finals' },
+        { type: 'video', url: 'https://www.w3schools.com/html/mov_bbb.mp4', poster: 'https://images.pexels.com/photos/5212347/african-children-playing-at-school-break.jpg?auto=compress&cs=tinysrgb&w=800', title: 'Coding Club in Action', description: 'Young innovators showcase robotics projects' },
+        { type: 'video', url: 'https://www.w3schools.com/html/mov_bbb.mp4', poster: 'https://images.pexels.com/photos/3285203/pexels-photo-3285203.jpeg?auto=compress&cs=tinysrgb&w=800', title: 'Marimba Band Performance', description: 'Cultural day celebration' }
+    ];
+    
+    const imagesData = [
+        { type: 'image', url: 'https://images.pexels.com/photos/5212347/african-children-playing-at-school-break.jpg?auto=compress&cs=tinysrgb&w=800', title: 'Classroom Excellence', description: 'Grade 6 learners during mathematics lesson' },
+        { type: 'image', url: 'https://images.pexels.com/photos/5429061/pexels-photo-5429061.jpeg?auto=compress&cs=tinysrgb&w=800', title: 'Library Hour', description: 'Reading period in our library' },
+        { type: 'image', url: 'https://images.pexels.com/photos/4678320/boys-playing-soccer-together-outdoors.jpg?auto=compress&cs=tinysrgb&w=800', title: 'Soccer Champions', description: 'U13 team after winning trophy' },
+        { type: 'image', url: 'https://images.pexels.com/photos/5072979/girls-playing-netball-on-school-court.jpg?auto=compress&cs=tinysrgb&w=800', title: 'Netball Victory', description: '3rd consecutive win celebration' }
+    ];
+    
+    let allMedia = [...videosData, ...imagesData];
+    let currentModalIndex = 0;
+    
+    function renderVideos() {
+        const grid = document.getElementById('videosGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        videosData.forEach((video) => {
+            const globalIndex = allMedia.findIndex(m => m === video);
+            const card = document.createElement('div');
+            card.className = 'gallery-item fade-up';
+            card.innerHTML = `
+                <div class="video-thumb">
+                    <img src="${video.poster}" alt="${video.title}">
+                    <div class="play-icon"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="gallery-overlay"><p>${video.title}</p></div>
+            `;
+            card.addEventListener('click', () => openModal(globalIndex));
+            grid.appendChild(card);
+        });
+        observeFade();
+    }
+    
+    function renderImages() {
+        const grid = document.getElementById('imagesGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        imagesData.forEach((image) => {
+            const globalIndex = allMedia.findIndex(m => m === image);
+            const card = document.createElement('div');
+            card.className = 'gallery-item fade-up';
+            card.innerHTML = `<img src="${image.url}" alt="${image.title}"><div class="gallery-overlay"><p>${image.title}</p></div>`;
+            card.addEventListener('click', () => openModal(globalIndex));
+            grid.appendChild(card);
+        });
+        observeFade();
+    }
+    
+    function openModal(index) {
+        currentModalIndex = index;
+        const item = allMedia[currentModalIndex];
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modalImage');
+        const modalVideo = document.getElementById('modalVideo');
+        const modalCaption = document.getElementById('modalCaption');
+        
+        modalImg.style.display = 'none';
+        modalVideo.style.display = 'none';
+        
+        if (item.type === 'video') {
+            modalVideo.style.display = 'block';
+            modalVideo.src = item.url;
+            if (item.poster) modalVideo.poster = item.poster;
+            modalVideo.load();
+            modalVideo.play().catch(e => console.log('Autoplay prevented'));
+        } else {
+            modalImg.style.display = 'block';
+            modalImg.src = item.url;
+            if (modalVideo) modalVideo.pause();
+        }
+        modalCaption.textContent = `${item.title} — ${item.description}`;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal() {
+        const modal = document.getElementById('modal');
+        const modalVideo = document.getElementById('modalVideo');
+        if (modalVideo) modalVideo.pause();
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    function nextModal() {
+        let nextIndex = currentModalIndex + 1;
+        if (nextIndex >= allMedia.length) nextIndex = 0;
+        openModal(nextIndex);
+    }
+    
+    function prevModal() {
+        let prevIndex = currentModalIndex - 1;
+        if (prevIndex < 0) prevIndex = allMedia.length - 1;
+        openModal(prevIndex);
+    }
+    
+    function observeFade() {
+        const faders = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        faders.forEach(el => observer.observe(el));
+    }
+    
+    document.querySelector('.modal-close')?.addEventListener('click', closeModal);
+    document.querySelector('.modal-prev')?.addEventListener('click', prevModal);
+    document.querySelector('.modal-next')?.addEventListener('click', nextModal);
+    document.addEventListener('keydown', (e) => {
+        if (document.getElementById('modal')?.classList.contains('active')) {
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowRight') nextModal();
+            if (e.key === 'ArrowLeft') prevModal();
+        }
+    });
+    document.getElementById('modal')?.addEventListener('click', (e) => {
+        if (e.target === document.getElementById('modal')) closeModal();
+    });
+    
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const hamburgerIcon = document.getElementById('hamburgerIcon');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let isMenuOpen = false;
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.add('open');
+                hamburgerIcon.classList.remove('fa-bars');
+                hamburgerIcon.classList.add('fa-times');
+            } else {
+                mobileMenu.classList.remove('open');
+                hamburgerIcon.classList.remove('fa-times');
+                hamburgerIcon.classList.add('fa-bars');
+            }
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                hamburgerIcon.classList.remove('fa-times');
+                hamburgerIcon.classList.add('fa-bars');
+                isMenuOpen = false;
+            });
+        });
+    }
+    
+    renderVideos();
+    renderImages();
+</script>
+</body>
+</html>

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>John Pama Primary | Donate & Support Us – Invest in Nyanga's Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #eef3ea;
+            font-family: 'Lora', 'Cormorant Garamond', Georgia, serif;
+            color: #1f2937;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', 'Lora', serif;
+            font-weight: 600;
+        }
+        
+        nav, .nav-link, .donate-btn, button, .footer-link, .mobile-nav-link {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+        }
+        
+        /* Navbar */
+        .prestige-nav {
+            background-color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .prestige-nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        .nav-link {
+            position: relative;
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            transition: color 0.2s;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #006633;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: #006633;
+        }
+        
+        .donate-header-btn {
+            background: linear-gradient(135deg, #006633, #008844);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .donate-header-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,102,51,0.3);
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background: white;
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+            z-index: 99;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: #374151;
+            border-left: 3px solid transparent;
+        }
+        
+        .mobile-nav-link.active {
+            color: #006633;
+            border-left-color: #006633;
+            background: #e8f3ed;
+        }
+        
+        /* Donation Cards */
+        .donation-card {
+            background: white;
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .donation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+        }
+        
+        .impact-card {
+            background: white;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .impact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.1);
+        }
+        
+        .amount-btn {
+            border: 2px solid #e5e7eb;
+            background: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .amount-btn:hover,
+        .amount-btn.active {
+            border-color: #006633;
+            background: #e8f3ed;
+            color: #006633;
+        }
+        
+        .custom-input {
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        
+        .custom-input:focus {
+            border-color: #006633;
+        }
+        
+        .submit-donate {
+            background: linear-gradient(135deg, #006633, #008844);
+            color: white;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            width: 100%;
+            transition: all 0.2s;
+        }
+        
+        .submit-donate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,102,51,0.25);
+        }
+        
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .bg-warm {
+            background-color: #eef3ea;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+        }
+            /* Gradient Text Animation */
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    .bg-300\% {
+        background-size: 300% auto;
+    }
+    
+    .animate-gradient {
+        animation: gradient 4s ease infinite;
+    }
+    
+    /* Fade In Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-fade-in {
+        animation: fadeIn 0.8s ease forwards;
+    }
+    
+    .animate-fade-in-up {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    .delay-600 { animation-delay: 0.6s; }
+    .delay-700 { animation-delay: 0.7s; }
+    .delay-800 { animation-delay: 0.8s; }
+    
+    /* Heartbeat Animation */
+    @keyframes heartbeat {
+        0%, 100% { transform: scale(1); }
+        25% { transform: scale(1.2); }
+        35% { transform: scale(1); }
+        45% { transform: scale(1.1); }
+        55% { transform: scale(1); }
+    }
+    
+    .animate-heartbeat {
+        animation: heartbeat 1.5s ease-in-out infinite;
+    }
+    
+    /* Bounce Animation */
+    @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+    }
+    
+    .animate-bounce-slow {
+        animation: bounce-slow 2s ease-in-out infinite;
+    }
+    
+    /* Simple Pulse */
+    @keyframes pulse-simple {
+        0%, 100% { opacity: 0.6; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.2); }
+    }
+    
+    .animate-pulse-simple {
+        animation: pulse-simple 1.5s ease-in-out infinite;
+    }
+    
+    /* Scroll Animation */
+    @keyframes scroll {
+        0% { transform: translateY(0); opacity: 1; }
+        50% { transform: translateY(8px); opacity: 0.5; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    .animate-scroll {
+        animation: scroll 1.8s ease-in-out infinite;
+    }
+    
+    /* Ping Animation */
+    @keyframes ping-slow {
+        0% { transform: scale(0.8); opacity: 0.5; }
+        75%, 100% { transform: scale(1.5); opacity: 0; }
+    }
+    
+    .animate-ping-slow {
+        animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    
+    /* Pulse Animation for Top Edge */
+    @keyframes pulse {
+        0%, 100% { opacity: 0.5; transform: scaleX(1); }
+        50% { opacity: 1; transform: scaleX(1.02); }
+    }
+    
+    .animate-pulse {
+        animation: pulse 2s ease-in-out infinite;
+    }
+    
+    /* Float Animation for Particles */
+    @keyframes float {
+        0% { transform: translateY(0) scale(1); opacity: 0; }
+        50% { opacity: 0.8; }
+        100% { transform: translateY(-100px) scale(0); opacity: 0; }
+    }
+    
+    .animate-float {
+        animation: float 4s ease-in-out infinite;
+    }
+    
+    /* Scan Line Animation */
+    @keyframes scan {
+        0% { transform: translateX(-100%) skewX(-12deg); }
+        100% { transform: translateX(200%) skewX(-12deg); }
+    }
+    
+    .animate-scan {
+        animation: scan 8s linear infinite;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .animate-fade-in-up {
+            animation-duration: 0.6s;
+        }
+    }
+    
+    </style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<header id="navbar" class="fixed top-0 left-0 w-full bg-white border-b border-gray-100 z-50 prestige-nav">
+    <div class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16 lg:h-20">
+            
+            <!-- Logo - More compact on mobile -->
+            <a href="index.html" class="logo-link flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
+                <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 bg-[#006633] rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all">
+                    JP
+                </div>
+                <div class="hidden xs:flex flex-col">
+                    <div class="logo-text font-bold text-xs sm:text-sm lg:text-base tracking-tight text-gray-800 transition-all whitespace-nowrap">JOHN PAMA</div>
+                    <div class="text-[8px] sm:text-[9px] lg:text-[10px] text-[#006633] font-semibold tracking-wider whitespace-nowrap">PRIMARY SCHOOL</div>
+                </div>
+            </a>
+            
+            <!-- Desktop Navigation - Wrapped in overflow-auto for safety -->
+            <div class="hidden lg:flex items-center space-x-4 xl:space-x-6 2xl:space-x-8 overflow-x-auto max-w-full">
+                <a href="index.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Home</a>
+                <a href="about.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">About Us</a>
+                <a href="academics.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Academics</a>
+                <a href="admissions.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Admissions</a>
+                <a href="achievements.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Achievements</a>
+                <a href="extra.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Playfield</a>
+                <a href="gallery.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Stories</a>
+                <a href="alumni.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Alumni</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Contact</a>
+                <a href="future.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Future</a>
+            </div>
+            
+            <!-- Desktop Donate Button + Mobile Hamburger -->
+            <div class="flex items-center gap-2 sm:gap-3 lg:gap-4 flex-shrink-0">
+                <!-- Donate Button - Desktop -->
+                <a href="donate.html" class="donate-btn hidden lg:flex text-white px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold items-center gap-1.5 shadow-md whitespace-nowrap">
+                    <i class="fas fa-heart text-[10px] lg:text-xs"></i>
+                    <span>Donate</span>
+                </a>
+                
+                <!-- Donate Button - Tablet (visible on md to lg) -->
+                <a href="donate.html" class="donate-btn hidden md:flex lg:hidden text-white px-3 py-1.5 rounded-full text-xs font-semibold items-center gap-1 shadow-md whitespace-nowrap">
+                    <i class="fas fa-heart text-[10px]"></i>
+                    <span>Donate</span>
+                </a>
+                
+                <!-- Hamburger Button (visible on screens below lg) -->
+                <button id="hamburgerBtn" class="hamburger-btn-mobile lg:hidden w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-gray-700 transition-all hover:bg-gray-100">
+                    <i id="hamburgerIcon" class="fas fa-bars text-base sm:text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Spacer to prevent content from hiding under fixed navbar -->
+<div class="h-16 lg:h-20"></div>
+
+<!-- Mobile Menu Panel (hidden by default, toggled by JS) -->
+<div id="mobileMenu" class="mobile-menu fixed top-16 left-0 right-0 bg-white shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+    <div class="flex flex-col py-3 px-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <a href="index.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Home</a>
+                <a href="about.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">About Us</a>
+                <a href="academics.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Academics</a>
+                <a href="admissions.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Admissions</a>
+                <a href="achievements.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Achievements</a>
+                <a href="extra.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">PlayTime</a>
+                <a href="gallery.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Our Stories</a>
+                <a href="alumni.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Alumni</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Contact</a>
+                <a href="future.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Future</a>
+    </div>
+</div>
+<div class="h-16 lg:h-20"></div>
+
+<!-- Mobile Menu Panel (hidden by default, toggled by JS) -->
+<div id="mobileMenu" class="mobile-menu fixed top-16 left-0 right-0 bg-white shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+    <div class="flex flex-col py-3 px-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <a href="index.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Home</a>
+                <a href="about.html" class="nav-link text-gray-700 active hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">About Us</a>
+                <a href="academics.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Academics</a>
+                <a href="admissions.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Admissions</a>
+                <a href="achievements.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Achievements</a>
+                <a href="extra.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">PlayTime</a>
+                <a href="gallery.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Our Stories</a>
+                <a href="alumni.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Alumni</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Contact</a>
+                <a href="future.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Future</a>
+    </div>
+</div>
+<div class="h-16 lg:h-20"></div>
+
+<!-- ========== HERO SECTION ========== -->
+<section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+    <!-- Background Video - Impact/Transformation Theme -->
+    <div class="absolute inset-0">
+        <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+            <source src="images/jp10.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Cutting Edge Linear Gradient Overlay - Generosity/Hope Theme -->
+        <div class="absolute inset-0 bg-gradient-to-br from-black/85 via-[#006633]/70 to-[#ffcc00]/15"></div>
+        
+        <!-- Warm Generosity Accent - Golden Hope -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#ffcc00]/20 via-transparent to-transparent"></div>
+        
+        <!-- Diagonal Premium Accent - Giving Rays -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-[#00ff66]/15 via-transparent to-[#ffcc00]/10"></div>
+        
+        <!-- Top Edge Glow - Hope Light -->
+        <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#ffcc00] to-transparent animate-pulse"></div>
+        
+        <!-- Bottom Warming Glow -->
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent"></div>
+        
+        <!-- Animated Light Sweep - Generosity Wave -->
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent transform -skew-x-12 translate-x-[-100%] animate-scan"></div>
+        
+        <!-- Floating Heart Particles -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-1.5 h-1.5 bg-[#ffcc00] rounded-full animate-float" style="animation-delay: 0s;"></div>
+            <div class="absolute top-1/2 right-1/3 w-2 h-2 bg-[#00ff66] rounded-full animate-float" style="animation-delay: 0.5s;"></div>
+            <div class="absolute bottom-1/3 left-1/3 w-1 h-1 bg-white rounded-full animate-float" style="animation-delay: 1s;"></div>
+            <div class="absolute top-2/3 right-1/4 w-1.5 h-1.5 bg-[#ffcc00] rounded-full animate-float" style="animation-delay: 1.5s;"></div>
+            <div class="absolute bottom-1/4 left-2/3 w-1 h-1 bg-[#00ff66] rounded-full animate-float" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/2 left-3/4 w-0.5 h-0.5 bg-[#ffcc00] rounded-full animate-float" style="animation-delay: 2.5s;"></div>
+        </div>
+        
+        <!-- Subtle Heartbeat Overlay -->
+        <div class="absolute inset-0 opacity-5 pointer-events-none">
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-[#ff0000]/20 rounded-full animate-ping-slow"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-[#ff0000]/10 rounded-full animate-ping-slow" style="animation-delay: 1s;"></div>
+        </div>
+    </div>
+    
+    <!-- Content Container -->
+    <div class="relative z-10 text-center text-white px-6 max-w-5xl mx-auto">
+        
+        <!-- Donate Badge -->
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/20 mb-6 animate-fade-in">
+            <i class="fas fa-heart text-[#ffcc00] text-xs animate-pulse-simple"></i>
+            <span class="text-xs font-semibold tracking-[0.15em] uppercase text-white/90">Every Rand Plants a Seed</span>
+            <i class="fas fa-hand-holding-heart text-[#ffcc00] text-xs"></i>
+        </div>
+        
+        <!-- Main Heading with Gradient Text - "Support Us" focused -->
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 animate-fade-in-up" style="font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;">
+            <span class="bg-gradient-to-r from-white via-[#ffcc00] to-[#00ff66] bg-clip-text text-transparent bg-300% animate-gradient">Support Us</span>
+        </h1>
+        
+        <!-- Decorative Line - Heart & Hands -->
+        <div class="flex justify-center gap-3 my-6 animate-fade-in-up delay-100">
+            <div class="w-10 h-0.5 bg-gradient-to-r from-transparent to-[#ffcc00]"></div>
+            <i class="fas fa-heart text-[#ffcc00] text-sm animate-heartbeat"></i>
+            <i class="fas fa-hand-holding-heart text-[#00ff66] text-sm animate-bounce-slow" style="animation-delay: 0.3s;"></i>
+            <i class="fas fa-seedling text-[#ffcc00] text-sm animate-bounce-slow" style="animation-delay: 0.6s;"></i>
+            <div class="w-10 h-0.5 bg-gradient-to-l from-transparent to-[#ffcc00]"></div>
+        </div>
+        
+   
+    </div>
+      
+        <!-- Scroll Hint -->
+        <div class="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2 animate-fade-in delay-800">
+            <span class="text-[10px] tracking-[0.2em] text-white/60 uppercase">Join the Movement</span>
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <div class="w-1.5 h-2.5 bg-gradient-to-b from-[#ffcc00] to-[#00ff66] rounded-full mt-2 animate-scroll"></div>
+            </div>
+        </div>
+</section>
+
+
+<!-- ========== IMPACT STATS ========== -->
+<section class="py-12 bg-warm">
+    <div class="container">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="impact-card p-6 fade-up"><div class="text-3xl md:text-4xl font-bold text-[#006633]">800+</div><p class="text-gray-600 mt-1">Learners Impacted</p></div>
+            <div class="impact-card p-6 fade-up"><div class="text-3xl md:text-4xl font-bold text-[#006633]">R0</div><p class="text-gray-600 mt-1">No School Fees</p></div>
+            <div class="impact-card p-6 fade-up"><div class="text-3xl md:text-4xl font-bold text-[#006633]">1,200+</div><p class="text-gray-600 mt-1">Alumni Network</p></div>
+            <div class="impact-card p-6 fade-up"><div class="text-3xl md:text-4xl font-bold text-[#006633]">100%</div><p class="text-gray-600 mt-1">Goes to Learners</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== DONATION OPTIONS ========== -->
+<section class="py-20 bg-warm">
+    <div class="container">
+        <div class="text-center mb-12 fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Choose Your Way to Give</h2>
+            <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Multiple ways to support — whether you have R50 or R50,000, every contribution matters.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- One-Time Donation -->
+            <div class="donation-card p-6 fade-up">
+                <div class="w-12 h-12 bg-[#e8f3ed] rounded-full flex items-center justify-center mb-4"><i class="fas fa-hand-holding-heart text-xl text-[#006633]"></i></div>
+                <h3 class="text-2xl font-bold mb-2">One-Time Gift</h3>
+                <p class="text-gray-500 text-sm mb-4">Make an immediate impact today</p>
+                <div class="space-y-3">
+                    <div class="flex flex-wrap gap-2"><button class="amount-btn flex-1" data-amount="100">R100</button><button class="amount-btn flex-1" data-amount="250">R250</button><button class="amount-btn flex-1" data-amount="500">R500</button></div>
+                    <div class="flex gap-2"><button class="amount-btn flex-1" data-amount="1000">R1,000</button><button class="amount-btn flex-1" data-amount="5000">R5,000</button></div>
+                    <input type="number" id="customAmount" placeholder="Other amount (R)" class="custom-input">
+                    <button id="oneTimeDonate" class="submit-donate mt-4"><i class="fas fa-heart mr-2"></i> Donate Now</button>
+                </div>
+            </div>
+            
+            <!-- Monthly Donation -->
+            <div class="donation-card p-6 fade-up">
+                <div class="w-12 h-12 bg-[#e8f3ed] rounded-full flex items-center justify-center mb-4"><i class="fas fa-calendar-alt text-xl text-[#006633]"></i></div>
+                <h3 class="text-2xl font-bold mb-2">Monthly Supporter</h3>
+                <p class="text-gray-500 text-sm mb-4">Sustainable impact, month after month</p>
+                <div class="space-y-3">
+                    <div class="flex flex-wrap gap-2"><button class="amount-btn flex-1" data-monthly="50">R50/mo</button><button class="amount-btn flex-1" data-monthly="100">R100/mo</button><button class="amount-btn flex-1" data-monthly="250">R250/mo</button></div>
+                    <div class="flex gap-2"><button class="amount-btn flex-1" data-monthly="500">R500/mo</button><button class="amount-btn flex-1" data-monthly="1000">R1,000/mo</button></div>
+                    <input type="number" id="customMonthly" placeholder="Other monthly amount" class="custom-input">
+                    <button id="monthlyDonate" class="submit-donate mt-4"><i class="fas fa-calendar-check mr-2"></i> Become a Supporter</button>
+                </div>
+            </div>
+            
+            <!-- In-Kind Donation -->
+            <div class="donation-card p-6 fade-up">
+                <div class="w-12 h-12 bg-[#e8f3ed] rounded-full flex items-center justify-center mb-4"><i class="fas fa-box-open text-xl text-[#006633]"></i></div>
+                <h3 class="text-2xl font-bold mb-2">Goods & Equipment</h3>
+                <p class="text-gray-500 text-sm mb-4">Donate items we need most</p>
+                <ul class="space-y-2 text-sm text-gray-600 mb-4">
+                    <li><i class="fas fa-check-circle text-[#006633] mr-2"></i> Laptops & Tablets</li>
+                    <li><i class="fas fa-check-circle text-[#006633] mr-2"></i> School uniforms (new or gently used)</li>
+                    <li><i class="fas fa-check-circle text-[#006633] mr-2"></i> Sports equipment (balls, nets, bibs)</li>
+                    <li><i class="fas fa-check-circle text-[#006633] mr-2"></i> Books (English & isiXhosa, Grades R-7)</li>
+                    <li><i class="fas fa-check-circle text-[#006633] mr-2"></i> Sanitary pads & toiletries</li>
+                </ul>
+                <button id="inKindBtn" class="submit-donate" style="background: #4b5563;"><i class="fas fa-gift mr-2"></i> Donate Goods →</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== WHAT YOUR DONATION DOES ========== -->
+<section class="py-16 bg-white">
+    <div class="container">
+        <div class="text-center mb-10 fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold">Your Impact in Action</h2>
+            <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
+        </div>
+        <div class="grid md:grid-cols-4 gap-6">
+            <div class="text-center fade-up"><div class="w-20 h-20 bg-[#e8f3ed] rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-book text-2xl text-[#006633]"></i></div><h3 class="font-bold">R200</h3><p class="text-sm text-gray-500">One textbook for a learner</p></div>
+            <div class="text-center fade-up"><div class="w-20 h-20 bg-[#e8f3ed] rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-tshirt text-2xl text-[#006633]"></i></div><h3 class="font-bold">R350</h3><p class="text-sm text-gray-500">Full school uniform</p></div>
+            <div class="text-center fade-up"><div class="w-20 h-20 bg-[#e8f3ed] rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-futbol text-2xl text-[#006633]"></i></div><h3 class="font-bold">R1,500</h3><p class="text-sm text-gray-500">Complete sports kit for a team</p></div>
+            <div class="text-center fade-up"><div class="w-20 h-20 bg-[#e8f3ed] rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-laptop text-2xl text-[#006633]"></i></div><h3 class="font-bold">R5,000</h3><p class="text-sm text-gray-500">Refurbished laptop for classroom</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== OTHER WAYS TO SUPPORT ========== -->
+<section class="py-20 bg-warm">
+    <div class="container">
+        <div class="text-center mb-10 fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold">More Ways to Get Involved</h2>
+            <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="donation-card p-6 text-center fade-up"><i class="fas fa-church text-3xl text-[#006633] mb-3"></i><h3 class="text-xl font-bold mb-2">EFT / Bank Transfer</h3><p class="text-sm text-gray-500 mb-2">Account: John Pama Primary</p><p class="text-sm font-mono">Bank: Standard Bank<br>Acc: 123 456 789<br>Branch: Nyanga (Code: 051001)<br>Ref: [Your Name] + Donation</p></div>
+            <div class="donation-card p-6 text-center fade-up"><i class="fas fa-mobile-alt text-3xl text-[#006633] mb-3"></i><h3 class="text-xl font-bold mb-2">SnapScan / Zapper</h3><p class="text-sm text-gray-500 mb-3">Scan the QR code at our school office or events</p><div class="bg-gray-100 p-3 rounded-lg inline-block"><i class="fas fa-qrcode text-4xl text-gray-400"></i></div><p class="text-xs text-gray-400 mt-2">Ask for our QR code at reception</p></div>
+            <div class="donation-card p-6 text-center fade-up"><i class="fas fa-hourglass-half text-3xl text-[#006633] mb-3"></i><h3 class="text-xl font-bold mb-2">Legacy / Bequest</h3><p class="text-sm text-gray-500">Leave a lasting gift in your will. Contact our alumni office for confidential discussion.</p><button id="legacyBtn" class="mt-3 text-[#006633] font-semibold underline">Learn about legacy giving →</button></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== CORPORATE & PARTNERSHIP ========== -->
+<section class="py-16 bg-[#006633] text-white text-center">
+    <div class="container">
+        <i class="fas fa-building text-4xl mb-4 opacity-80"></i>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Corporate Partnerships</h2>
+        <p class="text-lg max-w-2xl mx-auto mb-6 opacity-90">Partner with us for B-BBEE scorecard benefits, employee volunteer programs, and meaningful social impact in Nyanga.</p>
+        <button id="corporateBtn" class="bg-white text-[#006633] px-8 py-3 rounded-full font-bold hover:shadow-lg transition"><i class="fas fa-handshake mr-2"></i> Partner With Us</button>
+    </div>
+</section>
+
+<!-- ========== VOLUNTEER / SKILLS-BASED ========== -->
+<section class="py-16 bg-white">
+    <div class="container text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Not Just Money — Your Time & Talent</h2>
+        <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-2 mb-6 rounded-full"></div>
+        <div class="grid md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            <div class="p-4"><i class="fas fa-chalkboard-user text-2xl text-[#006633] mb-2"></i><p class="font-semibold">Tutoring</p><p class="text-sm text-gray-500">Reading & Maths</p></div>
+            <div class="p-4"><i class="fas fa-laptop-code text-2xl text-[#006633] mb-2"></i><p class="font-semibold">IT Support</p><p class="text-sm text-gray-500">Tech maintenance</p></div>
+            <div class="p-4"><i class="fas fa-futbol text-2xl text-[#006633] mb-2"></i><p class="font-semibold">Coaching</p><p class="text-sm text-gray-500">Sports & recreation</p></div>
+            <div class="p-4"><i class="fas fa-chart-line text-2xl text-[#006633] mb-2"></i><p class="font-semibold">Mentorship</p><p class="text-sm text-gray-500">Career guidance</p></div>
+        </div>
+        <button id="volunteerBtn" class="mt-6 border-2 border-[#006633] text-[#006633] px-8 py-3 rounded-full font-bold hover:bg-[#006633] hover:text-white transition"><i class="fas fa-hands-helping mr-2"></i> Sign Up to Volunteer</button>
+    </div>
+</section>
+
+<!-- ========== TAX BENEFITS ========== -->
+<section class="py-12 bg-warm text-center">
+    <div class="container">
+        <div class="bg-white rounded-2xl p-6 max-w-3xl mx-auto shadow-sm">
+            <i class="fas fa-receipt text-3xl text-[#006633] mb-3"></i>
+            <h3 class="text-xl font-bold">Section 18A Tax Certificate</h3>
+            <p class="text-gray-600 text-sm mt-2">John Pama Primary is a registered Public Benefit Organisation (PBO). Donations over R100 qualify for a tax-deductible certificate. Our PBO number is available upon request.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="container">
+        <div class="grid md:grid-cols-4 gap-10">
+            <div><div class="flex items-center space-x-2 mb-4"><div class="w-10 h-10 bg-[#006633] rounded-full flex items-center justify-center text-white font-bold">JP</div><div><div class="font-bold text-lg">JOHN PAMA</div><div class="text-[10px] text-[#006633] font-semibold">PRIMARY SCHOOL</div></div></div><p class="text-gray-400 text-sm">Sithandathu Ave, Nyanga, Cape Town</p><p class="text-gray-400 text-sm mt-2"><i class="fas fa-phone-alt mr-2 text-[#006633]"></i> 021 385 1830</p><p class="text-gray-400 text-sm"><i class="fas fa-envelope mr-2 text-[#006633]"></i> donations@johnpamaprimary.co.za</p></div>
+            <div><h4 class="font-semibold text-lg mb-4">Ways to Give</h4><ul class="space-y-2 text-gray-400 text-sm"><li><a href="#" class="hover:text-[#006633] transition">One-Time Gift</a></li><li><a href="#" class="hover:text-[#006633] transition">Monthly Giving</a></li><li><a href="#" class="hover:text-[#006633] transition">Goods Donation</a></li><li><a href="#" class="hover:text-[#006633] transition">Corporate Partnership</a></li></ul></div>
+            <div><h4 class="font-semibold text-lg mb-4">Get Involved</h4><ul class="space-y-2 text-gray-400 text-sm"><li><a href="#" class="hover:text-[#006633] transition">Volunteer</a></li><li><a href="#" class="hover:text-[#006633] transition">Alumni Network</a></li><li><a href="#" class="hover:text-[#006633] transition">School Tours</a></li></ul></div>
+            <div><h4 class="font-semibold text-lg mb-4">Connect</h4><div class="flex space-x-4 text-gray-400 text-xl"><i class="fab fa-facebook-f hover:text-[#006633] cursor-pointer transition"></i><i class="fab fa-instagram hover:text-[#006633] cursor-pointer transition"></i><i class="fab fa-linkedin-in hover:text-[#006633] cursor-pointer transition"></i></div><p class="text-gray-500 text-xs mt-4">#JohnPamaPride #InvestInNyanga</p></div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-xs">© 2026 John Pama Primary School — Together, we build futures. Registered PBO. 🇿🇦</div>
+    </div>
+</footer>
+
+<script>
+    // Modal simulation functions
+    function showMessage(title, message) {
+        alert(title + "\n\n" + message);
+    }
+    
+    // One-time donation
+    document.getElementById('oneTimeDonate')?.addEventListener('click', () => {
+        let amount = document.getElementById('customAmount').value;
+        if (!amount) amount = 'selected amount';
+        showMessage('💚 Thank You for Your Donation!', `You are donating R${amount} to John Pama Primary School.\n\nYou will be redirected to our secure payment gateway.\n\nEvery rand plants a seed of possibility.`);
+    });
+    
+    // Monthly donation
+    document.getElementById('monthlyDonate')?.addEventListener('click', () => {
+        let amount = document.getElementById('customMonthly').value;
+        if (!amount) amount = 'selected amount';
+        showMessage('🤝 You\'re Making a Monthly Commitment', `Thank you for becoming a monthly supporter at R${amount}/month.\n\nYour sustainable giving will transform lives all year round.`);
+    });
+    
+    // Amount button selection
+    document.querySelectorAll('[data-amount]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('[data-amount]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('customAmount').value = btn.getAttribute('data-amount');
+        });
+    });
+    
+    document.querySelectorAll('[data-monthly]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('[data-monthly]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('customMonthly').value = btn.getAttribute('data-monthly');
+        });
+    });
+    
+    document.getElementById('inKindBtn')?.addEventListener('click', () => {
+        showMessage('📦 Donate Goods', 'Thank you for offering to donate goods!\n\nPlease contact our school office at 021 385 1830 or email donations@johnpamaprimary.co.za to arrange drop-off or collection.\n\nWe gratefully accept: laptops, uniforms, sports gear, books, and sanitary products.');
+    });
+    
+    document.getElementById('corporateBtn')?.addEventListener('click', () => {
+        showMessage('🏢 Corporate Partnership', 'Thank you for your interest in partnering with John Pama Primary.\n\nPlease email our partnerships desk: partnerships@johnpamaprimary.co.za or call 021 385 1830.\n\nWe offer B-BBEE recognition, volunteer opportunities, and meaningful community impact.');
+    });
+    
+    document.getElementById('volunteerBtn')?.addEventListener('click', () => {
+        showMessage('🙋‍♀️ Volunteer With Us', 'Thank you for offering your time and talent!\n\nPlease fill out our volunteer form here or email volunteer@johnpamaprimary.co.za.\n\nOpportunities include tutoring, coaching, IT support, and mentorship.');
+    });
+    
+    document.getElementById('legacyBtn')?.addEventListener('click', () => {
+        showMessage('📜 Legacy Giving', 'Thank you for considering a lasting gift to future generations.\n\nPlease contact our alumni office confidentially: alumni@johnpamaprimary.co.za or call 021 385 1830.\n\nYour legacy will educate Nyanga\'s children for decades to come.');
+    });
+    
+    // Navbar scroll effect
+    const navbar = document.querySelector('.prestige-nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+    });
+    
+    // Mobile menu toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const hamburgerIcon = document.getElementById('hamburgerIcon');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let isMenuOpen = false;
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.add('open');
+                hamburgerIcon.classList.remove('fa-bars');
+                hamburgerIcon.classList.add('fa-times');
+            } else {
+                mobileMenu.classList.remove('open');
+                hamburgerIcon.classList.remove('fa-times');
+                hamburgerIcon.classList.add('fa-bars');
+            }
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                hamburgerIcon.classList.remove('fa-times');
+                hamburgerIcon.classList.add('fa-bars');
+                isMenuOpen = false;
+            });
+        });
+    }
+    
+    // Fade-up animation
+    const faders = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    faders.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

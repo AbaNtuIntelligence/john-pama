@@ -1,0 +1,364 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lora', 'Cormorant Garamond', Georgia, serif;
+            overflow-x: hidden;
+        }
+        
+        /* Hero video container */
+        .hero-video-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .hero-video-wrapper video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .hero-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+        
+        /* Video slider dots */
+        .video-dots {
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            z-index: 20;
+        }
+        
+        .video-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .video-dot.active {
+            background-color: white;
+            transform: scale(1.3);
+            box-shadow: 0 0 0 2px #006633;
+        }
+        
+        .video-dot:hover {
+            background-color: white;
+        }
+        
+        /* Scroll hint */
+        .scroll-hint {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.875rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        /* Futuristic Fullscreen Menu */
+        .fullscreen-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a1f1a 0%, #0a3320 50%, #06120e 100%);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+            overflow-y: auto;
+        }
+        
+        .fullscreen-menu.open {
+            transform: translateX(0);
+        }
+        
+        .fullscreen-menu::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .fullscreen-menu::-webkit-scrollbar-track {
+            background: rgba(0, 255, 100, 0.1);
+        }
+        
+        .fullscreen-menu::-webkit-scrollbar-thumb {
+            background: #00ff66;
+            border-radius: 10px;
+        }
+        
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 3rem 1rem;
+        }
+        
+        .menu-link {
+            position: relative;
+            display: inline-block;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0.5rem 1.5rem;
+            margin: 0.25rem 0;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        
+        .menu-link:hover {
+            color: #00ff66;
+            text-shadow: 0 0 10px #00ff66, 0 0 20px #00ff66;
+            transform: translateY(-2px);
+            letter-spacing: 0.15em;
+        }
+        
+        .menu-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff66, #00cc33, #00ff66, transparent);
+            background-size: 200% auto;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .menu-link:hover::before {
+            width: 70%;
+            animation: shimmer 1s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .menu-link .corner {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            opacity: 0;
+            transition: all 0.2s ease;
+        }
+        
+        .menu-link:hover .corner-tl {
+            top: -2px;
+            left: -2px;
+            opacity: 1;
+            border-top: 2px solid #00ff66;
+            border-left: 2px solid #00ff66;
+        }
+        
+        .menu-link:hover .corner-tr {
+            top: -2px;
+            right: -2px;
+            opacity: 1;
+            border-top: 2px solid #00ff66;
+            border-right: 2px solid #00ff66;
+        }
+        
+        .menu-link:hover .corner-bl {
+            bottom: -2px;
+            left: -2px;
+            opacity: 1;
+            border-bottom: 2px solid #00ff66;
+            border-left: 2px solid #00ff66;
+        }
+        
+        .menu-link:hover .corner-br {
+            bottom: -2px;
+            right: -2px;
+            opacity: 1;
+            border-bottom: 2px solid #00ff66;
+            border-right: 2px solid #00ff66;
+        }
+        
+        .menu-link .pulse-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 255, 102, 0.15);
+            border-radius: 50px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .menu-link:hover .pulse-ring {
+            opacity: 1;
+            animation: pulseExpand 0.5s ease-out;
+        }
+        
+        @keyframes pulseExpand {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.6; }
+            100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+        }
+        
+        .menu-link.donate {
+            color: #00ff66;
+            font-weight: 700;
+        }
+        
+        .menu-close {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 255, 102, 0.15);
+            border: 1px solid rgba(0, 255, 102, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1010;
+            color: white;
+            font-size: 1.3rem;
+        }
+        
+        .menu-close:hover {
+            background: #00ff66;
+            color: black;
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 0 20px #00ff66;
+        }
+        
+        .hamburger-btn {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 48px;
+            height: 48px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hamburger-btn:hover {
+            background: rgba(0, 255, 102, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .menu-link.active {
+            color: #00ff66;
+            text-shadow: 0 0 5px #00ff66;
+        }
+        
+        .menu-link-wrapper {
+            margin: 0.25rem 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-link {
+                font-size: 1.2rem;
+                padding: 0.3rem 1rem;
+            }
+        }
+        
+        /* Content below hero */
+        .content-below {
+            position: relative;
+            z-index: 10;
+            background: #fefcf8;
+            padding: 5rem 1.5rem;
+        }
+        
+        .prestige-badge {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 9999px;
+            background: rgba(0, 102, 51, 0.1);
+            color: #006633;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2e6;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -12px rgba(0, 102, 51, 0.15);
+        }

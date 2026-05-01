@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>John Pama Primary | Playfield & Extracurricular – Beyond the Classroom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- 2026 PRESTIGE SERIF FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --font-serif-heading: 'Cormorant Garamond', 'Lora', 'Times New Roman', Georgia, serif;
+            --font-serif-body: 'Lora', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+            --jp-green: #006633;
+            --jp-green-dark: #004d26;
+            --jp-green-light: #e8f3ed;
+        }
+        
+        body {
+            font-family: var(--font-serif-body);
+            background-color: #ffffff;
+            color: #1f2937;
+            line-height: 1.65;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif-heading);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        h1 { font-weight: 700; letter-spacing: -0.02em; }
+        
+        nav, .nav-link, .donate-btn, button, .footer-link, .mobile-nav-link {
+            font-family: var(--font-sans);
+        }
+        
+        /* Navbar */
+        .prestige-nav { transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1); }
+        .prestige-nav.scrolled { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+        .nav-link { position: relative; font-weight: 500; font-size: 0.9375rem; transition: all 0.3s ease; padding: 0.5rem 0; }
+        .nav-link::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--jp-green); transition: width 0.35s ease; }
+        .nav-link:hover::before { width: 80%; }
+        .nav-link:hover { color: var(--jp-green); }
+        .nav-link.active { color: var(--jp-green); font-weight: 600; }
+        .nav-link.active::before { width: 80%; }
+        .donate-btn { background: linear-gradient(135deg, var(--jp-green), #008844); transition: all 0.3s ease; }
+        .donate-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,102,51,0.3); }
+        .mobile-menu { position: fixed; top: 64px; left: 0; right: 0; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); transform: translateX(-100%); transition: transform 0.4s ease; z-index: 999; }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-nav-link { transition: all 0.25s ease; border-left: 3px solid transparent; }
+        .mobile-nav-link:hover { background: rgba(0,102,51,0.05); padding-left: 1.25rem; color: var(--jp-green); border-left-color: var(--jp-green); }
+        .mobile-nav-link.active { background: rgba(0,102,51,0.08); color: var(--jp-green); border-left-color: var(--jp-green); }
+        
+        .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        
+        .activity-card, .team-card {
+            transition: all 0.3s ease;
+        }
+        .activity-card:hover, .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+        }
+        .gallery-img {
+            transition: all 0.4s ease;
+        }
+        .gallery-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 25px -10px rgba(0,0,0,0.2);
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .video-wrapper video, .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<header id="navbar" class="fixed top-0 left-0 w-full bg-white border-b border-gray-100 z-50 prestige-nav">
+    <div class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16 lg:h-20">
+            
+            <!-- Logo - More compact on mobile -->
+            <a href="index.html" class="logo-link flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
+                <div class="logo-circle w-8 h-8 sm:w-9 sm:h-9 lg:w-11 lg:h-11 bg-[#006633] rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm lg:text-xl shadow-md transition-all">
+                    JP
+                </div>
+                <div class="hidden xs:flex flex-col">
+                    <div class="logo-text font-bold text-xs sm:text-sm lg:text-base tracking-tight text-gray-800 transition-all whitespace-nowrap">JOHN PAMA</div>
+                    <div class="text-[8px] sm:text-[9px] lg:text-[10px] text-[#006633] font-semibold tracking-wider whitespace-nowrap">PRIMARY SCHOOL</div>
+                </div>
+            </a>
+            
+            <!-- Desktop Navigation - Wrapped in overflow-auto for safety -->
+            <div class="hidden lg:flex items-center space-x-4 xl:space-x-6 2xl:space-x-8 overflow-x-auto max-w-full">
+                <a href="index.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Home</a>
+                <a href="about.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">About Us</a>
+                <a href="academics.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Academics</a>
+                <a href="admissions.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Admissions</a>
+                <a href="achievements.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Achievements</a>
+                <a href="gallery.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Stories</a>
+                <a href="alumni.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Alumni</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Contact</a>
+                <a href="future.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Future</a>
+                <a href="donate.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Support</a>
+            </div>
+            
+            <!-- Desktop Donate Button + Mobile Hamburger -->
+            <div class="flex items-center gap-2 sm:gap-3 lg:gap-4 flex-shrink-0">
+                <!-- Donate Button - Desktop -->
+                <a href="donate.html" class="donate-btn hidden lg:flex text-white px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold items-center gap-1.5 shadow-md whitespace-nowrap">
+                    <i class="fas fa-heart text-[10px] lg:text-xs"></i>
+                    <span>Donate</span>
+                </a>
+                
+                <!-- Donate Button - Tablet (visible on md to lg) -->
+                <a href="donate.html" class="donate-btn hidden md:flex lg:hidden text-white px-3 py-1.5 rounded-full text-xs font-semibold items-center gap-1 shadow-md whitespace-nowrap">
+                    <i class="fas fa-heart text-[10px]"></i>
+                    <span>Donate</span>
+                </a>
+                
+                <!-- Hamburger Button (visible on screens below lg) -->
+                <button id="hamburgerBtn" class="hamburger-btn-mobile lg:hidden w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-gray-700 transition-all hover:bg-gray-100">
+                    <i id="hamburgerIcon" class="fas fa-bars text-base sm:text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Spacer to prevent content from hiding under fixed navbar -->
+<div class="h-16 lg:h-20"></div>
+
+<!-- Mobile Menu Panel (hidden by default, toggled by JS) -->
+<div id="mobileMenu" class="mobile-menu fixed top-16 left-0 right-0 bg-white shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+    <div class="flex flex-col py-3 px-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <a href="index.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Home</a>
+                <a href="about.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">About Us</a>
+                <a href="academics.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Academics</a>
+                <a href="admissions.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Admissions</a>
+                <a href="achievements.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Achievements</a>
+                <a href="gallery.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Stories</a>
+                <a href="alumni.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Alumni</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Contact</a>
+                <a href="future.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Future</a>
+                <a href="donate.html" class="nav-link text-gray-700 hover:text-[#006633] transition py-2 text-sm xl:text-base whitespace-nowrap">Support</a>
+    </div>
+</div>
+<div class="h-16 lg:h-20"></div>
+
+<!-- ========== HERO SECTION WITH VIDEO BACKGROUND (Playfield theme) ========== -->
+<section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+    <!-- Background Video - Action Sports -->
+    <div class="absolute inset-0">
+        <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+            <source src="images/jp10.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Cutting Edge Linear Gradient Overlay - Energetic Sports Theme -->
+        <div class="absolute inset-0 bg-gradient-to-br from-black/85 via-[#006633]/70 to-[#00cc44]/30"></div>
+        
+        <!-- Dynamic Energy Accent - Diagonal Action Lines -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-[#00ff66]/15 via-transparent to-[#ffcc00]/10"></div>
+        
+        <!-- Top Edge Glow - Neon Green Energy -->
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00ff66] to-transparent animate-pulse"></div>
+        
+        <!-- Bottom Energy Wave -->
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent"></div>
+        
+        <!-- Animated Diagonal Scan Lines -->
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 translate-x-[-100%] animate-scan"></div>
+        
+        <!-- Energy Particles - Action Sparks -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-1.5 h-1.5 bg-[#00ff66] rounded-full animate-float" style="animation-delay: 0s;"></div>
+            <div class="absolute top-1/2 right-1/3 w-2 h-2 bg-[#ffcc00] rounded-full animate-float" style="animation-delay: 0.5s;"></div>
+            <div class="absolute bottom-1/3 left-1/3 w-1 h-1 bg-white rounded-full animate-float" style="animation-delay: 1s;"></div>
+            <div class="absolute top-2/3 right-1/4 w-1.5 h-1.5 bg-[#00ff66] rounded-full animate-float" style="animation-delay: 1.5s;"></div>
+            <div class="absolute bottom-1/4 left-2/3 w-1 h-1 bg-[#ffcc00] rounded-full animate-float" style="animation-delay: 2s;"></div>
+        </div>
+    </div>
+    
+    <!-- Content Container -->
+    <div class="relative z-10 text-center text-white px-6 max-w-5xl mx-auto">
+        
+        <!-- PlayTime Badge -->
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/20 mb-6 animate-fade-in">
+            <i class="fas fa-futbol text-[#00ff66] text-xs"></i>
+            <span class="text-xs font-semibold tracking-[0.15em] uppercase text-white/90">Play • Compete • Grow</span>
+            <i class="fas fa-basketball-ball text-[#00ff66] text-xs"></i>
+        </div>
+        
+        <!-- Main Heading with Gradient Text -->
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 animate-fade-in-up" style="font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;">
+            <span class="bg-gradient-to-r from-white via-[#00ff66] to-[#ffcc00] bg-clip-text text-transparent bg-300% animate-gradient">PlayTime</span>
+        </h1>
+        
+        <!-- Decorative Line with Sports Icons -->
+        <div class="flex justify-center gap-3 my-6 animate-fade-in-up delay-100">
+            <div class="w-12 h-0.5 bg-gradient-to-r from-transparent to-[#00ff66]"></div>
+            <i class="fas fa-futbol text-[#00ff66] text-sm animate-bounce-slow"></i>
+            <i class="fas fa-basketball-ball text-[#00ff66] text-sm animate-bounce-slow" style="animation-delay: 0.3s;"></i>
+            <i class="fas fa-running text-[#00ff66] text-sm animate-bounce-slow" style="animation-delay: 0.6s;"></i>
+            <div class="w-12 h-0.5 bg-gradient-to-l from-transparent to-[#00ff66]"></div>
+        </div>
+        
+        <!-- Punchline Paragraph -->
+        <p class="text-xl md:text-2xl lg:text-3xl mt-4 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-200" style="font-family: 'Lora', 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+            "Where champions are made, friendships are forged, and every child discovers their spark."
+        </p>
+        
+    
+        
+     
+        
+        
+    </div>
+    <!-- Scroll Hint -->
+        <div class="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2 animate-fade-in delay-600">
+            <span class="text-[10px] tracking-[0.2em] text-white/60 uppercase">Get in the Game</span>
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <div class="w-1.5 h-2.5 bg-[#00ff66] rounded-full mt-2 animate-scroll"></div>
+            </div>
+        </div>
+</section>
+
+<style>
+    /* Gradient Text Animation */
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    .bg-300\% {
+        background-size: 300% auto;
+    }
+    
+    .animate-gradient {
+        animation: gradient 4s ease infinite;
+    }
+    
+    /* Fade In Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-fade-in {
+        animation: fadeIn 0.8s ease forwards;
+    }
+    
+    .animate-fade-in-up {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    .delay-600 { animation-delay: 0.6s; }
+    
+    /* Bounce Animation for Sports Icons */
+    @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+    }
+    
+    .animate-bounce-slow {
+        animation: bounce-slow 2s ease-in-out infinite;
+    }
+    
+    /* Scroll Animation */
+    @keyframes scroll {
+        0% { transform: translateY(0); opacity: 1; }
+        50% { transform: translateY(8px); opacity: 0.5; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    .animate-scroll {
+        animation: scroll 1.8s ease-in-out infinite;
+    }
+    
+    /* Pulse for Top Edge */
+    @keyframes pulse {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+    }
+    
+    .animate-pulse {
+        animation: pulse 2s ease-in-out infinite;
+    }
+    
+    /* Float Animation for Particles */
+    @keyframes float {
+        0% { transform: translateY(0) scale(1); opacity: 0; }
+        50% { opacity: 0.8; }
+        100% { transform: translateY(-100px) scale(0); opacity: 0; }
+    }
+    
+    .animate-float {
+        animation: float 4s ease-in-out infinite;
+    }
+    
+    /* Scan Line Animation */
+    @keyframes scan {
+        0% { transform: translateX(-100%) skewX(-12deg); }
+        100% { transform: translateX(200%) skewX(-12deg); }
+    }
+    
+    .animate-scan {
+        animation: scan 8s linear infinite;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .animate-fade-in-up {
+            animation-duration: 0.6s;
+        }
+    }
+</style>
+
+<!-- ========== INTRODUCTION: WHY EXTRACURRICULARS MATTER ========== -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6 md:px-12 max-w-4xl text-center fade-up">
+        <span class="text-[#006633] font-semibold tracking-wider text-sm" style="font-family: 'Plus Jakarta Sans', sans-serif;"><i class="fas fa-futbol mr-2"></i> HOLISTIC DEVELOPMENT</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2">More Than a Curriculum</h2>
+        <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
+        <p class="text-gray-600 mt-6 leading-relaxed text-lg">At John Pama Primary, we believe education extends far beyond textbooks. Our extracurricular programmes build confidence, teamwork, discipline, and joy. From the dusty playfield to the netball courts, every child finds a place to shine.</p>
+    </div>
+</section>
+
+<!-- ========== SPORTS GALLERY & TEAMS (Images + hover) ========== -->
+<section class="py-16 bg-[#fafbfb]">
+    <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+        <div class="text-center mb-12 fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold">⚽ Our Sporting Spirit</h2>
+            <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-600 mt-3">Soccer, netball, athletics, and traditional games — pride in every play.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="gallery-img bg-white rounded-2xl overflow-hidden shadow-md fade-up"><img src="https://images.pexels.com/photos/4678320/boys-playing-soccer-together-outdoors.jpg?auto=compress&cs=tinysrgb&w=600" alt="Soccer" class="w-full h-56 object-cover"><div class="p-4"><h3 class="text-xl font-bold">Soccer Academy</h3><p class="text-gray-600 text-sm">U11 & U13 teams compete in local leagues. Practice: Tue/Thu 14:30–16:00.</p></div></div>
+            <div class="gallery-img bg-white rounded-2xl overflow-hidden shadow-md fade-up"><img src="https://images.pexels.com/photos/5072979/girls-playing-netball-on-school-court.jpg?auto=compress&cs=tinysrgb&w=600" alt="Netball" class="w-full h-56 object-cover"><div class="p-4"><h3 class="text-xl font-bold">Netball Stars</h3><p class="text-gray-600 text-sm">Our girls' teams have won 3 consecutive district trophies. All grades welcome.</p></div></div>
+            <div class="gallery-img bg-white rounded-2xl overflow-hidden shadow-md fade-up"><img src="https://images.pexels.com/photos/2604472/pexels-photo-2604472.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Athletics" class="w-full h-56 object-cover"><div class="p-4"><h3 class="text-xl font-bold">Athletics</h3><p class="text-gray-600 text-sm">Track, field, cross-country. Annual sports day brings the whole community together.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== VIDEO HIGHLIGHT (Match moments / training) ========== -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-6 md:px-12 max-w-5xl">
+        <div class="text-center mb-10 fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold">🎬 In Action</h2>
+            <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-600">Relive the energy, the goals, and the joy of our playfield.</p>
+        </div>
+        <div class="video-wrapper shadow-2xl fade-up">
+            <video controls poster="https://images.pexels.com/photos/6646932/pexels-photo-6646932.jpeg?auto=compress&cs=tinysrgb&w=1200">
+                <source src="images/jp9.mp4" type="video/mp4">
+            </video>
+        </div>
+        <p class="text-center text-gray-500 text-sm mt-3">Watch: Inter-school soccer finals (John Pama vs. Zola Primary) – 2025</p>
+    </div>
+</section>
+
+<!-- ========== ARTS, CULTURE & CLUBS ========== -->
+<section class="py-20 bg-[#e8f3ed]">
+    <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+        <div class="text-center mb-12 fade-up">
+            <span class="text-[#006633] font-semibold tracking-wider text-sm"><i class="fas fa-palette mr-2"></i> CREATIVITY & IDENTITY</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2">Arts, Culture & Clubs</h2>
+            <div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="activity-card bg-white p-6 rounded-2xl text-center shadow-md fade-up"><i class="fas fa-music text-4xl text-[#006633] mb-3"></i><h3 class="text-xl font-bold">Choir & Marimba</h3><p class="text-gray-600 text-sm mt-2">Perform at school assemblies, community events, and the Eisteddfod.</p></div>
+            <div class="activity-card bg-white p-6 rounded-2xl text-center shadow-md fade-up"><i class="fas fa-paintbrush text-4xl text-[#006633] mb-3"></i><h3 class="text-xl font-bold">Visual Arts</h3><p class="text-gray-600 text-sm mt-2">Drawing, painting, and recycled art. Annual exhibition in Heritage Month.</p></div>
+            <div class="activity-card bg-white p-6 rounded-2xl text-center shadow-md fade-up"><i class="fas fa-chess text-4xl text-[#006633] mb-3"></i><h3 class="text-xl font-bold">Chess Club</h3><p class="text-gray-600 text-sm mt-2">Strategic thinking, patience, and fun. Compete in district tournaments.</p></div>
+            <div class="activity-card bg-white p-6 rounded-2xl text-center shadow-md fade-up"><i class="fas fa-code text-4xl text-[#006633] mb-3"></i><h3 class="text-xl font-bold">Coding & Robotics</h3><p class="text-gray-600 text-sm mt-2">Future-focused skills with Scratch and LEGO robotics. Sponsored by alumni.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== DREAM PLAYFIELD (Current facilities + wishlist) ========== -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6 md:px-12 max-w-5xl">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="fade-up"><img src="https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Playfield upgrade" class="rounded-2xl shadow-xl w-full"></div>
+            <div class="fade-up"><h2 class="text-3xl font-bold mb-4">Dream Playfield Initiative</h2><div class="w-12 h-0.5 bg-[#006633] mb-4 rounded-full"></div><p class="text-gray-600 mb-4">Our current field is a dirt pitch — but our dreams are AstroTurf. We are raising funds to install a multi-purpose sports surface, floodlights, and secure fencing.</p><div class="bg-gray-100 p-4 rounded-xl"><div class="flex justify-between text-sm font-semibold mb-1"><span>Fundraising Progress</span><span>34%</span></div><div class="w-full bg-gray-300 rounded-full h-2"><div class="bg-[#006633] h-2 rounded-full" style="width: 34%"></div></div><p class="text-xs text-gray-500 mt-3">Target: R450,000 | Raised: R153,000</p><a href="donate.html" class="inline-block mt-4 bg-[#006633] text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-[#004d26] transition">Contribute to Playfield →</a></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== COACHES & MENTORS SPOTLIGHT ========== -->
+<section class="py-20 bg-[#fafbfb]">
+    <div class="container mx-auto px-6 md:px-12 max-w-6xl text-center">
+        <div class="fade-up"><span class="text-[#006633] font-semibold tracking-wider text-sm"><i class="fas fa-chalkboard-user mr-2"></i> OUR GUIDES</span><h2 class="text-3xl md:text-4xl font-bold mt-2">Coaches & Mentors</h2><div class="w-16 h-0.5 bg-[#006633] mx-auto mt-4 rounded-full"></div></div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            <div class="team-card bg-white p-6 rounded-2xl shadow-md fade-up"><i class="fas fa-futbol text-3xl text-[#006633] mb-3"></i><h3 class="text-xl font-bold">Coach Thabo Nkosi</h3><p class="text-gray-500 text-sm">Head of Soccer Development</p><p class="text-gray-600 text-sm mt-2">Former youth academy coach with 12 years experience.</p></div>
+            <div class="team-card bg-white p-6 rounded-2xl shadow-md fade-up"><i class="fas fa-basketball-ball text-3xl text-[#006633] mb-3"></i><h3 class="text-xl font-bold">Ms. Lungile Mbeki</h3><p class="text-gray-500 text-sm">Netball & Girls' Sport</p><p class="text-gray-600 text-sm mt-2">"Sport teaches leadership and sisterhood."</p></div>
+            <div class="team-card bg-white p-6 rounded-2xl shadow-md fade-up"><i class="fas fa-drumstick-bite text-3xl text-[#006633] mb-3"></i><h3 class="text-xl font-bold">Mr. Vuyo Sithole</h3><p class="text-gray-500 text-sm">Marimba & Cultural Lead</p><p class="text-gray-600 text-sm mt-2">Preserving heritage through rhythm and song.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== UPCOMING FIXTURES / EVENTS TABLE ========== -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-6 max-w-4xl">
+        <div class="text-center fade-up"><h2 class="text-3xl font-bold">📅 Save the Date</h2><div class="w-16 h-0.5 bg-[#006633] mx-auto mt-3 mb-6 rounded-full"></div></div>
+        <div class="space-y-3 fade-up"><div class="flex justify-between items-center border-b border-gray-200 py-3"><span class="font-semibold">17 May 2026</span><span>Inter-school Soccer Derby vs. Nyanga Primary</span><span class="text-[#006633] text-sm">Home</span></div><div class="flex justify-between items-center border-b border-gray-200 py-3"><span class="font-semibold">5 June 2026</span><span>Annual School Sports Day</span><span class="text-[#006633] text-sm">All day</span></div><div class="flex justify-between items-center border-b border-gray-200 py-3"><span class="font-semibold">28 June 2026</span><span>Cultural Festival & Marimba Concert</span><span class="text-[#006633] text-sm">School Hall</span></div><div class="flex justify-between items-center border-b border-gray-200 py-3"><span class="font-semibold">15 Aug 2026</span><span>Netball Tournament (District Finals)</span><span class="text-[#006633] text-sm">Away</span></div></div>
+    </div>
+</section>
+
+<!-- ========== CTA – JOIN A CLUB / SUPPORT PLAYFIELD ========== -->
+<section class="relative overflow-hidden bg-gradient-to-br from-[#006633] to-[#008844] py-20">
+    <div class="container mx-auto px-6 text-center relative z-10">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Every Child Deserves to Play</h2>
+        <p class="text-white/90 text-lg max-w-2xl mx-auto mb-8">Your donation puts a soccer ball in a child’s hands, builds a netball court, or funds a music teacher. Be the reason they dream bigger.</p>
+        <div class="flex flex-wrap justify-center gap-4"><a href="donate.html" class="bg-white text-[#006633] px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition flex items-center gap-2"><i class="fas fa-futbol"></i> Sponsor a Team</a><a href="volunteer.html" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition flex items-center gap-2"><i class="fas fa-clock"></i> Coach a Workshop</a></div>
+    </div>
+</section>
+
+<!-- ========== PRESTIGIOUS FOOTER ========== -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="container mx-auto px-6 md:px-12">
+        <div class="grid md:grid-cols-4 gap-10">
+            <div><div class="flex items-center space-x-2 mb-4"><div class="w-10 h-10 bg-[#006633] rounded-full flex items-center justify-center text-white font-bold">JP</div><div><div class="font-bold text-lg">JOHN PAMA</div><div class="text-[10px] text-[#006633] font-semibold">PRIMARY SCHOOL</div></div></div><p class="text-gray-400 text-sm">Sithandathu Ave, Nyanga, Cape Town</p><p class="text-gray-400 text-sm mt-2"><i class="fas fa-phone-alt mr-2 text-[#006633]"></i> 021 385 1830</p></div>
+            <div><h4 class="font-semibold text-lg mb-4">Extramurals</h4><ul class="space-y-2 text-gray-400 text-sm"><li><a href="#" class="footer-link hover:text-[#006633] transition">Soccer Fixtures</a></li><li><a href="#" class="footer-link hover:text-[#006633] transition">Netball Schedule</a></li><li><a href="#" class="footer-link hover:text-[#006633] transition">Arts Calendar</a></li></ul></div>
+            <div><h4 class="font-semibold text-lg mb-4">Support Us</h4><ul class="space-y-2 text-gray-400 text-sm"><li><a href="#" class="footer-link hover:text-[#006633] transition">Playfield Fund</a></li><li><a href="#" class="footer-link hover:text-[#006633] transition">Donate Equipment</a></li><li><a href="#" class="footer-link hover:text-[#006633] transition">Become a Patron</a></li></ul></div>
+            <div><h4 class="font-semibold text-lg mb-4">Connect</h4><div class="flex space-x-4 text-gray-400 text-xl"><i class="fab fa-facebook-f hover:text-[#006633] cursor-pointer transition"></i><i class="fab fa-instagram hover:text-[#006633] cursor-pointer transition"></i><i class="fab fa-tiktok hover:text-[#006633] cursor-pointer transition"></i></div></div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-xs">© 2026 John Pama Primary School — Beyond the classroom, beyond the ordinary. Play with pride. 🇿🇦</div>
+    </div>
+</footer>
+
+<script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const hamburgerIcon = document.getElementById('hamburgerIcon');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let isMenuOpen = false;
+    if(hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if(isMenuOpen) { mobileMenu.classList.add('open'); hamburgerIcon.classList.remove('fa-bars'); hamburgerIcon.classList.add('fa-times'); }
+            else { mobileMenu.classList.remove('open'); hamburgerIcon.classList.remove('fa-times'); hamburgerIcon.classList.add('fa-bars'); }
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => { mobileMenu.classList.remove('open'); hamburgerIcon.classList.remove('fa-times'); hamburgerIcon.classList.add('fa-bars'); isMenuOpen = false; });
+        });
+    }
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { if(window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); });
+    const faders = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
+    faders.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
